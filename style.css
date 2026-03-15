@@ -303,3 +303,25 @@ body {
     resize: vertical; /* Permite ao usuário ajustar a altura se precisar escrever mais */
     min-height: 120px;
 }
+
+/* Ajuste de Responsividade para a Bottom Section */
+@media (max-width: 768px) {
+    .split-layout {
+        grid-template-columns: 1fr; /* Muda de duas colunas para uma */
+        gap: 40px;
+    }
+
+    .testimonials blockquote {
+        font-size: 18px; /* Reduz um pouco a fonte no celular */
+        padding-left: 20px;
+    }
+
+    .contact-form-container {
+        padding: 25px; /* Reduz o respiro interno do card no celular */
+    }
+
+    /* Ajuste do Hero para telas menores */
+    .hero h1 {
+        font-size: 32px;
+    }
+}
