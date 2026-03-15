@@ -18,6 +18,61 @@
     --font-main: 'Inter', sans-serif;
 }
 
+/* Previne o scroll horizontal em todo o site */
+body, html {
+    overflow-x: hidden;
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    /* Ajusta a Navbar para não cortar o logo */
+    .navbar {
+        flex-wrap: wrap;
+        justify-content: center; /* Centraliza logo e links no mobile */
+        gap: 15px;
+        padding: 10px;
+    }
+
+    .nav-links {
+        gap: 15px;
+        font-size: 14px; /* Diminui levemente para caber em uma linha */
+    }
+
+    .brand-logo {
+        height: 35px; /* Reduz o logo para ganhar espaço vertical */
+    }
+}
+
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column; /* Empilha os elementos */
+        text-align: center; /* Centraliza o texto para estética mobile */
+        gap: 20px;
+    }
+
+    .footer-info {
+        text-align: center; /* Remove o alinhamento à direita que causa o aperto */
+        font-size: 13px;
+        width: 100%;
+    }
+
+    .brand-logo-footer {
+        height: 35px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .process-item, .benefit-card {
+        padding: 20px 15px;
+        margin: 0 10px; /* Garante que os cards não encostem na borda da tela */
+    }
+    
+    .container {
+        padding: 0 15px;
+    }
+}
+
 html {
     scroll-behavior: smooth;
 }
