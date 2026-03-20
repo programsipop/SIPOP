@@ -27,7 +27,7 @@ body {
     background-color: var(--pure-white);
     color: var(--slate-black);
     line-height: 1.6;
-    overflow-x: hidden; /* Trava de segurança contra scroll lateral */
+    overflow-x: hidden;
     width: 100%;
 }
 
@@ -129,6 +129,52 @@ body {
     transition: opacity 0.3s;
 }
 
+/* 3.1 Research Scope (Barra de Tags - NOVO) */
+.research-scope {
+    padding: 30px 0;
+    background-color: var(--white-smoke);
+    border-bottom: 1px solid var(--pale-slate);
+}
+
+.scope-badges {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.badge-title {
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--pine-blue);
+    letter-spacing: 1px;
+}
+
+.badge-list {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.badge {
+    background: var(--pure-white);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--slate-black);
+    border: 1px solid var(--pale-slate);
+    transition: all 0.3s;
+}
+
+.badge:hover {
+    border-color: var(--pine-blue);
+    color: var(--pine-blue);
+}
+
 /* 4. Sections Gerais */
 .about {
     padding: 100px 0;
@@ -163,6 +209,89 @@ body {
     height: 64px;
     margin-bottom: 20px;
     object-fit: contain;
+}
+
+/* 4.1 Service Models Section */
+.services-section {
+    padding: 100px 0;
+    background-color: #e1eaee;
+    text-align: center;
+}
+
+.services-section h2 {
+    font-size: 32px;
+    margin-bottom: 50px;
+    color: var(--slate-black);
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+}
+
+.service-card {
+    background: var(--pure-white);
+    padding: 40px 30px;
+    border-radius: 12px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--pale-slate);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(44, 122, 123, 0.1);
+}
+
+.service-card.highlight {
+    border: 2px solid var(--pine-blue);
+    position: relative;
+    box-shadow: 0 4px 20px rgba(44, 122, 123, 0.15);
+}
+
+.service-header {
+    margin-bottom: 25px;
+    border-bottom: 1px solid var(--white-smoke);
+    padding-bottom: 15px;
+}
+
+.service-header h3 {
+    font-size: 20px;
+    color: var(--pine-blue);
+    margin-bottom: 5px;
+}
+
+.engagement {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #718096;
+    font-weight: 600;
+}
+
+.service-list {
+    list-style: none;
+    padding: 0;
+}
+
+.service-list li {
+    font-size: 15px;
+    margin-bottom: 12px;
+    position: relative;
+    padding-left: 25px;
+    color: #4A5568;
+    line-height: 1.4;
+}
+
+.service-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--pearl-aqua);
+    font-weight: bold;
 }
 
 /* 5. Bottom Section & Form */
@@ -223,6 +352,34 @@ body {
     padding: 50px 0;
 }
 
+.ethical-disclaimer {
+    padding: 40px 0;
+    background-color: #f9f9f9;
+    border-top: 1px solid #e2e8f0;
+}
+
+.disclaimer-box {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 0 20px; /* Margem de segurança para mobile */
+}
+
+.disclaimer-box h4 {
+    color: #2c7a7b; /* Pine Blue do branding */
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.disclaimer-box p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #4a5568;
+    font-style: italic;
+}
+
 .footer-content {
     display: flex;
     justify-content: space-between;
@@ -241,9 +398,17 @@ body {
     color: var(--pale-slate);
 }
 
+/* 6.1 Disclaimer Ético (NOVO) */
+.disclaimer {
+    display: block;
+    margin-top: 10px;
+    font-size: 11px;
+    opacity: 0.7;
+    max-width: 400px;
+}
+
 /* 7. MEDIA QUERIES (Mobile e Tablet) */
 @media (max-width: 768px) {
-    /* Header & Nav */
     .main-header {
         position: relative; 
         padding: 15px 0;
@@ -260,8 +425,14 @@ body {
         justify-content: center;
     }
 
+    /* Esconde 'About' e 'Process' no mobile */
+    .nav-links li:nth-child(1), 
+    .nav-links li:nth-child(2) { 
+        display: none; 
+    }
+
     .nav-links .btn-outline {
-        display: none; /* Esconde o botão duplicado no menu mobile */
+        display: none; 
     }
 
     .brand-logo {
@@ -279,24 +450,26 @@ body {
         font-size: 32px;
     }
 
+    /* Research Scope Mobile */
+    .scope-badges {
+        flex-direction: column;
+        gap: 10px;
+    }
+
     /* Layouts Grid */
     .split-layout {
         grid-template-columns: 1fr;
         gap: 40px;
     }
 
-    /* Cards e Containers */
-    .process-item, .benefit-card {
-        padding: 20px 15px;
-        margin: 0 10px;
+    /* Services Mobile */
+    .services-section {
+        padding: 60px 0;
     }
-
-    .container {
-        padding: 0 15px;
-    }
-
-    .contact-form-container {
-        padding: 25px;
+    
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
     }
 
     /* Footer Mobile */
@@ -311,7 +484,7 @@ body {
         width: 100%;
     }
 
-    .brand-logo-footer {
-        margin: 0 auto;
+    .disclaimer {
+        margin: 10px auto 0;
     }
 }
