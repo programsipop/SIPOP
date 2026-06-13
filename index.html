@@ -1,33 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SIPOP - Scientific Integrity and Publication Oversight Program</title>
-    
-    <link rel="icon" type="image/x-icon" href="Icon.ico">
-    
+    <meta name="description" content="SIPOP helps researchers improve methodological rigor, statistical validity, and publication trustworthiness of biomedical research.">
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon/Icon.ico">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+    <!-- ========== HEADER ========== -->
     <header class="main-header">
         <nav class="navbar">
             <div class="logo">
-    <img src="Logo1.webp" alt="SIPOP Logo" class="brand-logo">
-</div>
+                <img src="assets/images/logo/Logo1.webp" alt="SIPOP Logo" class="brand-logo brand-logo--light">
+                <img src="assets/images/logo/Logo2.webp" alt="SIPOP Logo" class="brand-logo brand-logo--dark">
+            </div>
             <ul class="nav-links">
                 <li><a href="#about">About</a></li>
                 <li><a href="#process">Process</a></li>
-                <li><a href="#services">Services</a></li> 
+                <li><a href="#services">Services</a></li>
                 <li><a href="#benefits">Benefits</a></li>
                 <li><a href="#contact" class="btn-outline">Contact Us</a></li>
             </ul>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                <span class="theme-toggle__icon theme-toggle__icon--sun">☀️</span>
+                <span class="theme-toggle__icon theme-toggle__icon--moon">🌙</span>
+                <span class="theme-toggle__icon theme-toggle__icon--system">⚙️</span>
+            </button>
         </nav>
     </header>
 
     <main>
-        <section class="hero" style="background-image: url('BG1.webp');">
+
+        <!-- ========== HERO ========== -->
+        <section class="hero">
             <div class="container">
                 <div class="hero-content">
                     <h1>Guiding research from uncertainty to credibility</h1>
@@ -37,51 +45,54 @@
             </div>
         </section>
 
+        <!-- ========== SCOPE ========== -->
         <section class="research-scope">
-    <div class="container">
-        <div class="scope-badges">
-            <span class="badge-title">Scope of Expertise</span>
-            <div class="badge-list">
-                <span class="badge">Systematic Reviews</span>
-                <span class="badge">Meta-analysis</span>
-                <span class="badge">RCTs</span>
-                <span class="badge">Observational Studies</span>
-                <span class="badge">PRISMA</span>
-                <span class="badge">CONSORT</span>
-                <span class="badge">GRADE</span>
+            <div class="container">
+                <div class="scope-badges">
+                    <span class="badge-title">Scope of Expertise</span>
+                    <div class="badge-list">
+                        <span class="badge">Systematic Reviews</span>
+                        <span class="badge">Meta-analysis</span>
+                        <span class="badge">RCTs</span>
+                        <span class="badge">Observational Studies</span>
+                        <span class="badge">PRISMA</span>
+                        <span class="badge">CONSORT</span>
+                        <span class="badge">GRADE</span>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-</section>
+        </section>
 
-        <section id="about" class="about" style="background-image: url('BG2.webp');">
+        <!-- ========== ABOUT ========== -->
+        <section id="about" class="about">
             <div class="container">
                 <h2>About <span>SIPOP</span></h2>
                 <p>The Scientific Integrity and Publication Oversight Program ensures rigorous, transparent, and ethical research practices in biomedical sciences. Our mission is to elevate research standards by providing thorough review and guidance, minimizing bias, and fostering credibility in scientific publications.</p>
             </div>
         </section>
 
+        <!-- ========== HOW IT WORKS ========== -->
         <section id="process" class="process">
             <div class="container">
                 <h2>How It Works</h2>
                 <div class="process-grid">
                     <div class="process-item">
-                        <img src="Icon1.webp" alt="Submission">
+                        <img src="assets/images/icons/Icon1.webp" alt="Submission">
                         <h3>Submission</h3>
                         <p>Researchers submit their studies and findings for initial assessment.</p>
                     </div>
                     <div class="process-item">
-                        <img src="Icon2.webp" alt="Review">
+                        <img src="assets/images/icons/Icon2.webp" alt="Review">
                         <h3>Review</h3>
                         <p>In-depth review of methodology, statistics, and ethical transparency.</p>
                     </div>
                     <div class="process-item">
-                        <img src="Icon3.webp" alt="Guidance">
+                        <img src="assets/images/icons/Icon3.webp" alt="Guidance">
                         <h3>Guidance</h3>
                         <p>Detailed feedback and recommendations for improving research quality.</p>
                     </div>
                     <div class="process-item">
-                        <img src="Icon4.webp" alt="Validation">
+                        <img src="assets/images/icons/Icon4.webp" alt="Validation">
                         <h3>Validation</h3>
                         <p>Final assessment to ensure rigor adherence to scientific standards.</p>
                     </div>
@@ -89,10 +100,31 @@
             </div>
         </section>
 
+        <!-- ========== SERVICES ========== -->
         <section id="services" class="services-section">
             <div class="container">
                 <h2>Service Models</h2>
+                <p class="services-intro">Find the right level of support for your research</p>
                 <div class="services-grid">
+
+                    <!-- Technical Review — entrada -->
+                    <div class="service-card service-card--entry">
+                        <div class="service-header">
+                            <h3>Technical Review</h3>
+                            <span class="engagement">Pre-Submission Audit</span>
+                        </div>
+                        <ul class="service-list">
+                            <li>Independent methodological assessment</li>
+                            <li>Language and scientific writing review</li>
+                            <li>Formatting and editorial standards check</li>
+                            <li>Competitive positioning analysis</li>
+                            <li>Detailed report with actionable recommendations</li>
+                            <li>Delivered within 7 business days</li>
+                        </ul>
+                        <a href="#contact" class="btn-service">Request a Review</a>
+                    </div>
+
+                    <!-- Standard -->
                     <div class="service-card">
                         <div class="service-header">
                             <h3>Standard Mentorship</h3>
@@ -107,38 +139,11 @@
                         </ul>
                     </div>
 
+                    <!-- Advanced -->
                     <div class="service-card">
                         <div class="service-header">
                             <h3>Advanced Mentorship</h3>
-                            <span class="engagement">Technical Rigor</span>
-                        </div>
-                        <ul class="service-list">
-                            <li>All Standard features included</li>
-                            <li>Search strategy technical review</li>
-                            <li>Detailed data extraction guidance</li>
-                            <li>Statistical analysis orientation</li>
-                            <li>Critical manuscript revision</li>
-                        </ul>
-                    </div>
-
-                    <div class="service-card highlight">
-                        <div class="service-header">
-                            <h3>Premium Mentorship</h3>
-                            <span class="engagement">Full Oversight</span>
-                        </div>
-                        <ul class="service-list">
-                            <li>All Advanced features included</li>
-                            <li>Direct support in Meta-analysis</li>
-                            <li>Statistical modeling (Forest Plots)</li>
-                            <li>Heterogeneity analysis audit</li>
-                            <li>Pre-submission full audit</li>
-                        </ul>
-                    </div>
-
-                    <div class="service-card">
-                        <div class="service-header">
-                            <h3>Scientific Consultancy</h3>
-                            <span class="engagement">Strategic Partnership</span>
+                            <span class="engagement">Full Support</span>
                         </div>
                         <ul class="service-list">
                             <li>Active project participation</li>
@@ -148,26 +153,28 @@
                             <li>Scientific writing support</li>
                         </ul>
                     </div>
+
                 </div>
             </div>
         </section>
 
+        <!-- ========== BENEFITS ========== -->
         <section id="benefits" class="benefits">
             <div class="container">
                 <h2>Benefits of Working with SIPOP</h2>
                 <div class="benefits-grid">
                     <div class="benefit-card">
-                        <img src="Icon5.webp" alt="Validated Research">
+                        <img src="assets/images/icons/Icon5.webp" alt="Validated Research">
                         <h3>Validated Research</h3>
                         <p>Confidence that research results were achieved through scientific standards.</p>
                     </div>
                     <div class="benefit-card">
-                        <img src="Icon6.webp" alt="Methodical Guidance">
+                        <img src="assets/images/icons/Icon6.webp" alt="Methodical Guidance">
                         <h3>Methodical Guidance</h3>
                         <p>Expert advice on study design, statistical analysis, and publication ethics.</p>
                     </div>
                     <div class="benefit-card">
-                        <img src="Icon7.webp" alt="International Standards">
+                        <img src="assets/images/icons/Icon7.webp" alt="International Standards">
                         <h3>International Standards</h3>
                         <p>Compliance with international guidelines, enhancing credibility.</p>
                     </div>
@@ -175,19 +182,53 @@
             </div>
         </section>
 
+        <!-- ========== TESTIMONIALS + CONTACT ========== -->
         <section class="bottom-section">
             <div class="container split-layout">
+
                 <div class="testimonials">
                     <h2>What Researchers Are Saying</h2>
-                    <blockquote>
-                        "SIPOP has been instrumental in elevating our research standards. Their meticulous review process gives us confidence in our findings."
-                        <cite>Dr. Andrew M., Harvard Medical School</cite>
+
+                    <blockquote class="testimonial-card">
+                        <p>"Before SIPOP, my biggest challenge was finding someone who truly understood network meta-analysis. I couldn't find anyone to answer my questions — or a statistician willing to commit to my study. SIPOP gave me peace of mind. And for someone in the final stretch of a PhD, that's worth everything."</p>
+                        <cite>
+                            <img src="assets/images/testimonials/suzana.webp" alt="Suzana Bleckmann Reis" class="testimonial-avatar">
+                            <span class="cite-info">
+                                <strong>Suzana Bleckmann Reis</strong>
+                                PhD Candidate in Rehabilitation Sciences<br>
+                                Faculdade de Medicina — Universidade de São Paulo
+                            </span>
+                        </cite>
+                    </blockquote>
+
+                    <blockquote class="testimonial-card">
+                        <p>"I had a complex research question and a tight deadline. SIPOP delivered with agility and competence — and the article was published."</p>
+                        <cite>
+                            <img src="assets/images/testimonials/ivan.webp" alt="Ivan Daniel Bezerra Nogueira" class="testimonial-avatar">
+                            <span class="cite-info">
+                                <strong>Ivan Daniel Bezerra Nogueira</strong>
+                                Associate Professor of Physical Education<br>
+                                Universidade Federal do Rio Grande do Norte — UFRN
+                            </span>
+                        </cite>
+                    </blockquote>
+
+                    <blockquote class="testimonial-card">
+                        <p>"The meta-analysis finally unlocked my research. I went from an insecure researcher dealing with scattered data to an author with a structured article, grounded in high-level evidence."</p>
+                        <cite>
+                            <img src="assets/images/testimonials/katia.webp" alt="Kátia Marques Lombardo" class="testimonial-avatar">
+                            <span class="cite-info">
+                                <strong>Kátia Marques Lombardo</strong>
+                                Senior Researcher<br>
+                                Centro de Educação Física e Desportos — CEFID
+                            </span>
+                        </cite>
                     </blockquote>
                 </div>
 
                 <div id="contact" class="contact-form-container">
                     <h3>Contact SIPOP</h3>
-                    <form action="https://formspree.io/f/xqeydedy" method="POST" id="sipop-form">
+                    <form id="sipop-form">
                         <div class="form-group">
                             <label for="name">Name</label>
                             <input type="text" id="name" name="name" required>
@@ -205,37 +246,52 @@
                             <input type="text" id="specialty" name="specialty">
                         </div>
                         <div class="form-group">
-    <label for="objective">Objective</label>
-    <textarea id="objective" name="objective" rows="4" placeholder="Tell us a little about your trajectory and what motivates you to seek SIPOP at this time"></textarea>
-</div>
+                            <label for="objective">Objective</label>
+                            <textarea id="objective" name="objective" rows="4" placeholder="Tell us a little about your trajectory and what motivates you to seek SIPOP at this time"></textarea>
+                        </div>
                         <button type="submit" class="btn-submit">Submit</button>
+                        <p class="form-status" id="formStatus" aria-live="polite"></p>
                     </form>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ========== ETHICAL DISCLAIMER ========== -->
+        <section class="ethical-disclaimer">
+            <div class="container">
+                <div class="disclaimer-box">
+                    <h4>Ethical Disclaimer</h4>
+                    <p>SIPOP is a scientific governance and oversight program. We do not provide ghostwriting services, data fabrication, or guaranteed publication. Our role is to audit methodology, enhance statistical integrity, and ensure compliance with international reporting standards (PRISMA, CONSORT, GRADE). All final intellectual and ethical responsibilities remain with the authors.</p>
                 </div>
             </div>
         </section>
 
-<section class="ethical-disclaimer">
-    <div class="container">
-        <div class="disclaimer-box">
-            <h4>Ethical Disclaimer</h4>
-            <p>SIPOP is a scientific governance and oversight program. We do not provide ghostwriting services, data fabrication, or guaranteed publication. Our role is to audit methodology, enhance statistical integrity, and ensure compliance with international reporting standards (PRISMA, CONSORT, GRADE). All final intellectual and ethical responsibilities remain with the authors.</p>
-        </div>
-    </div>
-</section>
-
     </main>
 
+    <!-- ========== FOOTER ========== -->
     <footer class="main-footer">
-    <div class="container footer-content">
-        <div class="footer-logo">
-            <img src="Logo2.webp" alt="SIPOP Logo White" class="brand-logo-footer">
+        <div class="container footer-content">
+            <div class="footer-logo">
+                <img src="assets/images/logo/Logo2.webp" alt="SIPOP Logo" class="brand-logo-footer">
+            </div>
+            <div class="footer-info">
+                <p><strong>Global Academic Support</strong></p>
+                <p>Direct Editorial Guidance & Research Validation</p>
+                <p><a href="mailto:contact@sipopscience.com" class="footer-link">contact@sipopscience.com</a></p>
+                <div class="footer-social">
+                    <a href="https://www.linkedin.com/company/sipop-science/" target="_blank" rel="noopener noreferrer" class="footer-link social-link" aria-label="SIPOP on LinkedIn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                        LinkedIn
+                    </a>
+                    <a href="https://www.instagram.com/sipopscience/" target="_blank" rel="noopener noreferrer" class="footer-link social-link" aria-label="SIPOP on Instagram">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+                        Instagram
+                    </a>
+                </div>
+            </div>
         </div>
-        <div class="footer-info">
-            <p><strong>Global Academic Support</strong></p>
-            <p>Direct Editorial Guidance & Research Validation</p>
-            <p>contact@sipopscience.com</p> </div>
-    </div>
-</footer>
+    </footer>
 
     <script src="script.js"></script>
 </body>
