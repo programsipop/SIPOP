@@ -1,0 +1,38 @@
+{# src/_includes/base.njk — layout base de todas as páginas #}
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }} — SIPOP</title>
+    <meta name="description" content="{{ description }}">
+    <link rel="icon" type="image/x-icon" href="/assets/images/favicon/Icon.ico">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    {% if extraCss %}
+        {% for css in extraCss %}
+            <link rel="stylesheet" href="/assets/css/{{ css }}">
+        {% endfor %}
+    {% endif %}
+</head>
+<body{% if bodyClass %} class="{{ bodyClass }}"{% endif %}>
+
+    {% if header == "minimal" %}
+        {% include "lp-header.njk" %}
+    {% else %}
+        {% include "navbar.njk" %}
+    {% endif %}
+
+    <main>
+        {{ content | safe }}
+    </main>
+
+    {% include "footer.njk" %}
+
+    <script src="/assets/js/script.js"></script>
+    {% if extraJs %}
+        {% for js in extraJs %}
+            <script src="/assets/js/{{ js }}"></script>
+        {% endfor %}
+    {% endif %}
+</body>
+</html>

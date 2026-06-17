@@ -1,0 +1,252 @@
+---
+layout: base.njk
+title: Publications
+description: Peer-reviewed research supported by SIPOP — systematic reviews, meta-analyses, and randomized trials published in international journals.
+extraCss:
+  - publications.css
+extraJs:
+  - publications.js
+---
+
+<!-- ========== HERO ========== -->
+<section class="pub-hero">
+    <div class="container">
+        <div class="pub-hero__tag">Peer-Reviewed Research</div>
+        <h1>Publications</h1>
+        <p>Research supported by SIPOP and published in international peer-reviewed journals. Each study reflects the methodological rigor and strategic coherence we bring to every project.</p>
+        <div class="pub-hero__stats">
+            <div class="pub-stat">
+                <span class="pub-stat__number">9</span>
+                <span class="pub-stat__label">Publications</span>
+            </div>
+            <div class="pub-stat">
+                <span class="pub-stat__number">6</span>
+                <span class="pub-stat__label">Systematic Reviews & Meta-Analyses</span>
+            </div>
+            <div class="pub-stat">
+                <span class="pub-stat__number">4+</span>
+                <span class="pub-stat__label">International Journals</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== FILTERS ========== -->
+<section class="pub-filters">
+    <div class="container">
+        <div class="pub-filters__list" role="group" aria-label="Filter publications by type">
+            <button class="pub-filter active" data-filter="all">All</button>
+            <button class="pub-filter" data-filter="systematic-review">Systematic Review</button>
+            <button class="pub-filter" data-filter="meta-analysis">Meta-Analysis</button>
+            <button class="pub-filter" data-filter="rct">RCT</button>
+        </div>
+    </div>
+</section>
+
+<!-- ========== PUBLICATIONS GRID ========== -->
+<section class="pub-grid-section">
+    <div class="container">
+        <div class="pub-grid" id="pubGrid">
+
+            <!-- 1 -->
+            <article class="pub-card" data-type="systematic-review meta-analysis">
+                <div class="pub-card__type">
+                    <span class="pub-tag pub-tag--sr">Systematic Review</span>
+                    <span class="pub-tag pub-tag--ma">Meta-Analysis</span>
+                </div>
+                <h2 class="pub-card__title">Automated Insulin Delivery Systems in Cystic Fibrosis-Related Diabetes</h2>
+                <p class="pub-card__journal">PubMed · 2025</p>
+                <p class="pub-card__abstract">A systematic review and meta-analysis evaluating the effectiveness of automated insulin delivery systems in managing cystic fibrosis-related diabetes.</p>
+                <div class="pub-card__actions">
+                    <a href="https://pubmed.ncbi.nlm.nih.gov/41933587/" target="_blank" rel="noopener noreferrer" class="pub-link pub-link--external">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                        View on PubMed
+                    </a>
+                    <a href="/assets/publications/01-insulin-cystic-fibrosis.pdf" class="pub-link pub-link--pdf" download>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        Download PDF
+                    </a>
+                </div>
+            </article>
+
+            <!-- 2 -->
+            <article class="pub-card" data-type="systematic-review meta-analysis">
+                <div class="pub-card__type">
+                    <span class="pub-tag pub-tag--sr">Umbrella Review</span>
+                    <span class="pub-tag pub-tag--ma">Meta-Analysis</span>
+                </div>
+                <h2 class="pub-card__title">"Attacking" the Gut–Brain Axis with Psychobiotics: Depressive and Anxiety Symptoms</h2>
+                <p class="pub-card__journal">Pharmaceuticals (MDPI) · 2026</p>
+                <p class="pub-card__abstract">An umbrella review examining the effect of psychobiotics on depressive and anxiety symptoms through the gut–brain axis.</p>
+                <div class="pub-card__actions">
+                    <a href="https://www.mdpi.com/1424-8247/19/1/156" target="_blank" rel="noopener noreferrer" class="pub-link pub-link--external">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                        View on MDPI
+                    </a>
+                    <a href="/assets/publications/02-psychobiotics-gut-brain.pdf" class="pub-link pub-link--pdf" download>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        Download PDF
+                    </a>
+                </div>
+            </article>
+
+            <!-- 3 -->
+            <article class="pub-card" data-type="rct">
+                <div class="pub-card__type">
+                    <span class="pub-tag pub-tag--rct">RCT</span>
+                </div>
+                <h2 class="pub-card__title">Acute Effects of HIIT on Heart Rate Variability and Psychoaffective Responses Among Bipolar Patients</h2>
+                <p class="pub-card__journal">Eureka Select · 2024</p>
+                <p class="pub-card__abstract">A randomized crossover trial examining the acute effects of high-intensity interval training on heart rate variability and psychoaffective responses in bipolar patients versus controls.</p>
+                <div class="pub-card__actions">
+                    <a href="https://www.eurekaselect.com/251378/article" target="_blank" rel="noopener noreferrer" class="pub-link pub-link--external">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                        View Article
+                    </a>
+                    <a href="/assets/publications/03-hiit-bipolar-hrv.pdf" class="pub-link pub-link--pdf" download>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        Download PDF
+                    </a>
+                </div>
+            </article>
+
+            <!-- 4 -->
+            <article class="pub-card" data-type="meta-analysis">
+                <div class="pub-card__type">
+                    <span class="pub-tag pub-tag--ma">Predictive Analysis</span>
+                </div>
+                <h2 class="pub-card__title">Predictive and Cross-Validation Analysis of Aerobic and Anaerobic Performance Based on Maximum Strength</h2>
+                <p class="pub-card__journal">Applied Sciences (MDPI) · 2025</p>
+                <p class="pub-card__abstract">Predictive and cross-validation modeling of aerobic and anaerobic performance indicators derived from maximum strength measurements.</p>
+                <div class="pub-card__actions">
+                    <a href="https://www.mdpi.com/2076-3417/15/2/693" target="_blank" rel="noopener noreferrer" class="pub-link pub-link--external">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                        View on MDPI
+                    </a>
+                    <a href="/assets/publications/04-aerobic-anaerobic-strength.pdf" class="pub-link pub-link--pdf" download>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        Download PDF
+                    </a>
+                </div>
+            </article>
+
+            <!-- 5 -->
+            <article class="pub-card" data-type="systematic-review meta-analysis">
+                <div class="pub-card__type">
+                    <span class="pub-tag pub-tag--sr">Systematic Review</span>
+                    <span class="pub-tag pub-tag--ma">Meta-Analysis</span>
+                </div>
+                <h2 class="pub-card__title">Beetroot Juice and Exercise Capacity in Chronic Obstructive Pulmonary Disease</h2>
+                <p class="pub-card__journal">PubMed · 2025</p>
+                <p class="pub-card__abstract">A systematic review and meta-analysis addressing methodological gaps in the literature on beetroot juice supplementation and exercise capacity in COPD patients.</p>
+                <div class="pub-card__actions">
+                    <a href="https://pubmed.ncbi.nlm.nih.gov/41996285/" target="_blank" rel="noopener noreferrer" class="pub-link pub-link--external">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                        View on PubMed
+                    </a>
+                    <a href="/assets/publications/05-beetroot-copd.pdf" class="pub-link pub-link--pdf" download>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        Download PDF
+                    </a>
+                </div>
+            </article>
+
+            <!-- 6 -->
+            <article class="pub-card" data-type="systematic-review meta-analysis">
+                <div class="pub-card__type">
+                    <span class="pub-tag pub-tag--ma">Network Meta-Analysis</span>
+                    <span class="pub-tag pub-tag--rct">RCT</span>
+                </div>
+                <h2 class="pub-card__title">CPAP vs. GLP-1 Receptor Agonists in Obstructive Sleep Apnea: A Network Meta-Analysis</h2>
+                <p class="pub-card__journal">Diabetes, Obesity and Metabolism · 2026</p>
+                <p class="pub-card__abstract">Comparative effectiveness of continuous positive airway pressure and glucagon-like peptide-1 receptor agonists in obstructive sleep apnea through a network meta-analysis of randomised trials.</p>
+                <div class="pub-card__actions">
+                    <a href="https://search.bvsalud.org/portal/resource/en/mdl-41725443" target="_blank" rel="noopener noreferrer" class="pub-link pub-link--external">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                        View on BVS
+                    </a>
+                    <a href="/assets/publications/06-cpap-glp1-sleep-apnea.pdf" class="pub-link pub-link--pdf" download>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        Download PDF
+                    </a>
+                </div>
+            </article>
+
+            <!-- 7 -->
+            <article class="pub-card" data-type="systematic-review meta-analysis">
+                <div class="pub-card__type">
+                    <span class="pub-tag pub-tag--sr">Systematic Review</span>
+                    <span class="pub-tag pub-tag--ma">Meta-Analysis</span>
+                </div>
+                <h2 class="pub-card__title">Machine Learning-Based Prediction Models for Noninvasive Respiratory Support Failure in Acute Respiratory Failure</h2>
+                <p class="pub-card__journal">Frontiers in Medicine · 2026</p>
+                <p class="pub-card__abstract">A systematic review and meta-analysis of machine learning-based prediction models for identifying noninvasive respiratory support failure in acute respiratory failure.</p>
+                <div class="pub-card__actions">
+                    <a href="https://www.frontiersin.org/journals/medicine/articles/10.3389/fmed.2026.1775670/full" target="_blank" rel="noopener noreferrer" class="pub-link pub-link--external">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                        View on Frontiers
+                    </a>
+                    <a href="/assets/publications/07-ml-respiratory-failure.pdf" class="pub-link pub-link--pdf" download>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        Download PDF
+                    </a>
+                </div>
+            </article>
+
+            <!-- 8 -->
+            <article class="pub-card" data-type="systematic-review meta-analysis">
+                <div class="pub-card__type">
+                    <span class="pub-tag pub-tag--sr">Systematic Review</span>
+                    <span class="pub-tag pub-tag--ma">Meta-Analysis</span>
+                </div>
+                <h2 class="pub-card__title">Liraglutide and Exenatide in Alzheimer's Disease and Mild Cognitive Impairment: Cognitive Outcomes</h2>
+                <p class="pub-card__journal">Pharmaceutics (MDPI) · 2026</p>
+                <p class="pub-card__abstract">A systematic review and meta-analysis of cognitive outcomes from liraglutide and exenatide interventions in patients with Alzheimer's disease and mild cognitive impairment.</p>
+                <div class="pub-card__actions">
+                    <a href="https://www.mdpi.com/1999-4923/18/1/69" target="_blank" rel="noopener noreferrer" class="pub-link pub-link--external">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                        View on MDPI
+                    </a>
+                    <a href="/assets/publications/08-liraglutide-alzheimers.pdf" class="pub-link pub-link--pdf" download>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        Download PDF
+                    </a>
+                </div>
+            </article>
+
+            <!-- 9 -->
+            <article class="pub-card" data-type="systematic-review meta-analysis">
+                <div class="pub-card__type">
+                    <span class="pub-tag pub-tag--ma">Meta-Analysis</span>
+                    <span class="pub-tag pub-tag--rct">RCT</span>
+                </div>
+                <h2 class="pub-card__title">Effect of a High-Protein Diet on Renal Function in Healthy Individuals Without Chronic Kidney Disease</h2>
+                <p class="pub-card__journal">ResearchGate · 2021</p>
+                <p class="pub-card__abstract">A meta-analysis of randomized controlled trials evaluating the effect of high-protein diets on renal function markers in healthy individuals without pre-existing chronic kidney disease.</p>
+                <div class="pub-card__actions">
+                    <a href="https://www.researchgate.net/publication/352231644_Effect_of_a_High-Protein_Diet_on_the_Renal_Function_in_Healthy_Individuals_Without_Chronic_Kidney_Disease_A_Meta-Analysis_of_Randomized_Controlled_Trials" target="_blank" rel="noopener noreferrer" class="pub-link pub-link--external">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                        View on ResearchGate
+                    </a>
+                    <a href="/assets/publications/09-high-protein-renal.pdf" class="pub-link pub-link--pdf" download>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        Download PDF
+                    </a>
+                </div>
+            </article>
+
+        </div>
+
+        <p class="pub-empty" id="pubEmpty" style="display:none;">No publications match this filter.</p>
+
+    </div>
+</section>
+
+<!-- ========== CTA ========== -->
+<section class="pub-cta">
+    <div class="container">
+        <h2>Your research could be next.</h2>
+        <p>SIPOP supports researchers at every stage — from protocol design to pre-submission audit — so your work reaches the journals it deserves.</p>
+        <a href="/technical-review" class="btn-primary">Request a Technical Review</a>
+    </div>
+</section>

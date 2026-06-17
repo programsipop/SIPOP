@@ -18,7 +18,7 @@ Institutional website for SIPOP, a program offering methodological auditing, tec
 
 ## About the Project
 
-SIPOP is a one-page institutional website built from the ground up, including brand identity, visual design, and front-end development. The project encompasses:
+SIPOP is an institutional website built from the ground up, including brand identity, visual design, and front-end development. The project encompasses:
 
 - Full brand identity (logo, color palette, typography, visual system)
 - Canva template pack (10 templates for Instagram and LinkedIn)
@@ -30,10 +30,13 @@ SIPOP is a one-page institutional website built from the ground up, including br
 
 ## Tech Stack
 
+- **Eleventy (11ty) v3** — static site generator with Nunjucks templating
+- **Nunjucks (.njk)** — layouts, includes, and page templates
 - **HTML5** — semantic structure
 - **CSS3** — custom properties, CSS variables for theming, responsive grid
 - **Vanilla JavaScript** — no frameworks or dependencies
 - **Google Apps Script** — serverless form handling, data stored in Google Sheets
+- **Netlify** — build and hosting
 - **Google Fonts** — Inter typeface
 
 ---
@@ -47,7 +50,18 @@ SIPOP is a one-page institutional website built from the ground up, including br
 - ✅ Smooth scroll navigation
 - ✅ Background images swap between light/dark versions
 - ✅ Semantic HTML with `aria-label` and `aria-live` attributes
+- ✅ Multi-page: Home (`/`), Publications (`/publications`), Technical Review (`/technical-review`)
 - ✅ No external JS dependencies
+
+---
+
+## Pages
+
+| Page | Template | Description |
+|---|---|---|
+| `/` | `src/index.njk` | Landing page — hero, services, benefits, testimonials, contact form |
+| `/publications` | `src/publications.njk` | Peer-reviewed publications supported by SIPOP |
+| `/technical-review` | `src/technical-review.njk` | Dedicated LP for the Technical Review service |
 
 ---
 
@@ -68,28 +82,78 @@ SIPOP is a one-page institutional website built from the ground up, including br
 
 ```
 sipop/
-├── index.html              # Main HTML — structure and content
-├── style.css               # All styles, CSS variables, theming, responsive
-├── script.js               # Theme toggle, form handler, scroll behavior
-├── apps-script.gs          # Google Apps Script — paste into Apps Script editor
+├── .eleventy.js                # Eleventy config — passthrough, dirs, engines
+├── .eleventyignore             # Ignores node_modules and _site
+├── .gitignore
+├── netlify.toml                # Build command, publish dir, clean URL redirects
+├── package.json
+├── apps-script.gs              # Google Apps Script — paste into Apps Script editor
 ├── README.md
 │
-├── assets/
-│   ├── images/
-│   │   ├── backgrounds/    # BG1, BG1DM, BG2, BG2DM (.webp)
-│   │   ├── icons/          # Icon1–Icon7 (.webp)
-│   │   ├── logo/           # Logo1, Logo2 (.webp)
-│   │   ├── favicon/        # Icon.ico
-│   │   └── testimonials/   # suzana, ivan, katia (.webp)
+├── src/                        # Eleventy input dir
+│   ├── index.njk               # Home page
+│   ├── publications.njk        # Publications page
+│   ├── technical-review.njk    # Technical Review landing page
 │   │
-│   └── design/             # Source files — not deployed
-│       ├── icons-source/   # .ai originals
-│       └── backgrounds/    # .png originals
+│   ├── _includes/              # Nunjucks partials and layouts
+│   │   ├── base.njk            # Base HTML layout (head, scripts, slots)
+│   │   ├── lp-header.njk       # Minimal header for landing pages
+│   │   ├── navbar.njk          # Main navigation bar
+│   │   └── footer.njk          # Site footer
+│   │
+│   └── assets/                 # Static files — copied as-is to _site/assets/
+│       ├── css/
+│       │   ├── style.css           # Global styles, variables, theming
+│       │   ├── publications.css    # Styles for /publications
+│       │   └── technical-review.css # Styles for /technical-review
+│       ├── js/
+│       │   ├── script.js           # Theme toggle, form handler, scroll behavior
+│       │   └── publications.js     # Publications page interactions
+│       └── images/
+│           ├── backgrounds/        # BG1, BG1DM, BG2, BG2DM (.webp)
+│           ├── icons/              # Icon1–Icon7 (.webp)
+│           ├── logo/               # Logo1, Logo2 (.webp)
+│           ├── favicon/            # Icon.ico
+│           └── testimonials/       # suzana, ivan, katia (.webp)
 │
-└── screenshots/
-    ├── light.png           # Full-page screenshot — light mode
-    └── dark.png            # Full-page screenshot — dark mode
+├── screenshots/
+│   ├── light.png               # Full-page screenshot — light mode
+│   └── dark.png                # Full-page screenshot — dark mode
+│
+└── design-sources/             # Source files — not deployed
+    ├── logo1.png
+    ├── logo2.png
+    ├── backgrounds/            # .png originals
+    └── icons-source/           # .ai originals
 ```
+
+---
+
+## Local Development
+
+```bash
+npm install
+npm start        # Eleventy dev server with live reload
+```
+
+Build for production:
+
+```bash
+npm run build    # Outputs to _site/
+```
+
+---
+
+## Deploy (Netlify)
+
+Configured via `netlify.toml`:
+
+- **Build command:** `npm run build`
+- **Publish directory:** `_site`
+- **Node version:** 18
+- Clean URL rewrites for `/publications` and `/technical-review`
+
+Push to the connected branch to trigger an automatic deploy.
 
 ---
 
@@ -104,7 +168,7 @@ sipop/
    - Who has access: **Anyone**
 5. Authorize the app when prompted
 6. Copy the generated URL
-7. In `script.js`, replace `'COLE_A_URL_DO_APPS_SCRIPT_AQUI'` with the URL
+7. In `src/assets/js/script.js`, replace `'COLE_A_URL_DO_APPS_SCRIPT_AQUI'` with the URL
 
 Submissions are saved to a sheet tab named **"SIPOP Contacts"**, created automatically on the first submission. Email notifications are sent via `MailApp.sendEmail` — update the recipient addresses directly in `apps-script.gs`.
 
@@ -123,4 +187,4 @@ Submissions are saved to a sheet tab named **"SIPOP Contacts"**, created automat
 
 **Design & Development:** Victor Leme  
 **Client:** SIPOP / Gaspar Rogério da Silva Chiappa  
-**Year:** 2025
+**Year:** 2026

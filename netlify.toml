@@ -1,0 +1,19 @@
+# netlify.toml — configuração de build para o Netlify
+
+[build]
+  command   = "npm run build"
+  publish   = "_site"
+
+[build.environment]
+  NODE_VERSION = "18"
+
+# Redireciona /publications para /publications/index.html (URLs limpas)
+[[redirects]]
+  from   = "/publications"
+  to     = "/publications/index.html"
+  status = 200
+
+[[redirects]]
+  from   = "/technical-review"
+  to     = "/technical-review/index.html"
+  status = 200
