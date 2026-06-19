@@ -41,18 +41,25 @@ function doPost(e) {
                 'Name',
                 'Email',
                 'Phone',
+                'Nationality',
+                'Preferred Language',
                 'Specialty',
-                'Objective'
+                'Objective',
+                'UTM Source',
+                'UTM Medium',
+                'UTM Campaign',
+                'UTM Content'
             ]);
 
             // Formata cabeçalho
-            const headerRange = sheet.getRange(1, 1, 1, 7);
+            const headerRange = sheet.getRange(1, 1, 1, 13);
             headerRange.setFontWeight('bold');
             headerRange.setBackground('#2C7A7B');
             headerRange.setFontColor('#FFFFFF');
             sheet.setColumnWidth(1, 180); // Timestamp
             sheet.setColumnWidth(2, 200); // Source
-            sheet.setColumnWidth(7, 400); // Objective
+            sheet.setColumnWidth(9, 400); // Objective
+            sheet.setColumnWidth(12, 130); // UTM Campaign
         }
 
         // Parse dos dados recebidos
@@ -63,32 +70,44 @@ function doPost(e) {
 
         // Adiciona linha
         sheet.appendRow([
-            data.timestamp || new Date().toISOString(),
+            data.timestamp          || new Date().toISOString(),
             source,
-            data.name      || '',
-            data.email     || '',
-            data.phone     || '',
-            data.specialty || '',
-            data.objective || ''
+            data.name               || '',
+            data.email              || '',
+            data.phone              || '',
+            data.nationality        || '',
+            data.preferredLanguage  || '',
+            data.specialty          || '',
+            data.objective          || '',
+            data.utm_source         || '',
+            data.utm_medium         || '',
+            data.utm_campaign       || '',
+            data.utm_content        || ''
         ]);
 
         // Destaca visualmente leads da Landing Page
         if (source.includes('Landing Page')) {
             const lastRow   = sheet.getLastRow();
-            const rowRange  = sheet.getRange(lastRow, 1, 1, 7);
+            const rowRange  = sheet.getRange(lastRow, 1, 1, 13);
             rowRange.setBackground('#EBF8FF'); // azul claro
         }
 
         // Notificação por e-mail para todos os destinatários
-        const subject = '[SIPOP] New contact — ' + source + ': ' + (data.name || 'Unknown');
+        const subject  = '[SIPOP] New contact — ' + source + ': ' + (data.name || 'Unknown');
+        const utmLine  = data.utm_campaign
+            ? '\nCampaign:  ' + data.utm_campaign + ' (' + (data.utm_source || '—') + ' / ' + (data.utm_content || '—') + ')\n'
+            : '';
         const body    =
             'A new contact form was submitted on SIPOP.\n\n' +
             '─────────────────────────────\n' +
-            'Source:    ' + source           + '\n' +
-            'Name:      ' + (data.name      || '—') + '\n' +
-            'Email:     ' + (data.email     || '—') + '\n' +
-            'Phone:     ' + (data.phone     || '—') + '\n' +
-            'Specialty: ' + (data.specialty || '—') + '\n' +
+            'Source:      ' + source           + '\n' +
+            'Name:        ' + (data.name              || '—') + '\n' +
+            'Email:       ' + (data.email             || '—') + '\n' +
+            'Phone:       ' + (data.phone             || '—') + '\n' +
+            'Nationality: ' + (data.nationality       || '—') + '\n' +
+            'Language:    ' + (data.preferredLanguage || '—') + '\n' +
+            'Specialty:   ' + (data.specialty         || '—') + '\n' +
+            utmLine +
             '─────────────────────────────\n' +
             'Message:\n' + (data.objective  || '—') + '\n\n' +
             'Timestamp: ' + (data.timestamp || new Date().toISOString());
@@ -119,13 +138,19 @@ function testPost() {
     const mockEvent = {
         postData: {
             contents: JSON.stringify({
-                source:    'Landing Page — Technical Review',
-                name:      'Test User',
-                email:     'test@example.com',
-                phone:     '+55 11 99999-9999',
-                specialty: 'Clinical Research',
-                objective: 'Testing form submission from the Technical Review landing page.',
-                timestamp: new Date().toISOString()
+                source:             'Landing Page — Technical Review',
+                name:               'Test User',
+                email:              'test@example.com',
+                phone:              '+55 11 99999-9999',
+                nationality:        'Brazilian',
+                preferredLanguage:  'Portuguese',
+                specialty:          'Clinical Research',
+                objective:          'Testing form submission from the Technical Review landing page.',
+                utm_source:         'instagram',
+                utm_medium:         'paid_social',
+                utm_campaign:       'technical_review',
+                utm_content:        'ad1_rejection',
+                timestamp:          new Date().toISOString()
             })
         }
     };
@@ -137,12 +162,14 @@ function testPostMainSite() {
     const mockEvent = {
         postData: {
             contents: JSON.stringify({
-                name:      'Test User 2',
-                email:     'test2@example.com',
-                phone:     '',
-                specialty: 'Epidemiology',
-                objective: 'Testing form submission from the main website.',
-                timestamp: new Date().toISOString()
+                name:               'Test User 2',
+                email:              'test2@example.com',
+                phone:              '',
+                nationality:        'American',
+                preferredLanguage:  'English',
+                specialty:          'Epidemiology',
+                objective:          'Testing form submission from the main website.',
+                timestamp:          new Date().toISOString()
             })
         }
     };

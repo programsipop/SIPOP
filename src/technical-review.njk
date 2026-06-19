@@ -156,6 +156,12 @@ extraCss:
                     <!-- Campo oculto para identificar a origem -->
                     <input type="hidden" name="source" value="Landing Page — Technical Review">
 
+                    <!-- Campos ocultos para rastreamento de campanha (preenchidos via JS a partir da URL) -->
+                    <input type="hidden" name="utm_source" id="utm_source" value="">
+                    <input type="hidden" name="utm_medium" id="utm_medium" value="">
+                    <input type="hidden" name="utm_campaign" id="utm_campaign" value="">
+                    <input type="hidden" name="utm_content" id="utm_content" value="">
+
                     <div class="form-group">
                         <label for="name">Name</label>
                         <input type="text" id="name" name="name" required>
@@ -166,7 +172,168 @@ extraCss:
                     </div>
                     <div class="form-group">
                         <label for="phone">Phone (optional)</label>
-                        <input type="tel" id="phone" name="phone">
+                        <div class="phone-input-group">
+                            <select id="phoneCountryCode" name="phoneCountryCode" aria-label="Country calling code">
+                                <option value="">Code</option>
+                                <option value="+93">Afghanistan +93</option>
+                                <option value="+54">Argentina +54</option>
+                                <option value="+61">Australia +61</option>
+                                <option value="+43">Austria +43</option>
+                                <option value="+880">Bangladesh +880</option>
+                                <option value="+32">Belgium +32</option>
+                                <option value="+591">Bolivia +591</option>
+                                <option value="+55" selected>Brazil +55</option>
+                                <option value="+1">Canada / USA +1</option>
+                                <option value="+56">Chile +56</option>
+                                <option value="+86">China +86</option>
+                                <option value="+57">Colombia +57</option>
+                                <option value="+506">Costa Rica +506</option>
+                                <option value="+385">Croatia +385</option>
+                                <option value="+53">Cuba +53</option>
+                                <option value="+420">Czech Republic +420</option>
+                                <option value="+45">Denmark +45</option>
+                                <option value="+593">Ecuador +593</option>
+                                <option value="+20">Egypt +20</option>
+                                <option value="+358">Finland +358</option>
+                                <option value="+33">France +33</option>
+                                <option value="+49">Germany +49</option>
+                                <option value="+233">Ghana +233</option>
+                                <option value="+30">Greece +30</option>
+                                <option value="+502">Guatemala +502</option>
+                                <option value="+504">Honduras +504</option>
+                                <option value="+36">Hungary +36</option>
+                                <option value="+91">India +91</option>
+                                <option value="+62">Indonesia +62</option>
+                                <option value="+98">Iran +98</option>
+                                <option value="+964">Iraq +964</option>
+                                <option value="+353">Ireland +353</option>
+                                <option value="+972">Israel +972</option>
+                                <option value="+39">Italy +39</option>
+                                <option value="+81">Japan +81</option>
+                                <option value="+962">Jordan +962</option>
+                                <option value="+254">Kenya +254</option>
+                                <option value="+82">South Korea +82</option>
+                                <option value="+961">Lebanon +961</option>
+                                <option value="+60">Malaysia +60</option>
+                                <option value="+52">Mexico +52</option>
+                                <option value="+212">Morocco +212</option>
+                                <option value="+31">Netherlands +31</option>
+                                <option value="+64">New Zealand +64</option>
+                                <option value="+234">Nigeria +234</option>
+                                <option value="+47">Norway +47</option>
+                                <option value="+92">Pakistan +92</option>
+                                <option value="+507">Panama +507</option>
+                                <option value="+595">Paraguay +595</option>
+                                <option value="+51">Peru +51</option>
+                                <option value="+63">Philippines +63</option>
+                                <option value="+48">Poland +48</option>
+                                <option value="+351">Portugal +351</option>
+                                <option value="+40">Romania +40</option>
+                                <option value="+7">Russia +7</option>
+                                <option value="+966">Saudi Arabia +966</option>
+                                <option value="+65">Singapore +65</option>
+                                <option value="+27">South Africa +27</option>
+                                <option value="+34">Spain +34</option>
+                                <option value="+46">Sweden +46</option>
+                                <option value="+41">Switzerland +41</option>
+                                <option value="+886">Taiwan +886</option>
+                                <option value="+66">Thailand +66</option>
+                                <option value="+90">Turkey +90</option>
+                                <option value="+380">Ukraine +380</option>
+                                <option value="+971">United Arab Emirates +971</option>
+                                <option value="+44">United Kingdom +44</option>
+                                <option value="+598">Uruguay +598</option>
+                                <option value="+58">Venezuela +58</option>
+                                <option value="+84">Vietnam +84</option>
+                            </select>
+                            <input type="tel" id="phone" name="phone" placeholder="Number with area code">
+                        </div>
+                        <span class="form-hint">Include your local area code as part of the number (e.g. DDD in Brazil).</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="nationality">Nationality</label>
+                        <input type="text" id="nationality" name="nationality" list="lp-nationality-list" placeholder="e.g. Brazilian" autocomplete="off">
+                        <datalist id="lp-nationality-list">
+                            <option value="Afghan">
+                            <option value="American">
+                            <option value="Argentine">
+                            <option value="Australian">
+                            <option value="Austrian">
+                            <option value="Bangladeshi">
+                            <option value="Belgian">
+                            <option value="Bolivian">
+                            <option value="Brazilian">
+                            <option value="British">
+                            <option value="Canadian">
+                            <option value="Chilean">
+                            <option value="Chinese">
+                            <option value="Colombian">
+                            <option value="Costa Rican">
+                            <option value="Croatian">
+                            <option value="Cuban">
+                            <option value="Czech">
+                            <option value="Danish">
+                            <option value="Dutch">
+                            <option value="Ecuadorian">
+                            <option value="Egyptian">
+                            <option value="Emirati">
+                            <option value="Filipino">
+                            <option value="Finnish">
+                            <option value="French">
+                            <option value="German">
+                            <option value="Ghanaian">
+                            <option value="Greek">
+                            <option value="Guatemalan">
+                            <option value="Honduran">
+                            <option value="Hungarian">
+                            <option value="Indian">
+                            <option value="Indonesian">
+                            <option value="Iranian">
+                            <option value="Iraqi">
+                            <option value="Irish">
+                            <option value="Israeli">
+                            <option value="Italian">
+                            <option value="Japanese">
+                            <option value="Jordanian">
+                            <option value="Kenyan">
+                            <option value="Lebanese">
+                            <option value="Malaysian">
+                            <option value="Mexican">
+                            <option value="Moroccan">
+                            <option value="New Zealander">
+                            <option value="Nigerian">
+                            <option value="Norwegian">
+                            <option value="Pakistani">
+                            <option value="Panamanian">
+                            <option value="Paraguayan">
+                            <option value="Peruvian">
+                            <option value="Polish">
+                            <option value="Portuguese">
+                            <option value="Romanian">
+                            <option value="Russian">
+                            <option value="Saudi">
+                            <option value="Singaporean">
+                            <option value="South African">
+                            <option value="South Korean">
+                            <option value="Spanish">
+                            <option value="Swedish">
+                            <option value="Swiss">
+                            <option value="Taiwanese">
+                            <option value="Thai">
+                            <option value="Turkish">
+                            <option value="Ukrainian">
+                            <option value="Uruguayan">
+                            <option value="Venezuelan">
+                            <option value="Vietnamese">
+                        </datalist>
+                    </div>
+                    <div class="form-group">
+                        <label for="preferredLanguage">Preferred language</label>
+                        <select id="preferredLanguage" name="preferredLanguage">
+                            <option value="English" selected>English</option>
+                            <option value="Spanish">Spanish</option>
+                            <option value="Portuguese">Portuguese</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="specialty">Research area / Specialty</label>
