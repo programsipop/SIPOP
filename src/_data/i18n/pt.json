@@ -3,6 +3,7 @@
   "htmlLang": "pt-BR",
   "urlPrefix": "/pt",
   "langLabel": "Português",
+  "flag": "🇧🇷",
   "langSwitcher": { "en": "English", "pt": "Português" },
 
   "nav": {
@@ -17,7 +18,8 @@
   "footer": {
     "tagline1": "Suporte Acadêmico Global",
     "tagline2": "Orientação Editorial Direta & Validação de Pesquisa",
-    "credit": "Desenvolvido por"
+    "credit": "Desenvolvido por",
+    "whatsappMessage": "Olá! Gostaria de saber mais sobre os serviços do SIPOP."
   },
 
   "disclaimer": {
@@ -75,6 +77,7 @@
     "services": {
       "title": "Modelos de Serviço",
       "intro": "Encontre o nível de suporte certo para a sua pesquisa",
+      "badge": "Novo",
       "cards": [
         {
           "entry": true,

@@ -188,6 +188,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 header.style.padding   = '20px 0';
             }
         }, { passive: true });
-    }
+    // ==========================================
+    // 4. LANGUAGE SWITCHER — fecha ao clicar fora
+    // ==========================================
+
+    document.addEventListener('click', (e) => {
+        document.querySelectorAll('.lang-switcher[open]').forEach((el) => {
+            if (!el.contains(e.target)) el.removeAttribute('open');
+        });
+    });
 
 });

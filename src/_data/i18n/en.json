@@ -3,6 +3,7 @@
   "htmlLang": "en",
   "urlPrefix": "",
   "langLabel": "English",
+  "flag": "🇺🇸",
   "langSwitcher": { "en": "English", "pt": "Português" },
 
   "nav": {
@@ -17,7 +18,8 @@
   "footer": {
     "tagline1": "Global Academic Support",
     "tagline2": "Direct Editorial Guidance & Research Validation",
-    "credit": "Designed &amp; developed by"
+    "credit": "Designed &amp; developed by",
+    "whatsappMessage": "Hello! I'd like to learn more about SIPOP's services."
   },
 
   "disclaimer": {
@@ -75,6 +77,7 @@
     "services": {
       "title": "Service Models",
       "intro": "Find the right level of support for your research",
+      "badge": "New",
       "cards": [
         {
           "entry": true,

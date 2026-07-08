@@ -1,4 +1,5 @@
 {# src/_includes/navbar.njk — header completo, usado em index e publications #}
+{% from "macros.njk" import langSwitcher %}
 <header class="main-header">
     <nav class="navbar">
         <div class="logo">
@@ -15,15 +16,13 @@
             <li><a href="{{ t.urlPrefix }}/publications">{{ t.nav.publications }}</a></li>
             <li><a href="{{ t.urlPrefix }}/#contact" class="btn-outline">{{ t.nav.contact }}</a></li>
         </ul>
-        <div class="lang-switcher" role="group" aria-label="Language selector">
-            {% for code, locale in i18n %}
-            <a href="{{ locale.urlPrefix }}/{{ slug }}" class="lang-switcher__link{% if code == lang %} active{% endif %}" {% if code == lang %}aria-current="true"{% endif %}>{{ code | upper }}</a>
-            {% endfor %}
+        <div class="navbar-actions">
+            {{ langSwitcher(t, lang, slug, i18n) }}
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                <span class="theme-toggle__icon theme-toggle__icon--sun">☀️</span>
+                <span class="theme-toggle__icon theme-toggle__icon--moon">🌙</span>
+                <span class="theme-toggle__icon theme-toggle__icon--system">⚙️</span>
+            </button>
         </div>
-        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-            <span class="theme-toggle__icon theme-toggle__icon--sun">☀️</span>
-            <span class="theme-toggle__icon theme-toggle__icon--moon">🌙</span>
-            <span class="theme-toggle__icon theme-toggle__icon--system">⚙️</span>
-        </button>
     </nav>
 </header>

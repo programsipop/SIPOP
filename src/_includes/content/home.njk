@@ -58,7 +58,7 @@
         <p class="services-intro">{{ h.services.intro }}</p>
         <div class="services-grid">
             {% for card in h.services.cards %}
-            <div class="service-card{% if card.entry %} service-card--entry{% endif %}">
+            <div class="service-card{% if card.entry %} service-card--entry{% endif %}"{% if card.entry %} data-badge="{{ h.services.badge }}"{% endif %}>
                 <div class="service-header">
                     <h3>{{ card.title }}</h3>
                     <span class="engagement">{{ card.engagement }}</span>

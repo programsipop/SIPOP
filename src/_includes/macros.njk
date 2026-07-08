@@ -1,5 +1,29 @@
 {# src/_includes/macros.njk — componentes reutilizáveis, parametrizados pelo dicionário de textos (t) #}
 
+{% macro langSwitcher(t, lang, slug, i18n) %}
+<details class="lang-switcher">
+    <summary class="lang-switcher__current" aria-label="Select language / Selecionar idioma">
+        <span class="lang-switcher__globe" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </span>
+        <span class="lang-switcher__flag">{{ t.flag }}</span>
+        <span class="lang-switcher__code">{{ lang | upper }}</span>
+    </summary>
+    <ul class="lang-switcher__menu">
+        {% for code, locale in i18n %}
+        <li>
+            <a href="{{ locale.urlPrefix }}/{{ slug }}"{% if code == lang %} class="active" aria-current="true"{% endif %}>
+                <span class="lang-switcher__flag">{{ locale.flag }}</span>
+                <span>{{ locale.langLabel }}</span>
+                <span class="lang-switcher__code">{{ code | upper }}</span>
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+</details>
+{% endmacro %}
+
+
 {% macro contactForm(t, lang, formId, datalistId, submitLabel, countryCodes, nationalities, sourceValue, includeUtm, specialtyLabel, objectiveLabel, objectivePlaceholder) %}
 {% set specialtyLabel = specialtyLabel or t.form.specialtyLabel %}
 {% set objectiveLabel = objectiveLabel or t.form.objectiveLabel %}
