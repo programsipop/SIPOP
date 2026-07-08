@@ -1,0 +1,124 @@
+{# src/_includes/content/technical-review.njk — conteúdo da LP de Revisão Técnica, parametrizado por t/lang #}
+{% from "macros.njk" import contactForm, testimonialCard %}
+{% set r = t.technicalReview %}
+
+<!-- ========== HERO ========== -->
+<section class="lp-hero">
+    <div class="container">
+        <div class="lp-hero__tag">{{ r.hero.tag }}</div>
+        <h1 class="lp-hero__title">
+            {% for line in r.hero.titleLines %}{{ line }}{% if not loop.last %}<br>{% endif %}
+            {% endfor %}
+        </h1>
+        <p class="lp-hero__subtitle">
+            {{ r.hero.subtitle | safe }}
+        </p>
+        <a href="#lp-form" class="btn-primary lp-hero__cta">{{ r.hero.cta }}</a>
+    </div>
+</section>
+
+<!-- ========== WHAT'S AT STAKE ========== -->
+<section class="lp-stakes">
+    <div class="container">
+        <div class="lp-stakes__grid">
+            <div class="lp-stakes__item lp-stakes__item--bad">
+                <span class="lp-stakes__label">{{ r.stakes.withoutLabel }}</span>
+                <ul>
+                    {% for li in r.stakes.withoutItems %}
+                    <li>{{ li }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="lp-stakes__divider" aria-hidden="true">→</div>
+            <div class="lp-stakes__item lp-stakes__item--good">
+                <span class="lp-stakes__label">{{ r.stakes.withLabel }}</span>
+                <ul>
+                    {% for li in r.stakes.withItems %}
+                    <li>{{ li }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== WHAT WE REVIEW ========== -->
+<section class="lp-what">
+    <div class="container">
+        <h2>{{ r.what.title }}</h2>
+        <p class="lp-what__intro">
+            {{ r.what.intro | safe }}
+        </p>
+        <div class="lp-what__grid">
+            {% for card in r.what.cards %}
+            <div class="lp-what__card">
+                <div class="lp-what__icon">{{ card.icon }}</div>
+                <h3>{{ card.title }}</h3>
+                <p>{{ card.body }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- ========== TESTIMONIALS ========== -->
+<section class="lp-testimonials">
+    <div class="container">
+        <h2>{{ r.testimonials.title }}</h2>
+        <div class="lp-testimonials__grid">
+            {% for item in r.testimonials.items %}
+                {{ testimonialCard(item) }}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- ========== FORM ========== -->
+<section class="lp-form-section" id="lp-form">
+    <div class="container">
+        <div class="lp-form-wrapper">
+
+            <div class="lp-form-copy">
+                <h2>{{ r.formSection.title }}</h2>
+                <p>{{ r.formSection.body }}</p>
+                <ul class="lp-form-copy__checklist">
+                    {% for li in r.formSection.checklist %}
+                    <li>{{ li }}</li>
+                    {% endfor %}
+                </ul>
+                <p class="lp-form-copy__email">
+                    {{ r.formSection.emailPrompt }}<br>
+                    <a href="mailto:contact@sipopscience.com">contact@sipopscience.com</a>
+                </p>
+            </div>
+
+            <div class="contact-form-container lp-form-card">
+                {{ contactForm(
+                    t,
+                    lang,
+                    "sipop-form",
+                    "lp-nationality-list",
+                    r.formSection.submitLabel,
+                    countryCodes,
+                    nationalities,
+                    "Landing Page — Technical Review (" + (lang | upper) + ")",
+                    true,
+                    r.formSection.specialtyLabel,
+                    r.formSection.objectiveLabel,
+                    r.formSection.objectivePlaceholder
+                ) }}
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ========== ETHICAL DISCLAIMER ========== -->
+<section class="ethical-disclaimer">
+    <div class="container">
+        <div class="disclaimer-box">
+            <h4>{{ t.disclaimer.title }}</h4>
+            <p>{{ t.disclaimer.body }}</p>
+        </div>
+    </div>
+</section>

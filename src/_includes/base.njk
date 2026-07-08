@@ -1,11 +1,13 @@
-{# src/_includes/base.njk — layout base de todas as páginas #}
+{# src/_includes/base.njk — layout base de todas as páginas, agora multilíngue #}
+{% set t = i18n[lang] %}
+{% set baseUrl = "https://sipopscience.com" %}
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="{{ t.htmlLang }}" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ title }} — SIPOP</title>
-    <meta name="description" content="{{ description }}">
+    <title>{{ t[pageKey].title }} — SIPOP</title>
+    <meta name="description" content="{{ t[pageKey].description }}">
     <link rel="icon" type="image/x-icon" href="/assets/images/favicon/Icon.ico">
     <link rel="stylesheet" href="/assets/css/style.css">
     {% if extraCss %}
@@ -13,6 +15,13 @@
             <link rel="stylesheet" href="/assets/css/{{ css }}">
         {% endfor %}
     {% endif %}
+
+    <!-- hreflang / SEO multilíngue -->
+    <link rel="canonical" href="{{ baseUrl }}{{ t.urlPrefix }}/{{ slug }}">
+    {% for code, locale in i18n %}
+    <link rel="alternate" hreflang="{{ locale.htmlLang }}" href="{{ baseUrl }}{{ locale.urlPrefix }}/{{ slug }}">
+    {% endfor %}
+    <link rel="alternate" hreflang="x-default" href="{{ baseUrl }}/{{ slug }}">
 
     <!-- Meta Pixel Code -->
     <script>

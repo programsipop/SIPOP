@@ -1,0 +1,55 @@
+{# src/_includes/content/publications.njk — conteúdo da página de publicações, parametrizado por t/lang #}
+{% from "macros.njk" import publicationCard %}
+{% set p = t.publications %}
+
+<!-- ========== HERO ========== -->
+<section class="pub-hero">
+    <div class="container">
+        <div class="pub-hero__tag">{{ p.hero.tag }}</div>
+        <h1>{{ p.hero.title }}</h1>
+        <p>{{ p.hero.subtitle }}</p>
+        <div class="pub-hero__stats">
+            {% for stat in p.hero.stats %}
+            <div class="pub-stat">
+                <span class="pub-stat__number">{{ stat.number }}</span>
+                <span class="pub-stat__label">{{ stat.label }}</span>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- ========== FILTERS ========== -->
+<section class="pub-filters">
+    <div class="container">
+        <div class="pub-filters__list" role="group" aria-label="Filter publications by type">
+            <button class="pub-filter active" data-filter="all">{{ p.filters.all }}</button>
+            <button class="pub-filter" data-filter="systematic-review">{{ p.filters["systematic-review"] }}</button>
+            <button class="pub-filter" data-filter="meta-analysis">{{ p.filters["meta-analysis"] }}</button>
+            <button class="pub-filter" data-filter="rct">{{ p.filters.rct }}</button>
+        </div>
+    </div>
+</section>
+
+<!-- ========== PUBLICATIONS GRID ========== -->
+<section class="pub-grid-section">
+    <div class="container">
+        <div class="pub-grid" id="pubGrid">
+            {% for pub in publications %}
+                {{ publicationCard(pub, t, lang) }}
+            {% endfor %}
+        </div>
+
+        <p class="pub-empty" id="pubEmpty" style="display:none;">{{ p.emptyMessage }}</p>
+
+    </div>
+</section>
+
+<!-- ========== CTA ========== -->
+<section class="pub-cta">
+    <div class="container">
+        <h2>{{ p.cta.title }}</h2>
+        <p>{{ p.cta.body }}</p>
+        <a href="{{ t.urlPrefix }}/technical-review" class="btn-primary">{{ p.cta.button }}</a>
+    </div>
+</section>

@@ -214,6 +214,36 @@ body {
 [data-theme="system"] .theme-toggle__icon--system { display: inline; }
 
 /* ============================================
+   Language switcher (EN / PT)
+   ============================================ */
+.lang-switcher {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    overflow: hidden;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.lang-switcher__link {
+    padding: 6px 12px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: background 0.3s, color 0.3s;
+}
+
+.lang-switcher__link:hover { color: var(--pine-blue); }
+
+.lang-switcher__link.active {
+    background: var(--pine-blue);
+    color: #fff;
+}
+
+.lang-switcher__link.active:hover { color: #fff; }
+
+/* ============================================
    4. HERO
    ============================================ */
 
@@ -866,5 +896,6 @@ body {
     .footer-info     { text-align: center; width: 100%; }
     .footer-social   { justify-content: center; }
 
-    .theme-toggle { align-self: flex-end; }
+    .theme-toggle,
+    .lang-switcher { align-self: flex-end; }
 }

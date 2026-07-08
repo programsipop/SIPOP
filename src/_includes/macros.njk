@@ -1,0 +1,110 @@
+{# src/_includes/macros.njk — componentes reutilizáveis, parametrizados pelo dicionário de textos (t) #}
+
+{% macro contactForm(t, lang, formId, datalistId, submitLabel, countryCodes, nationalities, sourceValue, includeUtm, specialtyLabel, objectiveLabel, objectivePlaceholder) %}
+{% set specialtyLabel = specialtyLabel or t.form.specialtyLabel %}
+{% set objectiveLabel = objectiveLabel or t.form.objectiveLabel %}
+{% set objectivePlaceholder = objectivePlaceholder or t.form.objectivePlaceholder %}
+<form id="{{ formId }}">
+    {% if sourceValue %}
+    <!-- Campo oculto para identificar a origem -->
+    <input type="hidden" name="source" value="{{ sourceValue }}">
+    {% endif %}
+    {% if includeUtm %}
+    <!-- Campos ocultos para rastreamento de campanha (preenchidos via JS a partir da URL) -->
+    <input type="hidden" name="utm_source" id="utm_source" value="">
+    <input type="hidden" name="utm_medium" id="utm_medium" value="">
+    <input type="hidden" name="utm_campaign" id="utm_campaign" value="">
+    <input type="hidden" name="utm_content" id="utm_content" value="">
+    {% endif %}
+    <div class="form-group">
+        <label for="name">{{ t.form.nameLabel }}</label>
+        <input type="text" id="name" name="name" required>
+    </div>
+    <div class="form-group">
+        <label for="email">{{ t.form.emailLabel }}</label>
+        <input type="email" id="email" name="email" required>
+    </div>
+    <div class="form-group">
+        <label for="phone">{{ t.form.phoneLabel }}</label>
+        <div class="phone-input-group">
+            <select id="phoneCountryCode" name="phoneCountryCode" aria-label="Country calling code">
+                <option value="">{{ t.form.phoneCodePlaceholder }}</option>
+                {% for c in countryCodes %}
+                <option value="{{ c.code }}"{% if c.selected %} selected{% endif %}>{{ c[lang] }} {{ c.code }}</option>
+                {% endfor %}
+            </select>
+            <input type="tel" id="phone" name="phone" placeholder="{{ t.form.phoneNumberPlaceholder }}">
+        </div>
+        <span class="form-hint">{{ t.form.phoneHint }}</span>
+    </div>
+    <div class="form-group">
+        <label for="nationality">{{ t.form.nationalityLabel }}</label>
+        <input type="text" id="nationality" name="nationality" list="{{ datalistId }}" placeholder="{{ t.form.nationalityPlaceholder }}" autocomplete="off">
+        <datalist id="{{ datalistId }}">
+            {% for n in nationalities %}
+            <option value="{{ n[lang] }}">
+            {% endfor %}
+        </datalist>
+    </div>
+    <div class="form-group">
+        <label for="preferredLanguage">{{ t.form.preferredLanguageLabel }}</label>
+        <select id="preferredLanguage" name="preferredLanguage">
+            <option value="English"{% if lang == "en" %} selected{% endif %}>English</option>
+            <option value="Spanish">{% if lang == "pt" %}Espanhol{% else %}Spanish{% endif %}</option>
+            <option value="Portuguese"{% if lang == "pt" %} selected{% endif %}>{% if lang == "pt" %}Português{% else %}Portuguese{% endif %}</option>
+            <option value="Italian">{% if lang == "pt" %}Italiano{% else %}Italian{% endif %}</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="specialty">{{ specialtyLabel }}</label>
+        <input type="text" id="specialty" name="specialty">
+    </div>
+    <div class="form-group">
+        <label for="objective">{{ objectiveLabel }}</label>
+        <textarea id="objective" name="objective" rows="4" placeholder="{{ objectivePlaceholder }}"></textarea>
+    </div>
+    <button type="submit" class="btn-submit">{{ submitLabel }}</button>
+    <p class="form-status" id="formStatus" aria-live="polite"></p>
+</form>
+{% endmacro %}
+
+
+{% macro testimonialCard(item) %}
+<blockquote class="testimonial-card">
+    <p>&ldquo;{{ item.quote }}&rdquo;</p>
+    <cite>
+        <img src="/assets/images/testimonials/{{ item.avatar }}" alt="{{ item.name }}" class="testimonial-avatar">
+        <span class="cite-info">
+            <strong>{{ item.name }}</strong>
+            {{ item.role }}<br>
+            {{ item.org }}
+        </span>
+    </cite>
+</blockquote>
+{% endmacro %}
+
+
+{% macro publicationCard(pub, t, lang) %}
+<article class="pub-card" data-type="{{ pub.dataType }}">
+    <div class="pub-card__type">
+        {% for tag in pub.tags %}
+        <span class="pub-tag {{ tag.class }}">{{ tag[lang] }}</span>
+        {% endfor %}
+    </div>
+    <h2 class="pub-card__title">{{ pub[lang].title }}</h2>
+    <p class="pub-card__journal">{{ pub[lang].journal }}</p>
+    <p class="pub-card__abstract">{{ pub[lang].abstract }}</p>
+    <div class="pub-card__actions">
+        <a href="{{ pub.externalUrl }}" target="_blank" rel="noopener noreferrer" class="pub-link pub-link--external">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            {% if pub.purchase %}{{ t.publications.viewPurchase }}{% else %}{{ t.publications.viewOn }} {{ pub.sourceLabel }}{% endif %}
+        </a>
+        {% if pub.pdf %}
+        <a href="{{ pub.pdf }}" class="pub-link pub-link--pdf" download>
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            {{ t.publications.downloadPdf }}
+        </a>
+        {% endif %}
+    </div>
+</article>
+{% endmacro %}

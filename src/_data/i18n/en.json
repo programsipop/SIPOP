@@ -1,0 +1,237 @@
+{
+  "code": "en",
+  "htmlLang": "en",
+  "urlPrefix": "",
+  "langLabel": "English",
+  "langSwitcher": { "en": "English", "pt": "Português" },
+
+  "nav": {
+    "about": "About",
+    "process": "Process",
+    "services": "Services",
+    "benefits": "Benefits",
+    "publications": "Publications",
+    "contact": "Contact Us"
+  },
+
+  "footer": {
+    "tagline1": "Global Academic Support",
+    "tagline2": "Direct Editorial Guidance & Research Validation",
+    "credit": "Designed &amp; developed by"
+  },
+
+  "disclaimer": {
+    "title": "Ethical Disclaimer",
+    "body": "SIPOP is a scientific governance and oversight program. We do not provide ghostwriting services, data fabrication, or guaranteed publication. Our role is to audit methodology, enhance statistical integrity, and ensure compliance with international reporting standards (PRISMA, CONSORT, GRADE). All final intellectual and ethical responsibilities remain with the authors."
+  },
+
+  "form": {
+    "nameLabel": "Name",
+    "emailLabel": "Email",
+    "phoneLabel": "Phone (optional)",
+    "phoneHint": "Include your local area code as part of the number (e.g. DDD in Brazil).",
+    "phoneCodePlaceholder": "Code",
+    "phoneNumberPlaceholder": "Number with area code",
+    "nationalityLabel": "Nationality",
+    "nationalityPlaceholder": "e.g. Brazilian",
+    "preferredLanguageLabel": "Preferred language",
+    "specialtyLabel": "Specialty",
+    "objectiveLabel": "Objective",
+    "objectivePlaceholder": "Tell us a little about your trajectory and what motivates you to seek SIPOP at this time",
+    "submitLabel": "Submit"
+  },
+
+  "home": {
+    "title": "SIPOP - Scientific Integrity and Publication Oversight Program",
+    "description": "SIPOP helps researchers improve methodological rigor, statistical validity, and publication trustworthiness of biomedical research.",
+
+    "hero": {
+      "title": "Guiding research from uncertainty to credibility",
+      "subtitle": "The Scientific Integrity and Publication Oversight Program (SIPOP) helps researchers improve the methodological rigor, statistical validity, and publication trustworthiness of their biomedical research.",
+      "cta": "Contact Us"
+    },
+
+    "scope": {
+      "badgeTitle": "Scope of Expertise",
+      "badges": ["Systematic Reviews", "Meta-analysis", "RCTs", "Observational Studies", "PRISMA", "CONSORT", "GRADE"]
+    },
+
+    "about": {
+      "title": "About",
+      "titleHighlight": "SIPOP",
+      "body": "The Scientific Integrity and Publication Oversight Program ensures rigorous, transparent, and ethical research practices in biomedical sciences. Our mission is to elevate research standards by providing thorough review and guidance, minimizing bias, and fostering credibility in scientific publications."
+    },
+
+    "process": {
+      "title": "How It Works",
+      "items": [
+        { "icon": "Icon1.webp", "title": "Submission", "body": "Researchers submit their studies and findings for initial assessment." },
+        { "icon": "Icon2.webp", "title": "Review", "body": "In-depth review of methodology, statistics, and ethical transparency." },
+        { "icon": "Icon3.webp", "title": "Guidance", "body": "Detailed feedback and recommendations for improving research quality." },
+        { "icon": "Icon4.webp", "title": "Validation", "body": "Final assessment to ensure rigor adherence to scientific standards." }
+      ]
+    },
+
+    "services": {
+      "title": "Service Models",
+      "intro": "Find the right level of support for your research",
+      "cards": [
+        {
+          "entry": true,
+          "title": "Technical Review",
+          "engagement": "Pre-Submission Audit",
+          "items": ["Independent methodological assessment", "Language and scientific writing review", "Formatting and editorial standards check", "Competitive positioning analysis", "Detailed report with actionable recommendations", "Delivered within 7 business days"],
+          "cta": "Request a Review"
+        },
+        {
+          "title": "Standard Mentorship",
+          "engagement": "The Foundation",
+          "items": ["General methodological guidance", "Periodic strategic meetings", "PICO framework definition", "Search strategy orientation", "Results screening support"]
+        },
+        {
+          "title": "Advanced Mentorship",
+          "engagement": "Technical Rigor",
+          "items": ["All Standard features included", "Search strategy technical review", "Detailed data extraction guidance", "Statistical analysis orientation", "Critical manuscript revision"]
+        },
+        {
+          "title": "Premium Mentorship",
+          "engagement": "Full Oversight",
+          "items": ["All Advanced features included", "Direct support in Meta-analysis", "Statistical modeling (Forest Plots)", "Heterogeneity analysis audit", "Pre-submission full audit"]
+        },
+        {
+          "title": "Scientific Consultancy",
+          "engagement": "Strategic Partnership",
+          "items": ["Active project participation", "Complete search strategy execution", "Data extraction sheet design", "Full statistical interpretation", "Scientific writing support"]
+        }
+      ]
+    },
+
+    "benefits": {
+      "title": "Benefits of Working with SIPOP",
+      "items": [
+        { "icon": "Icon5.webp", "title": "Validated Research", "body": "Confidence that research results were achieved through scientific standards." },
+        { "icon": "Icon6.webp", "title": "Methodical Guidance", "body": "Expert advice on study design, statistical analysis, and publication ethics." },
+        { "icon": "Icon7.webp", "title": "International Standards", "body": "Compliance with international guidelines, enhancing credibility." }
+      ]
+    },
+
+    "testimonials": {
+      "title": "What Researchers Are Saying",
+      "items": [
+        {
+          "quote": "Before SIPOP, my biggest challenge was finding someone who truly understood network meta-analysis. I couldn't find anyone to answer my questions — or a statistician willing to commit to my study. SIPOP gave me peace of mind. And for someone in the final stretch of a PhD, that's worth everything.",
+          "avatar": "suzana.webp",
+          "name": "Suzana Bleckmann Reis",
+          "role": "PhD Candidate in Rehabilitation Sciences",
+          "org": "Faculdade de Medicina — Universidade de São Paulo"
+        },
+        {
+          "quote": "I had a complex research question and a tight deadline. SIPOP delivered with agility and competence — and the article was published.",
+          "avatar": "ivan.webp",
+          "name": "Ivan Daniel Bezerra Nogueira",
+          "role": "Associate Professor of Physical Education",
+          "org": "Universidade Federal do Rio Grande do Norte — UFRN"
+        },
+        {
+          "quote": "The meta-analysis finally unlocked my research. I went from an insecure researcher dealing with scattered data to an author with a structured article, grounded in high-level evidence.",
+          "avatar": "katia.webp",
+          "name": "Kátia Marques Lombardo",
+          "role": "Senior Researcher",
+          "org": "Centro de Educação Física e Desportos — CEFID"
+        }
+      ]
+    },
+
+    "contact": {
+      "title": "Contact SIPOP"
+    }
+  },
+
+  "publications": {
+    "title": "Publications",
+    "description": "Peer-reviewed research supported by SIPOP — systematic reviews, meta-analyses, and randomized trials published in international journals.",
+    "hero": {
+      "tag": "Peer-Reviewed Research",
+      "title": "Publications",
+      "subtitle": "Research supported by SIPOP and published in international peer-reviewed journals. Each study reflects the methodological rigor and strategic coherence we bring to every project.",
+      "stats": [
+        { "number": "9", "label": "Publications" },
+        { "number": "6", "label": "Systematic Reviews & Meta-Analyses" },
+        { "number": "4+", "label": "International Journals" }
+      ]
+    },
+    "filters": {
+      "all": "All",
+      "systematic-review": "Systematic Review",
+      "meta-analysis": "Meta-Analysis",
+      "rct": "RCT"
+    },
+    "viewOn": "View on",
+    "viewPurchase": "View & Purchase",
+    "downloadPdf": "Download PDF",
+    "emptyMessage": "No publications match this filter.",
+    "cta": {
+      "title": "Your research could be next.",
+      "body": "SIPOP supports researchers at every stage — from protocol design to pre-submission audit — so your work reaches the journals it deserves.",
+      "button": "Request a Technical Review"
+    }
+  },
+
+  "technicalReview": {
+    "title": "Technical Review",
+    "description": "Get an independent expert evaluation of your manuscript before submission. SIPOP's Technical Review covers methodology, language, formatting, and competitive positioning.",
+    "hero": {
+      "tag": "Pre-Submission Audit",
+      "titleLines": ["What would a reviewer", "find in your article", "in 10 minutes?"],
+      "subtitle": "Most manuscripts aren't rejected for lack of scientific quality.<br>They're rejected because the work wasn't prepared for the scrutiny of the evaluator.",
+      "cta": "Request a Technical Review"
+    },
+    "stakes": {
+      "withoutLabel": "Without SIPOP",
+      "withoutItems": ["Desk rejection", "Months of correction cycles", "Opportunities that don't come back", "Years of work buried by avoidable flaws"],
+      "withLabel": "With SIPOP",
+      "withItems": ["Expert evaluation before the editor sees it", "Detailed report in 7 business days", "Actionable recommendations, not just notes", "Confidence to submit — and publish"]
+    },
+    "what": {
+      "title": "Every detail evaluated",
+      "intro": "Being technically correct is the baseline. High-impact journals look for something harder to fake: <strong>Strategic Coherence</strong> — the alignment between your question, your design, and your analysis, from the very first paragraph.",
+      "cards": [
+        { "icon": "⚗️", "title": "Methodology", "body": "Analysis validity, bias identification, instrument alignment, and sampling adequacy." },
+        { "icon": "✍️", "title": "Language", "body": "Scientific writing quality, active voice preference, vocabulary precision, and dialect adequacy for your target journal." },
+        { "icon": "📐", "title": "Formatting", "body": "Paragraph structure, section length, and editorial compliance with international reporting standards." },
+        { "icon": "🎯", "title": "Competitive Positioning", "body": "Innovation assessment, literature saturation, and relevance for the journal you're targeting." },
+        { "icon": "📄", "title": "Content Coherence", "body": "Capacity to answer its own research question, data grounding, and literature alignment." },
+        { "icon": "🌐", "title": "International Standards", "body": "Compliance with PRISMA, CONSORT, STROBE, GRADE, and other applicable guidelines." }
+      ]
+    },
+    "testimonials": {
+      "title": "What researchers say",
+      "items": [
+        {
+          "quote": "Before SIPOP, my biggest challenge was finding someone who truly understood network meta-analysis. SIPOP gave me peace of mind. And for someone in the final stretch of a PhD, that's worth everything.",
+          "avatar": "suzana.webp",
+          "name": "Suzana Bleckmann Reis",
+          "role": "PhD Candidate in Rehabilitation Sciences",
+          "org": "Faculdade de Medicina — Universidade de São Paulo"
+        },
+        {
+          "quote": "The meta-analysis finally unlocked my research. I went from an insecure researcher dealing with scattered data to an author with a structured article, grounded in high-level evidence.",
+          "avatar": "katia.webp",
+          "name": "Kátia Marques Lombardo",
+          "role": "Senior Researcher",
+          "org": "Centro de Educação Física e Desportos — CEFID"
+        }
+      ]
+    },
+    "formSection": {
+      "title": "Request your Technical Review",
+      "body": "Tell us about your research. We'll get back to you within 1 business day to discuss your manuscript and next steps.",
+      "checklist": ["Independent expert evaluation", "Detailed report with actionable recommendations", "Delivered within 7 business days", "Covers methodology, language, formatting, and positioning"],
+      "emailPrompt": "Prefer to write directly?",
+      "specialtyLabel": "Research area / Specialty",
+      "objectiveLabel": "Tell us about your manuscript",
+      "objectivePlaceholder": "What is your study about? Which journal are you targeting? What stage is the manuscript at?",
+      "submitLabel": "Request a Technical Review"
+    }
+  }
+}

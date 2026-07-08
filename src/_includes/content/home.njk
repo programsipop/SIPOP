@@ -1,0 +1,123 @@
+{# src/_includes/content/home.njk — conteúdo da página inicial, parametrizado por t/lang #}
+{% from "macros.njk" import contactForm, testimonialCard %}
+{% set h = t.home %}
+
+<!-- ========== HERO ========== -->
+<section class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <h1>{{ h.hero.title }}</h1>
+            <p>{{ h.hero.subtitle }}</p>
+            <a href="#contact" class="btn-primary">{{ h.hero.cta }}</a>
+        </div>
+    </div>
+</section>
+
+<!-- ========== SCOPE ========== -->
+<section class="research-scope">
+    <div class="container">
+        <div class="scope-badges">
+            <span class="badge-title">{{ h.scope.badgeTitle }}</span>
+            <div class="badge-list">
+                {% for badge in h.scope.badges %}
+                <span class="badge">{{ badge }}</span>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== ABOUT ========== -->
+<section id="about" class="about">
+    <div class="container">
+        <h2>{{ h.about.title }} <span>{{ h.about.titleHighlight }}</span></h2>
+        <p>{{ h.about.body }}</p>
+    </div>
+</section>
+
+<!-- ========== HOW IT WORKS ========== -->
+<section id="process" class="process">
+    <div class="container">
+        <h2>{{ h.process.title }}</h2>
+        <div class="process-grid">
+            {% for item in h.process.items %}
+            <div class="process-item">
+                <img src="/assets/images/icons/{{ item.icon }}" alt="{{ item.title }}">
+                <h3>{{ item.title }}</h3>
+                <p>{{ item.body }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- ========== SERVICES ========== -->
+<section id="services" class="services-section">
+    <div class="container">
+        <h2>{{ h.services.title }}</h2>
+        <p class="services-intro">{{ h.services.intro }}</p>
+        <div class="services-grid">
+            {% for card in h.services.cards %}
+            <div class="service-card{% if card.entry %} service-card--entry{% endif %}">
+                <div class="service-header">
+                    <h3>{{ card.title }}</h3>
+                    <span class="engagement">{{ card.engagement }}</span>
+                </div>
+                <ul class="service-list">
+                    {% for li in card.items %}
+                    <li>{{ li }}</li>
+                    {% endfor %}
+                </ul>
+                {% if card.cta %}
+                <a href="#contact" class="btn-service">{{ card.cta }}</a>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- ========== BENEFITS ========== -->
+<section id="benefits" class="benefits">
+    <div class="container">
+        <h2>{{ h.benefits.title }}</h2>
+        <div class="benefits-grid">
+            {% for item in h.benefits.items %}
+            <div class="benefit-card">
+                <img src="/assets/images/icons/{{ item.icon }}" alt="{{ item.title }}">
+                <h3>{{ item.title }}</h3>
+                <p>{{ item.body }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- ========== TESTIMONIALS + CONTACT ========== -->
+<section class="bottom-section">
+    <div class="container split-layout">
+
+        <div class="testimonials">
+            <h2>{{ h.testimonials.title }}</h2>
+            {% for item in h.testimonials.items %}
+                {{ testimonialCard(item) }}
+            {% endfor %}
+        </div>
+
+        <div id="contact" class="contact-form-container">
+            <h3>{{ h.contact.title }}</h3>
+            {{ contactForm(t, lang, "sipop-form", "nationality-list", t.form.submitLabel, countryCodes, nationalities) }}
+        </div>
+
+    </div>
+</section>
+
+<!-- ========== ETHICAL DISCLAIMER ========== -->
+<section class="ethical-disclaimer">
+    <div class="container">
+        <div class="disclaimer-box">
+            <h4>{{ t.disclaimer.title }}</h4>
+            <p>{{ t.disclaimer.body }}</p>
+        </div>
+    </div>
+</section>
