@@ -4,6 +4,8 @@
 
 Institutional website for SIPOP, a program offering methodological auditing, technical review, and high-level mentorship for researchers aiming at global scientific publication.
 
+Available in **English**, **Portuguese (pt-BR)**, and **Spanish**.
+
 ---
 
 ## Screenshots
@@ -25,13 +27,14 @@ SIPOP is an institutional website built from the ground up, including brand iden
 - Social media content strategy and copywriting
 - Paid ad campaigns (Instagram carousels)
 - Website design and development
+- Multilingual architecture (EN / PT-BR / ES), data-driven and built to scale to additional languages
 
 ---
 
 ## Tech Stack
 
 - **Eleventy (11ty) v3** — static site generator with Nunjucks templating
-- **Nunjucks (.njk)** — layouts, includes, and page templates
+- **Nunjucks (.njk)** — layouts, includes, macros, and page templates
 - **HTML5** — semantic structure
 - **CSS3** — custom properties, CSS variables for theming, responsive grid
 - **Vanilla JavaScript** — no frameworks or dependencies
@@ -45,36 +48,57 @@ SIPOP is an institutional website built from the ground up, including brand iden
 
 - ✅ Fully responsive (mobile-first)
 - ✅ Three-state theme toggle: light / dark / system preference
-- ✅ Contact form connected to Google Sheets via Apps Script
+- ✅ Multilingual: English, Portuguese (pt-BR), and Spanish, with a globe-icon language switcher (flag + code) in the header
+- ✅ `hreflang` + `canonical` tags on every page for multilingual SEO
+- ✅ Contact form connected to Google Sheets via Apps Script, with per-language labels, country codes, and nationality suggestions
+- ✅ WhatsApp Business, LinkedIn, and Instagram contact links in the footer, with a pre-filled greeting message per language
 - ✅ Email notifications on form submission via MailApp
 - ✅ Smooth scroll navigation
 - ✅ Background images swap between light/dark versions
 - ✅ Semantic HTML with `aria-label` and `aria-live` attributes
-- ✅ Multi-page: Home (`/`), Publications (`/publications`), Technical Review (`/technical-review`)
+- ✅ Multi-page, multi-language: Home, Publications, and Technical Review, each in 3 languages (9 routes total)
 - ✅ No external JS dependencies
 
 ---
 
 ## Pages
 
-| Page | Template | Description |
-|---|---|---|
-| `/` | `src/index.njk` | Landing page — hero, services, benefits, testimonials, contact form |
-| `/publications` | `src/publications.njk` | Peer-reviewed publications supported by SIPOP |
-| `/technical-review` | `src/technical-review.njk` | Dedicated LP for the Technical Review service |
+Every page exists in three languages. English lives at the root; other languages live under a language-code subfolder (`/pt/`, `/es/`) — the internationally recognized pattern for multilingual SEO.
+
+| Page | Template | English | Português | Español |
+|---|---|---|---|---|
+| Home | `src/index.njk` / `src/pt/index.njk` / `src/es/index.njk` | `/` | `/pt/` | `/es/` |
+| Publications | `.../publications.njk` | `/publications` | `/pt/publications` | `/es/publications` |
+| Technical Review | `.../technical-review.njk` | `/technical-review` | `/pt/technical-review` | `/es/technical-review` |
 
 ---
 
-## Brand
+## Internationalization (i18n)
 
-| Token | Value |
-|---|---|
-| Pine Blue | `#2C7A7B` |
-| Pearl Aqua | `#81C7B7` |
-| White Smoke | `#F4F4F4` |
-| Pale Slate | `#CBD5E0` |
-| Slate Black | `#0F172A` |
-| Typeface | Inter (Google Fonts) |
+The site uses a **data-driven i18n architecture**: page templates are written once and shared across all languages. Adding a language means adding data files — not touching `.njk` markup.
+
+```
+src/_data/
+├── i18n/
+│   ├── en.json          # all UI text — nav, footer, form, and every page's copy
+│   ├── pt.json
+│   └── es.json
+├── publications.json    # the 9 publications — title/journal/abstract per language,
+│                         # links and PDFs are language-independent
+├── countryCodes.json    # phone country-code select, country names per language
+└── nationalities.json   # nationality datalist, demonyms per language
+```
+
+**To edit existing text:** find the string in `src/_data/i18n/{lang}.json` (structured by section — `nav`, `footer`, `form`, `home`, `publications`, `technicalReview`) and edit it directly. No rebuild logic needed beyond `npm run build`.
+
+**To add a new language (e.g. French):**
+1. Copy `src/_data/i18n/en.json` to `src/_data/i18n/fr.json` and translate every value (keep all keys identical).
+2. Add an `"fr"` field to each entry in `countryCodes.json`, `nationalities.json`, and `publications.json`.
+3. Create `src/fr/index.njk`, `src/fr/publications.njk`, and `src/fr/technical-review.njk`, copying the front matter from the equivalent `src/pt/*.njk` files and changing `lang: pt` to `lang: fr`.
+4. Add the matching redirects to `netlify.toml` (see the `/pt/...` and `/es/...` blocks for the pattern).
+5. Build. The language switcher, `hreflang` tags, and canonical URLs pick up the new language automatically — they loop over everything in `src/_data/i18n/`.
+
+**Shared components** (contact form, publication card, testimonial card, language switcher) are Nunjucks macros in `src/_includes/macros.njk`, parameterized by the current language's text dictionary (`t`) and language code (`lang`) — written once, reused everywhere.
 
 ---
 
@@ -82,49 +106,74 @@ SIPOP is an institutional website built from the ground up, including brand iden
 
 ```
 sipop/
-├── .eleventy.js                # Eleventy config — passthrough, dirs, engines
-├── .eleventyignore             # Ignores node_modules and _site
+├── .eleventy.js                 # Eleventy config — passthrough, dirs, engines
+├── .eleventyignore               # Ignores node_modules and _site
 ├── .gitignore
-├── netlify.toml                # Build command, publish dir, clean URL redirects
+├── netlify.toml                  # Build command, publish dir, clean URL redirects (EN/PT/ES)
 ├── package.json
-├── apps-script.gs              # Google Apps Script — paste into Apps Script editor
+├── apps-script.gs                # Google Apps Script — paste into Apps Script editor
 ├── README.md
 │
-├── src/                        # Eleventy input dir
-│   ├── index.njk               # Home page
-│   ├── publications.njk        # Publications page
-│   ├── technical-review.njk    # Technical Review landing page
+├── src/                          # Eleventy input dir
+│   ├── index.njk                 # Home (English)
+│   ├── publications.njk          # Publications (English)
+│   ├── technical-review.njk      # Technical Review (English)
 │   │
-│   ├── _includes/              # Nunjucks partials and layouts
-│   │   ├── base.njk            # Base HTML layout (head, scripts, slots)
-│   │   ├── lp-header.njk       # Minimal header for landing pages
-│   │   ├── navbar.njk          # Main navigation bar
-│   │   └── footer.njk          # Site footer
+│   ├── pt/                       # Portuguese pages (thin — front matter + include)
+│   │   ├── index.njk
+│   │   ├── publications.njk
+│   │   └── technical-review.njk
 │   │
-│   └── assets/                 # Static files — copied as-is to _site/assets/
+│   ├── es/                       # Spanish pages (thin — front matter + include)
+│   │   ├── index.njk
+│   │   ├── publications.njk
+│   │   └── technical-review.njk
+│   │
+│   ├── _data/                    # Global data — translations and structured content
+│   │   ├── i18n/
+│   │   │   ├── en.json
+│   │   │   ├── pt.json
+│   │   │   └── es.json
+│   │   ├── publications.json
+│   │   ├── countryCodes.json
+│   │   └── nationalities.json
+│   │
+│   ├── _includes/                # Nunjucks partials, layouts, and macros
+│   │   ├── base.njk              # Base HTML layout (head, hreflang, scripts, slots)
+│   │   ├── lp-header.njk         # Minimal header for landing pages
+│   │   ├── navbar.njk            # Main navigation bar
+│   │   ├── footer.njk            # Site footer (incl. WhatsApp/LinkedIn/Instagram)
+│   │   ├── macros.njk            # Reusable components: contact form, publication
+│   │   │                         # card, testimonial card, language switcher
+│   │   └── content/              # Page content, shared across all languages
+│   │       ├── home.njk
+│   │       ├── publications.njk
+│   │       └── technical-review.njk
+│   │
+│   └── assets/                   # Static files — copied as-is to _site/assets/
 │       ├── css/
-│       │   ├── style.css           # Global styles, variables, theming
-│       │   ├── publications.css    # Styles for /publications
-│       │   └── technical-review.css # Styles for /technical-review
+│       │   ├── style.css             # Global styles, variables, theming, i18n components
+│       │   ├── publications.css      # Styles for /publications
+│       │   └── technical-review.css  # Styles for /technical-review
 │       ├── js/
-│       │   ├── script.js           # Theme toggle, form handler, scroll behavior
-│       │   └── publications.js     # Publications page interactions
+│       │   ├── script.js             # Theme toggle, form handler, scroll, lang dropdown
+│       │   └── publications.js       # Publications page filter interactions
 │       └── images/
-│           ├── backgrounds/        # BG1, BG1DM, BG2, BG2DM (.webp)
-│           ├── icons/              # Icon1–Icon7 (.webp)
-│           ├── logo/               # Logo1, Logo2 (.webp)
-│           ├── favicon/            # Icon.ico
-│           └── testimonials/       # suzana, ivan, katia (.webp)
+│           ├── backgrounds/          # BG1, BG1DM, BG2, BG2DM (.webp)
+│           ├── icons/                # Icon1–Icon7 (.webp)
+│           ├── logo/                 # Logo1, Logo2 (.webp)
+│           ├── favicon/              # Icon.ico
+│           └── testimonials/         # suzana, ivan, katia (.webp)
 │
 ├── screenshots/
-│   ├── light.png               # Full-page screenshot — light mode
-│   └── dark.png                # Full-page screenshot — dark mode
+│   ├── light.png                 # Full-page screenshot — light mode
+│   └── dark.png                  # Full-page screenshot — dark mode
 │
-└── design-sources/             # Source files — not deployed
+└── design-sources/                # Source files — not deployed
     ├── logo1.png
     ├── logo2.png
-    ├── backgrounds/            # .png originals
-    └── icons-source/           # .ai originals
+    ├── backgrounds/                # .png originals
+    └── icons-source/               # .ai originals
 ```
 
 ---
@@ -151,7 +200,7 @@ Configured via `netlify.toml`:
 - **Build command:** `npm run build`
 - **Publish directory:** `_site`
 - **Node version:** 18
-- Clean URL rewrites for `/publications` and `/technical-review`
+- Clean URL rewrites for `/publications`, `/technical-review`, and their `/pt/...` and `/es/...` equivalents
 
 Push to the connected branch to trigger an automatic deploy.
 
@@ -170,7 +219,7 @@ Push to the connected branch to trigger an automatic deploy.
 6. Copy the generated URL
 7. In `src/assets/js/script.js`, replace `'COLE_A_URL_DO_APPS_SCRIPT_AQUI'` with the URL
 
-Submissions are saved to a sheet tab named **"SIPOP Contacts"**, created automatically on the first submission. Email notifications are sent via `MailApp.sendEmail` — update the recipient addresses directly in `apps-script.gs`.
+Submissions are saved to a sheet tab named **"SIPOP Contacts"**, created automatically on the first submission. Email notifications are sent via `MailApp.sendEmail` — update the recipient addresses directly in `apps-script.gs`. The hidden `source` field and UTM fields on the Technical Review form let you distinguish landing-page leads and campaign traffic in the sheet; the `preferredLanguage` and `source` values are kept in English across all site languages so responses stay consistent for filtering.
 
 ---
 
@@ -179,6 +228,7 @@ Submissions are saved to a sheet tab named **"SIPOP Contacts"**, created automat
 - 🌐 Website: [sipopscience.com](https://sipopscience.com)
 - 💼 LinkedIn: [linkedin.com/company/sipop-science](https://www.linkedin.com/company/sipop-science/)
 - 📷 Instagram: [instagram.com/sipopscience](https://www.instagram.com/sipopscience/)
+- 💬 WhatsApp: [wa.me/5551935001294](https://wa.me/5551935001294)
 - 📧 Contact: contact@sipopscience.com
 
 ---
