@@ -4,7 +4,7 @@
   "urlPrefix": "",
   "langLabel": "English",
   "flag": "🇺🇸",
-  "langSwitcher": { "en": "English", "pt": "Português" },
+  "langSwitcher": { "en": "English", "pt": "Português", "es": "Español" },
 
   "nav": {
     "about": "About",

@@ -33,3 +33,19 @@
   from   = "/pt/technical-review"
   to     = "/pt/technical-review/index.html"
   status = 200
+
+# Versão em espanhol (subpasta /es/)
+[[redirects]]
+  from   = "/es"
+  to     = "/es/index.html"
+  status = 200
+
+[[redirects]]
+  from   = "/es/publications"
+  to     = "/es/publications/index.html"
+  status = 200
+
+[[redirects]]
+  from   = "/es/technical-review"
+  to     = "/es/technical-review/index.html"
+  status = 200

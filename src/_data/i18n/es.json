@@ -1,0 +1,240 @@
+{
+  "code": "es",
+  "htmlLang": "es",
+  "urlPrefix": "/es",
+  "langLabel": "Español",
+  "flag": "🇪🇸",
+  "langSwitcher": { "en": "English", "pt": "Português", "es": "Español" },
+
+  "nav": {
+    "about": "Nosotros",
+    "process": "Proceso",
+    "services": "Servicios",
+    "benefits": "Beneficios",
+    "publications": "Publicaciones",
+    "contact": "Contáctanos"
+  },
+
+  "footer": {
+    "tagline1": "Soporte Académico Global",
+    "tagline2": "Orientación Editorial Directa y Validación de Investigación",
+    "credit": "Diseñado y desarrollado por",
+    "whatsappMessage": "¡Hola! Me gustaría saber más sobre los servicios de SIPOP."
+  },
+
+  "disclaimer": {
+    "title": "Aviso Ético",
+    "body": "SIPOP es un programa de gobernanza y supervisión científica. No ofrecemos servicios de ghostwriting, fabricación de datos ni garantía de publicación. Nuestro papel es auditar la metodología, mejorar la integridad estadística y asegurar el cumplimiento de estándares internacionales de reporte (PRISMA, CONSORT, GRADE). Toda la responsabilidad intelectual y ética final permanece con los autores."
+  },
+
+  "form": {
+    "nameLabel": "Nombre",
+    "emailLabel": "Correo electrónico",
+    "phoneLabel": "Teléfono (opcional)",
+    "phoneHint": "Incluye el código de área local como parte del número.",
+    "phoneCodePlaceholder": "Código",
+    "phoneNumberPlaceholder": "Número con código de área",
+    "nationalityLabel": "Nacionalidad",
+    "nationalityPlaceholder": "ej.: Brasileña",
+    "preferredLanguageLabel": "Idioma preferido",
+    "specialtyLabel": "Especialidad",
+    "objectiveLabel": "Objetivo",
+    "objectivePlaceholder": "Cuéntanos un poco sobre tu trayectoria y qué te motiva a buscar SIPOP en este momento",
+    "submitLabel": "Enviar"
+  },
+
+  "home": {
+    "title": "SIPOP - Programa de Integridad Científica y Supervisión de Publicaciones",
+    "description": "SIPOP ayuda a investigadores a mejorar el rigor metodológico, la validez estadística y la credibilidad de publicación de investigaciones biomédicas.",
+
+    "hero": {
+      "title": "Guiando la investigación de la incertidumbre a la credibilidad",
+      "subtitle": "El Programa de Integridad Científica y Supervisión de Publicaciones (SIPOP) ayuda a investigadores a mejorar el rigor metodológico, la validez estadística y la credibilidad de publicación de sus investigaciones biomédicas.",
+      "cta": "Contáctanos"
+    },
+
+    "scope": {
+      "badgeTitle": "Áreas de Especialización",
+      "badges": ["Revisiones Sistemáticas", "Meta-análisis", "Ensayos Clínicos Aleatorizados", "Estudios Observacionales", "PRISMA", "CONSORT", "GRADE"]
+    },
+
+    "about": {
+      "title": "Sobre",
+      "titleHighlight": "SIPOP",
+      "body": "El Programa de Integridad Científica y Supervisión de Publicaciones garantiza prácticas de investigación rigurosas, transparentes y éticas en las ciencias biomédicas. Nuestra misión es elevar los estándares de investigación mediante una revisión y orientación minuciosas, minimizando sesgos y fortaleciendo la credibilidad de las publicaciones científicas."
+    },
+
+    "process": {
+      "title": "Cómo Funciona",
+      "items": [
+        { "icon": "Icon1.webp", "title": "Envío", "body": "Los investigadores envían sus estudios y resultados para una evaluación inicial." },
+        { "icon": "Icon2.webp", "title": "Revisión", "body": "Revisión exhaustiva de la metodología, las estadísticas y la transparencia ética." },
+        { "icon": "Icon3.webp", "title": "Orientación", "body": "Comentarios detallados y recomendaciones para mejorar la calidad de la investigación." },
+        { "icon": "Icon4.webp", "title": "Validación", "body": "Evaluación final para garantizar el cumplimiento del rigor de los estándares científicos." }
+      ]
+    },
+
+    "services": {
+      "title": "Modelos de Servicio",
+      "intro": "Encuentra el nivel de apoyo adecuado para tu investigación",
+      "badge": "Nuevo",
+      "cards": [
+        {
+          "entry": true,
+          "title": "Revisión Técnica",
+          "engagement": "Auditoría Previa a la Presentación",
+          "items": ["Evaluación metodológica independiente", "Revisión de lenguaje y escritura científica", "Verificación de formato y estándares editoriales", "Análisis de posicionamiento competitivo", "Informe detallado con recomendaciones prácticas", "Entrega en un plazo de 7 días hábiles"],
+          "cta": "Solicitar Revisión"
+        },
+        {
+          "title": "Mentoría Estándar",
+          "engagement": "La Base",
+          "items": ["Orientación metodológica general", "Reuniones estratégicas periódicas", "Definición del marco PICO", "Orientación de estrategia de búsqueda", "Apoyo en la selección de resultados"]
+        },
+        {
+          "title": "Mentoría Avanzada",
+          "engagement": "Rigor Técnico",
+          "items": ["Todo lo incluido en Mentoría Estándar", "Revisión técnica de la estrategia de búsqueda", "Orientación detallada de extracción de datos", "Orientación de análisis estadístico", "Revisión crítica del manuscrito"]
+        },
+        {
+          "title": "Mentoría Premium",
+          "engagement": "Supervisión Completa",
+          "items": ["Todo lo incluido en Mentoría Avanzada", "Apoyo directo en Meta-análisis", "Modelado estadístico (Forest Plots)", "Auditoría de análisis de heterogeneidad", "Auditoría completa previa a la presentación"]
+        },
+        {
+          "title": "Consultoría Científica",
+          "engagement": "Alianza Estratégica",
+          "items": ["Participación activa en el proyecto", "Ejecución completa de la estrategia de búsqueda", "Diseño de la hoja de extracción de datos", "Interpretación estadística completa", "Apoyo en escritura científica"]
+        }
+      ]
+    },
+
+    "benefits": {
+      "title": "Beneficios de Trabajar con SIPOP",
+      "items": [
+        { "icon": "Icon5.webp", "title": "Investigación Validada", "body": "Confianza en que los resultados de la investigación se lograron mediante estándares científicos." },
+        { "icon": "Icon6.webp", "title": "Orientación Metódica", "body": "Asesoramiento especializado sobre el diseño del estudio, el análisis estadístico y la ética de publicación." },
+        { "icon": "Icon7.webp", "title": "Estándares Internacionales", "body": "Cumplimiento de directrices internacionales, fortaleciendo la credibilidad." }
+      ]
+    },
+
+    "testimonials": {
+      "title": "Lo Que Dicen los Investigadores",
+      "items": [
+        {
+          "quote": "Antes de SIPOP, mi mayor desafío era encontrar a alguien que realmente entendiera de meta-análisis en red. No lograba encontrar quién respondiera mis dudas, ni un estadístico dispuesto a comprometerse con mi estudio. SIPOP me dio tranquilidad. Y para quien está en la recta final del doctorado, eso lo vale todo.",
+          "avatar": "suzana.webp",
+          "name": "Suzana Bleckmann Reis",
+          "role": "Doctoranda en Ciencias de la Rehabilitación",
+          "org": "Faculdade de Medicina — Universidade de São Paulo"
+        },
+        {
+          "quote": "Tenía una pregunta de investigación compleja y un plazo ajustado. SIPOP entregó con agilidad y competencia, y el artículo fue publicado.",
+          "avatar": "ivan.webp",
+          "name": "Ivan Daniel Bezerra Nogueira",
+          "role": "Profesor Asociado de Educación Física",
+          "org": "Universidade Federal do Rio Grande do Norte — UFRN"
+        },
+        {
+          "quote": "El meta-análisis finalmente destrabó mi investigación. Pasé de ser una investigadora insegura lidiando con datos dispersos a ser autora de un artículo estructurado, fundamentado en evidencia de alto nivel.",
+          "avatar": "katia.webp",
+          "name": "Kátia Marques Lombardo",
+          "role": "Investigadora Sénior",
+          "org": "Centro de Educação Física e Desportos — CEFID"
+        }
+      ]
+    },
+
+    "contact": {
+      "title": "Contacta con SIPOP"
+    }
+  },
+
+  "publications": {
+    "title": "Publicaciones",
+    "description": "Investigaciones revisadas por pares y respaldadas por SIPOP: revisiones sistemáticas, meta-análisis y ensayos aleatorizados publicados en revistas internacionales.",
+    "hero": {
+      "tag": "Investigación Revisada por Pares",
+      "title": "Publicaciones",
+      "subtitle": "Investigaciones respaldadas por SIPOP y publicadas en revistas internacionales revisadas por pares. Cada estudio refleja el rigor metodológico y la coherencia estratégica que aportamos a cada proyecto.",
+      "stats": [
+        { "number": "9", "label": "Publicaciones" },
+        { "number": "6", "label": "Revisiones Sistemáticas y Meta-análisis" },
+        { "number": "4+", "label": "Revistas Internacionales" }
+      ]
+    },
+    "filters": {
+      "all": "Todas",
+      "systematic-review": "Revisión Sistemática",
+      "meta-analysis": "Meta-análisis",
+      "rct": "Ensayo Clínico Aleatorizado"
+    },
+    "viewOn": "Ver en",
+    "viewPurchase": "Ver y Comprar",
+    "downloadPdf": "Descargar PDF",
+    "emptyMessage": "Ninguna publicación coincide con este filtro.",
+    "cta": {
+      "title": "Tu investigación podría ser la próxima.",
+      "body": "SIPOP apoya a los investigadores en cada etapa, desde el diseño del protocolo hasta la auditoría previa a la presentación, para que tu trabajo llegue a las revistas que merece.",
+      "button": "Solicitar Revisión Técnica"
+    }
+  },
+
+  "technicalReview": {
+    "title": "Revisión Técnica",
+    "description": "Obtén una evaluación experta e independiente de tu manuscrito antes de la presentación. La Revisión Técnica de SIPOP abarca metodología, lenguaje, formato y posicionamiento competitivo.",
+    "hero": {
+      "tag": "Auditoría Previa a la Presentación",
+      "titleLines": ["¿Qué encontraría un revisor", "en tu artículo", "en 10 minutos?"],
+      "subtitle": "La mayoría de los manuscritos no se rechazan por falta de calidad científica.<br>Se rechazan porque el trabajo no fue preparado para el escrutinio del evaluador.",
+      "cta": "Solicitar Revisión Técnica"
+    },
+    "stakes": {
+      "withoutLabel": "Sin SIPOP",
+      "withoutItems": ["Rechazo sumario (desk rejection)", "Meses de ciclos de corrección", "Oportunidades que no vuelven", "Años de trabajo enterrados por fallas evitables"],
+      "withLabel": "Con SIPOP",
+      "withItems": ["Evaluación experta antes de que el editor la vea", "Informe detallado en 7 días hábiles", "Recomendaciones prácticas, no solo observaciones", "Confianza para presentar — y publicar"]
+    },
+    "what": {
+      "title": "Cada detalle evaluado",
+      "intro": "Ser técnicamente correcto es lo mínimo. Las revistas de alto impacto buscan algo más difícil de simular: <strong>Coherencia Estratégica</strong> — la alineación entre tu pregunta, tu diseño de estudio y tu análisis, desde el primer párrafo.",
+      "cards": [
+        { "icon": "⚗️", "title": "Metodología", "body": "Validez del análisis, identificación de sesgos, alineación de los instrumentos y adecuación del muestreo." },
+        { "icon": "✍️", "title": "Lenguaje", "body": "Calidad de la escritura científica, preferencia por la voz activa, precisión del vocabulario y adecuación de idioma para la revista objetivo." },
+        { "icon": "📐", "title": "Formato", "body": "Estructura de párrafos, extensión de secciones y cumplimiento editorial con estándares internacionales de reporte." },
+        { "icon": "🎯", "title": "Posicionamiento Competitivo", "body": "Evaluación de innovación, saturación de la literatura y relevancia para la revista pretendida." },
+        { "icon": "📄", "title": "Coherencia de Contenido", "body": "Capacidad de responder a su propia pregunta de investigación, fundamentación en los datos y alineación con la literatura." },
+        { "icon": "🌐", "title": "Estándares Internacionales", "body": "Cumplimiento de PRISMA, CONSORT, STROBE, GRADE y otras directrices aplicables." }
+      ]
+    },
+    "testimonials": {
+      "title": "Lo que dicen los investigadores",
+      "items": [
+        {
+          "quote": "Antes de SIPOP, mi mayor desafío era encontrar a alguien que realmente entendiera de meta-análisis en red. SIPOP me dio tranquilidad. Y para quien está en la recta final del doctorado, eso lo vale todo.",
+          "avatar": "suzana.webp",
+          "name": "Suzana Bleckmann Reis",
+          "role": "Doctoranda en Ciencias de la Rehabilitación",
+          "org": "Faculdade de Medicina — Universidade de São Paulo"
+        },
+        {
+          "quote": "El meta-análisis finalmente destrabó mi investigación. Pasé de ser una investigadora insegura lidiando con datos dispersos a ser autora de un artículo estructurado, fundamentado en evidencia de alto nivel.",
+          "avatar": "katia.webp",
+          "name": "Kátia Marques Lombardo",
+          "role": "Investigadora Sénior",
+          "org": "Centro de Educação Física e Desportos — CEFID"
+        }
+      ]
+    },
+    "formSection": {
+      "title": "Solicita tu Revisión Técnica",
+      "body": "Cuéntanos sobre tu investigación. Te responderemos en un plazo de 1 día hábil para discutir tu manuscrito y los próximos pasos.",
+      "checklist": ["Evaluación experta independiente", "Informe detallado con recomendaciones prácticas", "Entrega en un plazo de 7 días hábiles", "Abarca metodología, lenguaje, formato y posicionamiento"],
+      "emailPrompt": "¿Prefieres escribir directamente?",
+      "specialtyLabel": "Área de investigación / Especialidad",
+      "objectiveLabel": "Cuéntanos sobre tu manuscrito",
+      "objectivePlaceholder": "¿De qué trata tu estudio? ¿A qué revista aspiras? ¿En qué etapa se encuentra el manuscrito?",
+      "submitLabel": "Solicitar Revisión Técnica"
+    }
+  }
+}

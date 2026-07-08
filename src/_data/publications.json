@@ -3,11 +3,12 @@
     "id": "01-insulin-cystic-fibrosis",
     "dataType": "systematic-review meta-analysis",
     "tags": [
-      { "class": "pub-tag--sr", "en": "Systematic Review", "pt": "Revisão Sistemática" },
-      { "class": "pub-tag--ma", "en": "Meta-Analysis", "pt": "Meta-análise" }
+      { "class": "pub-tag--sr", "en": "Systematic Review", "pt": "Revisão Sistemática", "es": "Revisión Sistemática" },
+      { "class": "pub-tag--ma", "en": "Meta-Analysis", "pt": "Meta-análise", "es": "Meta-análisis" }
     ],
     "en": { "title": "Automated Insulin Delivery Systems in Cystic Fibrosis-Related Diabetes", "journal": "PubMed · 2025", "abstract": "A systematic review and meta-analysis evaluating the effectiveness of automated insulin delivery systems in managing cystic fibrosis-related diabetes." },
     "pt": { "title": "Sistemas Automatizados de Entrega de Insulina no Diabetes Relacionado à Fibrose Cística", "journal": "PubMed · 2025", "abstract": "Uma revisão sistemática e meta-análise avaliando a eficácia de sistemas automatizados de entrega de insulina no manejo do diabetes relacionado à fibrose cística." },
+    "es": { "title": "Sistemas Automatizados de Administración de Insulina en la Diabetes Relacionada con la Fibrosis Quística", "journal": "PubMed · 2025", "abstract": "Una revisión sistemática y meta-análisis que evalúa la eficacia de los sistemas automatizados de administración de insulina en el manejo de la diabetes relacionada con la fibrosis quística." },
     "externalUrl": "https://pubmed.ncbi.nlm.nih.gov/41933587/",
     "sourceLabel": "PubMed",
     "pdf": "/assets/publications/01-insulin-cystic-fibrosis.pdf"
@@ -16,11 +17,12 @@
     "id": "02-psychobiotics-gut-brain",
     "dataType": "systematic-review meta-analysis",
     "tags": [
-      { "class": "pub-tag--sr", "en": "Umbrella Review", "pt": "Revisão Guarda-chuva" },
-      { "class": "pub-tag--ma", "en": "Meta-Analysis", "pt": "Meta-análise" }
+      { "class": "pub-tag--sr", "en": "Umbrella Review", "pt": "Revisão Guarda-chuva", "es": "Revisión Paraguas" },
+      { "class": "pub-tag--ma", "en": "Meta-Analysis", "pt": "Meta-análise", "es": "Meta-análisis" }
     ],
     "en": { "title": "\"Attacking\" the Gut–Brain Axis with Psychobiotics: Depressive and Anxiety Symptoms", "journal": "Pharmaceuticals (MDPI) · 2026", "abstract": "An umbrella review examining the effect of psychobiotics on depressive and anxiety symptoms through the gut–brain axis." },
     "pt": { "title": "\"Atacando\" o Eixo Intestino–Cérebro com Psicobióticos: Sintomas Depressivos e Ansiosos", "journal": "Pharmaceuticals (MDPI) · 2026", "abstract": "Uma revisão guarda-chuva examinando o efeito de psicobióticos sobre sintomas depressivos e ansiosos por meio do eixo intestino–cérebro." },
+    "es": { "title": "\"Atacando\" el Eje Intestino–Cerebro con Psicobióticos: Síntomas Depresivos y de Ansiedad", "journal": "Pharmaceuticals (MDPI) · 2026", "abstract": "Una revisión paraguas que examina el efecto de los psicobióticos sobre los síntomas depresivos y de ansiedad a través del eje intestino–cerebro." },
     "externalUrl": "https://www.mdpi.com/1424-8247/19/1/156",
     "sourceLabel": "MDPI",
     "pdf": "/assets/publications/02-psychobiotics-gut-brain.pdf"
@@ -29,10 +31,11 @@
     "id": "03-hiit-bipolar",
     "dataType": "rct",
     "tags": [
-      { "class": "pub-tag--rct", "en": "RCT", "pt": "Ensaio Clínico Randomizado" }
+      { "class": "pub-tag--rct", "en": "RCT", "pt": "Ensaio Clínico Randomizado", "es": "Ensayo Clínico Aleatorizado" }
     ],
     "en": { "title": "Acute Effects of HIIT on Heart Rate Variability and Psychoaffective Responses Among Bipolar Patients", "journal": "Eureka Select · 2024", "abstract": "A randomized crossover trial examining the acute effects of high-intensity interval training on heart rate variability and psychoaffective responses in bipolar patients versus controls." },
     "pt": { "title": "Efeitos Agudos do HIIT na Variabilidade da Frequência Cardíaca e Respostas Psicoafetivas em Pacientes Bipolares", "journal": "Eureka Select · 2024", "abstract": "Um ensaio clínico randomizado cruzado examinando os efeitos agudos do treinamento intervalado de alta intensidade na variabilidade da frequência cardíaca e nas respostas psicoafetivas em pacientes bipolares versus controles." },
+    "es": { "title": "Efectos Agudos del HIIT en la Variabilidad de la Frecuencia Cardíaca y las Respuestas Psicoafectivas en Pacientes Bipolares", "journal": "Eureka Select · 2024", "abstract": "Un ensayo clínico aleatorizado cruzado que examina los efectos agudos del entrenamiento interválico de alta intensidad en la variabilidad de la frecuencia cardíaca y las respuestas psicoafectivas en pacientes bipolares frente a controles." },
     "externalUrl": "https://www.eurekaselect.com/251378/article",
     "sourceLabel": "Eureka Select",
     "purchase": true,
@@ -42,10 +45,11 @@
     "id": "04-aerobic-anaerobic-strength",
     "dataType": "meta-analysis",
     "tags": [
-      { "class": "pub-tag--ma", "en": "Predictive Analysis", "pt": "Análise Preditiva" }
+      { "class": "pub-tag--ma", "en": "Predictive Analysis", "pt": "Análise Preditiva", "es": "Análisis Predictivo" }
     ],
     "en": { "title": "Predictive and Cross-Validation Analysis of Aerobic and Anaerobic Performance Based on Maximum Strength", "journal": "Applied Sciences (MDPI) · 2025", "abstract": "Predictive and cross-validation modeling of aerobic and anaerobic performance indicators derived from maximum strength measurements." },
     "pt": { "title": "Análise Preditiva e de Validação Cruzada do Desempenho Aeróbico e Anaeróbico com Base na Força Máxima", "journal": "Applied Sciences (MDPI) · 2025", "abstract": "Modelagem preditiva e de validação cruzada de indicadores de desempenho aeróbico e anaeróbico derivados de medidas de força máxima." },
+    "es": { "title": "Análisis Predictivo y de Validación Cruzada del Rendimiento Aeróbico y Anaeróbico Basado en la Fuerza Máxima", "journal": "Applied Sciences (MDPI) · 2025", "abstract": "Modelado predictivo y de validación cruzada de indicadores de rendimiento aeróbico y anaeróbico derivados de mediciones de fuerza máxima." },
     "externalUrl": "https://www.mdpi.com/2076-3417/15/2/693",
     "sourceLabel": "MDPI",
     "pdf": "/assets/publications/04-aerobic-anaerobic-strength.pdf"
@@ -54,11 +58,12 @@
     "id": "05-beetroot-copd",
     "dataType": "systematic-review meta-analysis",
     "tags": [
-      { "class": "pub-tag--sr", "en": "Systematic Review", "pt": "Revisão Sistemática" },
-      { "class": "pub-tag--ma", "en": "Meta-Analysis", "pt": "Meta-análise" }
+      { "class": "pub-tag--sr", "en": "Systematic Review", "pt": "Revisão Sistemática", "es": "Revisión Sistemática" },
+      { "class": "pub-tag--ma", "en": "Meta-Analysis", "pt": "Meta-análise", "es": "Meta-análisis" }
     ],
     "en": { "title": "Beetroot Juice and Exercise Capacity in Chronic Obstructive Pulmonary Disease", "journal": "PubMed · 2025", "abstract": "A systematic review and meta-analysis addressing methodological gaps in the literature on beetroot juice supplementation and exercise capacity in COPD patients." },
     "pt": { "title": "Suco de Beterraba e Capacidade de Exercício na Doença Pulmonar Obstrutiva Crônica", "journal": "PubMed · 2025", "abstract": "Uma revisão sistemática e meta-análise abordando lacunas metodológicas na literatura sobre suplementação com suco de beterraba e capacidade de exercício em pacientes com DPOC." },
+    "es": { "title": "Jugo de Remolacha y Capacidad de Ejercicio en la Enfermedad Pulmonar Obstructiva Crónica", "journal": "PubMed · 2025", "abstract": "Una revisión sistemática y meta-análisis que aborda vacíos metodológicos en la literatura sobre la suplementación con jugo de remolacha y la capacidad de ejercicio en pacientes con EPOC." },
     "externalUrl": "https://pubmed.ncbi.nlm.nih.gov/41996285/",
     "sourceLabel": "PubMed",
     "pdf": "/assets/publications/05-beetroot-copd.pdf"
@@ -67,11 +72,12 @@
     "id": "06-cpap-glp1-sleep-apnea",
     "dataType": "systematic-review meta-analysis",
     "tags": [
-      { "class": "pub-tag--ma", "en": "Network Meta-Analysis", "pt": "Meta-análise em Rede" },
-      { "class": "pub-tag--rct", "en": "RCT", "pt": "Ensaio Clínico Randomizado" }
+      { "class": "pub-tag--ma", "en": "Network Meta-Analysis", "pt": "Meta-análise em Rede", "es": "Meta-análisis en Red" },
+      { "class": "pub-tag--rct", "en": "RCT", "pt": "Ensaio Clínico Randomizado", "es": "Ensayo Clínico Aleatorizado" }
     ],
     "en": { "title": "CPAP vs. GLP-1 Receptor Agonists in Obstructive Sleep Apnea: A Network Meta-Analysis", "journal": "Diabetes, Obesity and Metabolism · 2026", "abstract": "Comparative effectiveness of continuous positive airway pressure and glucagon-like peptide-1 receptor agonists in obstructive sleep apnea through a network meta-analysis of randomised trials." },
     "pt": { "title": "CPAP vs. Agonistas do Receptor de GLP-1 na Apneia Obstrutiva do Sono: Uma Meta-análise em Rede", "journal": "Diabetes, Obesity and Metabolism · 2026", "abstract": "Eficácia comparativa entre a pressão positiva contínua nas vias aéreas e os agonistas do receptor de GLP-1 na apneia obstrutiva do sono, por meio de uma meta-análise em rede de ensaios randomizados." },
+    "es": { "title": "CPAP vs. Agonistas del Receptor de GLP-1 en la Apnea Obstructiva del Sueño: Un Meta-análisis en Red", "journal": "Diabetes, Obesity and Metabolism · 2026", "abstract": "Eficacia comparativa entre la presión positiva continua en las vías respiratorias y los agonistas del receptor de GLP-1 en la apnea obstructiva del sueño, mediante un meta-análisis en red de ensayos aleatorizados." },
     "externalUrl": "https://search.bvsalud.org/portal/resource/en/mdl-41725443",
     "sourceLabel": "BVS",
     "pdf": "/assets/publications/06-cpap-glp1-sleep-apnea.pdf"
@@ -80,11 +86,12 @@
     "id": "07-ml-respiratory-failure",
     "dataType": "systematic-review meta-analysis",
     "tags": [
-      { "class": "pub-tag--sr", "en": "Systematic Review", "pt": "Revisão Sistemática" },
-      { "class": "pub-tag--ma", "en": "Meta-Analysis", "pt": "Meta-análise" }
+      { "class": "pub-tag--sr", "en": "Systematic Review", "pt": "Revisão Sistemática", "es": "Revisión Sistemática" },
+      { "class": "pub-tag--ma", "en": "Meta-Analysis", "pt": "Meta-análise", "es": "Meta-análisis" }
     ],
     "en": { "title": "Machine Learning-Based Prediction Models for Noninvasive Respiratory Support Failure in Acute Respiratory Failure", "journal": "Frontiers in Medicine · 2026", "abstract": "A systematic review and meta-analysis of machine learning-based prediction models for identifying noninvasive respiratory support failure in acute respiratory failure." },
     "pt": { "title": "Modelos Preditivos Baseados em Machine Learning para Falha do Suporte Respiratório Não Invasivo na Insuficiência Respiratória Aguda", "journal": "Frontiers in Medicine · 2026", "abstract": "Uma revisão sistemática e meta-análise de modelos preditivos baseados em machine learning para identificar falha do suporte respiratório não invasivo na insuficiência respiratória aguda." },
+    "es": { "title": "Modelos Predictivos Basados en Machine Learning para la Falla del Soporte Respiratorio No Invasivo en la Insuficiencia Respiratoria Aguda", "journal": "Frontiers in Medicine · 2026", "abstract": "Una revisión sistemática y meta-análisis de modelos predictivos basados en machine learning para identificar la falla del soporte respiratorio no invasivo en la insuficiencia respiratoria aguda." },
     "externalUrl": "https://www.frontiersin.org/journals/medicine/articles/10.3389/fmed.2026.1775670/full",
     "sourceLabel": "Frontiers",
     "pdf": "/assets/publications/07-ml-respiratory-failure.pdf"
@@ -93,11 +100,12 @@
     "id": "08-liraglutide-alzheimers",
     "dataType": "systematic-review meta-analysis",
     "tags": [
-      { "class": "pub-tag--sr", "en": "Systematic Review", "pt": "Revisão Sistemática" },
-      { "class": "pub-tag--ma", "en": "Meta-Analysis", "pt": "Meta-análise" }
+      { "class": "pub-tag--sr", "en": "Systematic Review", "pt": "Revisão Sistemática", "es": "Revisión Sistemática" },
+      { "class": "pub-tag--ma", "en": "Meta-Analysis", "pt": "Meta-análise", "es": "Meta-análisis" }
     ],
     "en": { "title": "Liraglutide and Exenatide in Alzheimer's Disease and Mild Cognitive Impairment: Cognitive Outcomes", "journal": "Pharmaceutics (MDPI) · 2026", "abstract": "A systematic review and meta-analysis of cognitive outcomes from liraglutide and exenatide interventions in patients with Alzheimer's disease and mild cognitive impairment." },
     "pt": { "title": "Liraglutida e Exenatida na Doença de Alzheimer e no Comprometimento Cognitivo Leve: Desfechos Cognitivos", "journal": "Pharmaceutics (MDPI) · 2026", "abstract": "Uma revisão sistemática e meta-análise dos desfechos cognitivos de intervenções com liraglutida e exenatida em pacientes com doença de Alzheimer e comprometimento cognitivo leve." },
+    "es": { "title": "Liraglutida y Exenatida en la Enfermedad de Alzheimer y el Deterioro Cognitivo Leve: Resultados Cognitivos", "journal": "Pharmaceutics (MDPI) · 2026", "abstract": "Una revisión sistemática y meta-análisis de los resultados cognitivos de intervenciones con liraglutida y exenatida en pacientes con enfermedad de Alzheimer y deterioro cognitivo leve." },
     "externalUrl": "https://www.mdpi.com/1999-4923/18/1/69",
     "sourceLabel": "MDPI",
     "pdf": "/assets/publications/08-liraglutide-alzheimers.pdf"
@@ -106,11 +114,12 @@
     "id": "09-high-protein-renal",
     "dataType": "systematic-review meta-analysis",
     "tags": [
-      { "class": "pub-tag--ma", "en": "Meta-Analysis", "pt": "Meta-análise" },
-      { "class": "pub-tag--rct", "en": "RCT", "pt": "Ensaio Clínico Randomizado" }
+      { "class": "pub-tag--ma", "en": "Meta-Analysis", "pt": "Meta-análise", "es": "Meta-análisis" },
+      { "class": "pub-tag--rct", "en": "RCT", "pt": "Ensaio Clínico Randomizado", "es": "Ensayo Clínico Aleatorizado" }
     ],
     "en": { "title": "Effects of High-Protein Diets on Renal Function and Body Composition in Adults Without Chronic Kidney Disease", "journal": "Diabetes, Obesity and Metabolism (Wiley) · 2026", "abstract": "A systematic review and meta-analysis of randomized controlled trials evaluating the effects of high-protein diets on renal function and body composition in adults without chronic kidney disease." },
     "pt": { "title": "Efeitos de Dietas Hiperproteicas na Função Renal e na Composição Corporal em Adultos Sem Doença Renal Crônica", "journal": "Diabetes, Obesity and Metabolism (Wiley) · 2026", "abstract": "Uma revisão sistemática e meta-análise de ensaios clínicos randomizados avaliando os efeitos de dietas hiperproteicas na função renal e na composição corporal em adultos sem doença renal crônica." },
+    "es": { "title": "Efectos de las Dietas Hiperproteicas sobre la Función Renal y la Composición Corporal en Adultos Sin Enfermedad Renal Crónica", "journal": "Diabetes, Obesity and Metabolism (Wiley) · 2026", "abstract": "Una revisión sistemática y meta-análisis de ensayos clínicos aleatorizados que evalúa los efectos de las dietas hiperproteicas sobre la función renal y la composición corporal en adultos sin enfermedad renal crónica." },
     "externalUrl": "https://dom-pubs.pericles-prod.literatumonline.com/doi/10.1111/dom.70996",
     "sourceLabel": "DOM",
     "pdf": "/assets/publications/09-high-protein-renal.pdf"

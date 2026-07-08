@@ -4,7 +4,7 @@
   "urlPrefix": "/pt",
   "langLabel": "Português",
   "flag": "🇧🇷",
-  "langSwitcher": { "en": "English", "pt": "Português" },
+  "langSwitcher": { "en": "English", "pt": "Português", "es": "Español" },
 
   "nav": {
     "about": "Sobre",
@@ -48,7 +48,7 @@
     "description": "O SIPOP ajuda pesquisadores a aprimorar o rigor metodológico, a validade estatística e a credibilidade de publicação de pesquisas biomédicas.",
 
     "hero": {
-      "title": "Conduzindo a pesquisa da incerteza à credibilidade",
+      "title": "Guiando a pesquisa da incerteza à credibilidade",
       "subtitle": "O Programa de Integridade Científica e Supervisão de Publicações (SIPOP) ajuda pesquisadores a aprimorar o rigor metodológico, a validade estatística e a credibilidade de publicação de suas pesquisas biomédicas.",
       "cta": "Fale Conosco"
     },
@@ -185,7 +185,7 @@
     "description": "Obtenha uma avaliação especializada e independente do seu manuscrito antes da submissão. A Revisão Técnica do SIPOP cobre metodologia, linguagem, formatação e posicionamento competitivo.",
     "hero": {
       "tag": "Auditoria Pré-Submissão",
-      "titleLines": ["O que um revisor", "encontraria no seu artigo", "em 10 minutos?"],
+      "titleLines": ["O que um revisor iria", "encontrar no seu artigo", "em 10 minutos?"],
       "subtitle": "A maioria dos manuscritos não é rejeitada por falta de qualidade científica.<br>É rejeitada porque o trabalho não foi preparado para o escrutínio do avaliador.",
       "cta": "Solicitar Revisão Técnica"
     },
