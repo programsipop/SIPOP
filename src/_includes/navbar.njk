@@ -8,22 +8,30 @@
                 <img src="/assets/images/logo/Logo2.webp" alt="SIPOP Logo" class="brand-logo brand-logo--dark">
             </a>
         </div>
-        <ul class="nav-links">
-            <li><a href="{{ t.urlPrefix }}/#about">{{ t.nav.about }}</a></li>
-            <li><a href="{{ t.urlPrefix }}/#process">{{ t.nav.process }}</a></li>
-            <li><a href="{{ t.urlPrefix }}/#services">{{ t.nav.services }}</a></li>
-            <li><a href="{{ t.urlPrefix }}/#benefits">{{ t.nav.benefits }}</a></li>
-            <li><a href="{{ t.urlPrefix }}/publications">{{ t.nav.publications }}</a></li>
-            <li><a href="{{ t.urlPrefix }}/testimonials">{{ t.nav.testimonials }}</a></li>
-            <li><a href="{{ t.urlPrefix }}/#contact" class="btn-outline">{{ t.nav.contact }}</a></li>
-        </ul>
-        <div class="navbar-actions">
-            {{ langSwitcher(t, lang, slug, i18n) }}
-            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-                <span class="theme-toggle__icon theme-toggle__icon--sun">☀️</span>
-                <span class="theme-toggle__icon theme-toggle__icon--moon">🌙</span>
-                <span class="theme-toggle__icon theme-toggle__icon--system">⚙️</span>
-            </button>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navMenu">
+            <span class="nav-toggle__bar"></span>
+            <span class="nav-toggle__bar"></span>
+            <span class="nav-toggle__bar"></span>
+        </button>
+
+        <div class="nav-menu" id="navMenu">
+            <ul class="nav-links">
+                <li><a href="{{ t.urlPrefix }}/#about">{{ t.nav.about }}</a></li>
+                <li><a href="{{ t.urlPrefix }}/#process">{{ t.nav.process }}</a></li>
+                <li><a href="{{ t.urlPrefix }}/#services">{{ t.nav.services }}</a></li>
+                <li><a href="{{ t.urlPrefix }}/#benefits">{{ t.nav.benefits }}</a></li>
+                <li><a href="{{ t.urlPrefix }}/publications">{{ t.nav.publications }}</a></li>
+                <li><a href="{{ t.urlPrefix }}/testimonials">{{ t.nav.testimonials }}</a></li>
+                <li><a href="{{ t.urlPrefix }}/#contact" class="btn-outline">{{ t.nav.contact }}</a></li>
+            </ul>
+            <div class="navbar-actions">
+                {{ langSwitcher(t, lang, slug, i18n) }}
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <span class="theme-toggle__icon theme-toggle__icon--sun">☀️</span>
+                    <span class="theme-toggle__icon theme-toggle__icon--moon">🌙</span>
+                    <span class="theme-toggle__icon theme-toggle__icon--system">⚙️</span>
+                </button>
+            </div>
         </div>
     </nav>
 </header>

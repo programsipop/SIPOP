@@ -316,6 +316,46 @@ body {
 }
 
 /* ============================================
+   Hambúrguer + painel de menu mobile
+   ============================================ */
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 32px;
+    height: 32px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1200;
+}
+
+.nav-toggle__bar {
+    width: 100%;
+    height: 2px;
+    background: var(--text-primary);
+    transition: transform 0.3s, opacity 0.3s;
+}
+
+.nav-toggle[aria-expanded="true"] .nav-toggle__bar:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+.nav-toggle[aria-expanded="true"] .nav-toggle__bar:nth-child(2) {
+    opacity: 0;
+}
+.nav-toggle[aria-expanded="true"] .nav-toggle__bar:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* ============================================
    4. HERO
    ============================================ */
 
@@ -912,27 +952,50 @@ body {
    13. MEDIA QUERIES
    ============================================ */
 
+@media (max-width: 1024px) {
+
+    .nav-toggle { display: flex; }
+
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        width: min(320px, 80vw);
+        background: var(--card-bg);
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        padding: 90px 30px 30px;
+        gap: 28px;
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+        box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
+        z-index: 1100;
+    }
+
+    .nav-menu.is-open {
+        transform: translateX(0);
+    }
+
+    .nav-links {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    .navbar-actions {
+        align-self: flex-start;
+    }
+}
+
 @media (max-width: 768px) {
 
     .main-header {
         position: relative;
         padding: 15px 0;
     }
-
-    .navbar {
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    .nav-links {
-        gap: 15px;
-        font-size: 14px;
-        justify-content: center;
-    }
-
-    .nav-links li:nth-child(1),
-    .nav-links li:nth-child(2) { display: none; }
-    .nav-links .btn-outline     { display: none; }
 
     .brand-logo { height: 35px; }
 
@@ -979,5 +1042,4 @@ body {
     .footer-info     { text-align: center; width: 100%; }
     .footer-social   { justify-content: center; }
 
-    .navbar-actions { align-self: flex-end; }
 }

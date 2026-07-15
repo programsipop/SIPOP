@@ -188,8 +188,32 @@ document.addEventListener('DOMContentLoaded', () => {
                 header.style.padding   = '20px 0';
             }
         }, { passive: true });
+    }
+
     // ==========================================
-    // 4. LANGUAGE SWITCHER — fecha ao clicar fora
+    // 4. NAV TOGGLE — menu hambúrguer (mobile/tablet)
+    // ==========================================
+
+    const navToggle = document.getElementById('navToggle');
+    const navMenu    = document.getElementById('navMenu');
+
+    if (navToggle && navMenu) {
+        navToggle.addEventListener('click', () => {
+            const isOpen = navMenu.classList.toggle('is-open');
+            navToggle.setAttribute('aria-expanded', isOpen);
+        });
+
+        // fecha o menu ao clicar num link (útil pros anchors #about, #services etc.)
+        navMenu.querySelectorAll('a').forEach((link) => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('is-open');
+                navToggle.setAttribute('aria-expanded', 'false');
+            });
+        });
+    }
+
+    // ==========================================
+    // 5. LANGUAGE SWITCHER — fecha ao clicar fora
     // ==========================================
 
     document.addEventListener('click', (e) => {
