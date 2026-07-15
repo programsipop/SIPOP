@@ -10,11 +10,23 @@ Available in **English**, **Portuguese (pt-BR)**, and **Spanish**.
 
 ## Screenshots
 
-### Light Mode
-![SIPOP — Light Mode](screenshots/light.png)
+### Home
 
-### Dark Mode
-![SIPOP — Dark Mode](screenshots/dark.png)
+| Light Mode | Dark Mode |
+|---|---|
+| ![SIPOP Home — Light Mode](screenshots/light.png) | ![SIPOP Home — Dark Mode](screenshots/dark.png) |
+
+### Publications
+
+| Light Mode | Dark Mode |
+|---|---|
+| ![SIPOP Publications — Light Mode](screenshots/light-publications.png) | ![SIPOP Publications — Dark Mode](screenshots/dark-publications.png) |
+
+### Technical Review
+
+| Light Mode | Dark Mode |
+|---|---|
+| ![SIPOP Technical Review — Light Mode](screenshots/light-technical-review.png) | ![SIPOP Technical Review — Dark Mode](screenshots/dark-technical-review.png) |
 
 ---
 
@@ -56,7 +68,7 @@ SIPOP is an institutional website built from the ground up, including brand iden
 - ✅ Smooth scroll navigation
 - ✅ Background images swap between light/dark versions
 - ✅ Semantic HTML with `aria-label` and `aria-live` attributes
-- ✅ Multi-page, multi-language: Home, Publications, and Technical Review, each in 3 languages (9 routes total)
+- ✅ Multi-page, multi-language: Home, Publications, Technical Review, and Testimonials, each in 3 languages (12 routes total)
 - ✅ No external JS dependencies
 
 ---
@@ -70,6 +82,7 @@ Every page exists in three languages. English lives at the root; other languages
 | Home | `src/index.njk` / `src/pt/index.njk` / `src/es/index.njk` | `/` | `/pt/` | `/es/` |
 | Publications | `.../publications.njk` | `/publications` | `/pt/publications` | `/es/publications` |
 | Technical Review | `.../technical-review.njk` | `/technical-review` | `/pt/technical-review` | `/es/technical-review` |
+| Testimonials | `.../testimonials.njk` | `/testimonials` | `/pt/testimonials` | `/es/testimonials` |
 
 ---
 
@@ -85,11 +98,15 @@ src/_data/
 │   └── es.json
 ├── publications.json    # the 9 publications — title/journal/abstract per language,
 │                         # links and PDFs are language-independent
+├── testimonials.json    # full testimonials list (name/org/role/quote per language,
+│                         # plus category for the filter on /testimonials) — the Home
+│                         # and Technical Review pages pull their own short quote sets
+│                         # directly from i18n/{lang}.json instead
 ├── countryCodes.json    # phone country-code select, country names per language
 └── nationalities.json   # nationality datalist, demonyms per language
 ```
 
-**To edit existing text:** find the string in `src/_data/i18n/{lang}.json` (structured by section — `nav`, `footer`, `form`, `home`, `publications`, `technicalReview`) and edit it directly. No rebuild logic needed beyond `npm run build`.
+**To edit existing text:** find the string in `src/_data/i18n/{lang}.json` (structured by section — `nav`, `footer`, `form`, `home`, `publications`, `technicalReview`, `testimonials`) and edit it directly. No rebuild logic needed beyond `npm run build`.
 
 **To add a new language (e.g. French):**
 1. Copy `src/_data/i18n/en.json` to `src/_data/i18n/fr.json` and translate every value (keep all keys identical).
@@ -118,16 +135,19 @@ sipop/
 │   ├── index.njk                 # Home (English)
 │   ├── publications.njk          # Publications (English)
 │   ├── technical-review.njk      # Technical Review (English)
+│   ├── testimonials.njk          # Testimonials (English)
 │   │
 │   ├── pt/                       # Portuguese pages (thin — front matter + include)
 │   │   ├── index.njk
 │   │   ├── publications.njk
-│   │   └── technical-review.njk
+│   │   ├── technical-review.njk
+│   │   └── testimonials.njk
 │   │
 │   ├── es/                       # Spanish pages (thin — front matter + include)
 │   │   ├── index.njk
 │   │   ├── publications.njk
-│   │   └── technical-review.njk
+│   │   ├── technical-review.njk
+│   │   └── testimonials.njk
 │   │
 │   ├── _data/                    # Global data — translations and structured content
 │   │   ├── i18n/
@@ -135,6 +155,7 @@ sipop/
 │   │   │   ├── pt.json
 │   │   │   └── es.json
 │   │   ├── publications.json
+│   │   ├── testimonials.json
 │   │   ├── countryCodes.json
 │   │   └── nationalities.json
 │   │
@@ -148,26 +169,34 @@ sipop/
 │   │   └── content/              # Page content, shared across all languages
 │   │       ├── home.njk
 │   │       ├── publications.njk
-│   │       └── technical-review.njk
+│   │       ├── technical-review.njk
+│   │       └── testimonials.njk
 │   │
 │   └── assets/                   # Static files — copied as-is to _site/assets/
 │       ├── css/
 │       │   ├── style.css             # Global styles, variables, theming, i18n components
 │       │   ├── publications.css      # Styles for /publications
-│       │   └── technical-review.css  # Styles for /technical-review
+│       │   ├── technical-review.css  # Styles for /technical-review
+│       │   └── testimonials.css      # Styles for /testimonials
 │       ├── js/
 │       │   ├── script.js             # Theme toggle, form handler, scroll, lang dropdown
-│       │   └── publications.js       # Publications page filter interactions
+│       │   ├── publications.js       # Publications page filter interactions
+│       │   └── testimonials.js       # Testimonials page filter interactions
 │       └── images/
 │           ├── backgrounds/          # BG1, BG1DM, BG2, BG2DM (.webp)
 │           ├── icons/                # Icon1–Icon7 (.webp)
 │           ├── logo/                 # Logo1, Logo2 (.webp)
 │           ├── favicon/              # Icon.ico
-│           └── testimonials/         # suzana, ivan, katia (.webp)
+│           └── testimonials/         # suzana, ivan, katia, patricia, william,
+│                                      # paulo, paula, joao (.webp)
 │
 ├── screenshots/
-│   ├── light.png                 # Full-page screenshot — light mode
-│   └── dark.png                  # Full-page screenshot — dark mode
+│   ├── light.png                       # Home — light mode
+│   ├── dark.png                        # Home — dark mode
+│   ├── light-publications.png          # Publications — light mode
+│   ├── dark-publications.png           # Publications — dark mode
+│   ├── light-technical-review.png      # Technical Review — light mode
+│   └── dark-technical-review.png       # Technical Review — dark mode
 │
 └── design-sources/                # Source files — not deployed
     ├── logo1.png
