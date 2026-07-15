@@ -102,6 +102,7 @@
             {% for item in h.testimonials.items %}
                 {{ testimonialCard(item) }}
             {% endfor %}
+            <a href="{{ t.urlPrefix }}/testimonials" class="testimonials-view-all">{{ h.testimonials.viewAll }} &rarr;</a>
         </div>
 
         <div id="contact" class="contact-form-container">

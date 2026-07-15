@@ -1,0 +1,47 @@
+{# src/_includes/content/testimonials.njk — conteúdo da página de depoimentos, parametrizado por t/lang #}
+{% from "macros.njk" import testimonialFullCard %}
+{% set p = t.testimonials %}
+
+<!-- ========== HERO ========== -->
+<section class="test-hero">
+    <div class="container">
+        <div class="test-hero__tag">{{ p.hero.tag }}</div>
+        <h1>{{ p.hero.title }}</h1>
+        <p>{{ p.hero.subtitle }}</p>
+    </div>
+</section>
+
+<!-- ========== FILTERS ========== -->
+<section class="test-filters">
+    <div class="container">
+        <div class="test-filters__list" role="group" aria-label="Filter testimonials by profile">
+            <button class="test-filter active" data-filter="all">{{ p.filters.all }}</button>
+            <button class="test-filter" data-filter="masters">{{ p.filters.masters }}</button>
+            <button class="test-filter" data-filter="doctoral">{{ p.filters.doctoral }}</button>
+            <button class="test-filter" data-filter="faculty">{{ p.filters.faculty }}</button>
+            <button class="test-filter" data-filter="researcher">{{ p.filters.researcher }}</button>
+        </div>
+    </div>
+</section>
+
+<!-- ========== TESTIMONIALS GRID ========== -->
+<section class="test-grid-section">
+    <div class="container">
+        <div class="test-grid" id="testGrid">
+            {% for item in testimonials %}
+                {{ testimonialFullCard(item, lang) }}
+            {% endfor %}
+        </div>
+
+        <p class="test-empty" id="testEmpty" style="display:none;">{{ p.emptyMessage }}</p>
+    </div>
+</section>
+
+<!-- ========== CTA ========== -->
+<section class="test-cta">
+    <div class="container">
+        <h2>{{ p.cta.title }}</h2>
+        <p>{{ p.cta.body }}</p>
+        <a href="{{ t.urlPrefix }}/technical-review" class="btn-primary">{{ p.cta.button }}</a>
+    </div>
+</section>

@@ -108,6 +108,28 @@
 {% endmacro %}
 
 
+{% macro testimonialFullCard(item, lang) %}
+{% set c = item[lang] %}
+<article class="test-card" data-category="{{ item.category }}">
+    <blockquote class="test-card__quote">
+        <p>&ldquo;{{ c.quote }}&rdquo;</p>
+    </blockquote>
+    <div class="test-card__person">
+        {% if item.avatar %}
+        <img src="/assets/images/testimonials/{{ item.avatar }}" alt="{{ item.name }}" class="test-avatar">
+        {% else %}
+        <div class="test-avatar test-avatar--initials" aria-hidden="true">{{ item.initials }}</div>
+        {% endif %}
+        <span class="test-card__info">
+            <strong>{{ item.name }}</strong>
+            {{ c.role }}
+            {% if item.org %}<br>{{ item.org }}{% endif %}
+        </span>
+    </div>
+</article>
+{% endmacro %}
+
+
 {% macro publicationCard(pub, t, lang) %}
 <article class="pub-card" data-type="{{ pub.dataType }}">
     <div class="pub-card__type">

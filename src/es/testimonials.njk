@@ -1,0 +1,12 @@
+---
+layout: base.njk
+lang: es
+pageKey: testimonials
+slug: "testimonials"
+extraCss:
+  - testimonials.css
+extraJs:
+  - testimonials.js
+---
+{% set t = i18n[lang] %}
+{% include "content/testimonials.njk" %}

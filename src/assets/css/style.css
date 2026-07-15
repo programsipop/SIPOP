@@ -686,6 +686,17 @@ body {
     margin-bottom: 2px;
 }
 
+.testimonials-view-all {
+    display: inline-block;
+    margin-top: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--pine-blue);
+    text-decoration: none;
+}
+
+.testimonials-view-all:hover { text-decoration: underline; }
+
 /* Contact form */
 .contact-form-container {
     background: var(--card-bg);
