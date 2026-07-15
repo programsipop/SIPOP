@@ -23,7 +23,7 @@
     "id": "patricia",
     "name": "Patrícia Nogueira",
     "org": "Universidade Federal do Rio Grande do Norte — UFRN",
-    "avatar": null,
+    "avatar": "patricia.webp",
     "initials": "PN",
     "category": "faculty",
     "en": {
@@ -63,7 +63,7 @@
     "id": "william",
     "name": "William Riciere Pedon",
     "org": null,
-    "avatar": null,
+    "avatar": "william.webp",
     "initials": "WP",
     "category": "doctoral",
     "en": {
@@ -103,7 +103,7 @@
     "id": "paulo",
     "name": "Paulo Ricardo Teixeira Silva",
     "org": "Unievangélica — GO",
-    "avatar": null,
+    "avatar": "paulo.webp",
     "initials": "PS",
     "category": "doctoral",
     "en": {
@@ -123,7 +123,7 @@
     "id": "paula",
     "name": "Paula Correa Neto Santos",
     "org": "Unicerrado",
-    "avatar": null,
+    "avatar": "paula.webp",
     "initials": "PC",
     "category": "doctoral",
     "en": {
@@ -143,7 +143,7 @@
     "id": "joao",
     "name": "João Victor Aguiar Moreira",
     "org": "Universidade Federal de Uberlândia — UFU",
-    "avatar": null,
+    "avatar": "joao.webp",
     "initials": "JM",
     "category": "masters",
     "en": {
