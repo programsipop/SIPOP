@@ -179,6 +179,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const header = document.querySelector('.main-header');
 
     if (header) {
+        // Mantém --header-height sempre igual à altura real do header,
+        // já que ela muda (padding 20px → 10px) ao rolar a página.
+        // Isso evita que elementos sticky (ex: filtros de publicações
+        // e depoimentos) fiquem por baixo do header fixo.
+        const syncHeaderHeight = () => {
+            document.documentElement.style.setProperty(
+                '--header-height',
+                `${header.offsetHeight}px`
+            );
+        };
+
+        syncHeaderHeight();
+        window.addEventListener('resize', syncHeaderHeight, { passive: true });
+
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
                 header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
@@ -187,6 +201,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 header.style.boxShadow = 'none';
                 header.style.padding   = '20px 0';
             }
+            // padding tem transition de 0.3s — relê a altura antes
+            // (chute otimista) e de novo depois que a transição acaba
+            syncHeaderHeight();
+            setTimeout(syncHeaderHeight, 320);
         }, { passive: true });
     }
 

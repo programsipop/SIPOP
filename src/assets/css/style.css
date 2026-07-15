@@ -41,6 +41,10 @@
 
     --logo-light:       block;
     --logo-dark:        none;
+
+    /* Altura real do header, atualizada via JS (ver script.js).
+       O valor aqui é só um fallback pro primeiro paint. */
+    --header-height: 86px;
 }
 
 [data-theme="dark"] {
@@ -136,7 +140,6 @@ body {
     top: 0;
     z-index: 1000;
     border-bottom: 1px solid var(--header-border);
-    backdrop-filter: blur(8px);
     transition: background 0.3s ease, padding 0.3s ease, box-shadow 0.3s ease;
 }
 
