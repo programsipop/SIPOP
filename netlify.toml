@@ -18,6 +18,11 @@
   to     = "/technical-review/index.html"
   status = 200
 
+[[redirects]]
+  from   = "/testimonials"
+  to     = "/testimonials/index.html"
+  status = 200
+
 # Versão em português (subpasta /pt/)
 [[redirects]]
   from   = "/pt"
@@ -34,6 +39,11 @@
   to     = "/pt/technical-review/index.html"
   status = 200
 
+[[redirects]]
+  from   = "/pt/testimonials"
+  to     = "/pt/testimonials/index.html"
+  status = 200
+
 # Versão em espanhol (subpasta /es/)
 [[redirects]]
   from   = "/es"
@@ -48,4 +58,9 @@
 [[redirects]]
   from   = "/es/technical-review"
   to     = "/es/technical-review/index.html"
+  status = 200
+
+[[redirects]]
+  from   = "/es/testimonials"
+  to     = "/es/testimonials/index.html"
   status = 200

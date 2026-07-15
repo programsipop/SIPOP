@@ -237,6 +237,8 @@ Push to the connected branch to trigger an automatic deploy.
 
 ## Form Setup (Google Apps Script)
 
+> **Note:** the live site already has this wired up — `src/assets/js/script.js` points to a deployed Apps Script Web App URL. The steps below are only needed if you're cloning this project to reuse it elsewhere (new spreadsheet, new deployment).
+
 1. Open Google Sheets and create a new spreadsheet
 2. Go to **Extensions > Apps Script** (or create a new project at script.google.com)
 3. Paste the contents of `apps-script.gs`, replacing the existing code
@@ -246,7 +248,7 @@ Push to the connected branch to trigger an automatic deploy.
    - Who has access: **Anyone**
 5. Authorize the app when prompted
 6. Copy the generated URL
-7. In `src/assets/js/script.js`, replace `'COLE_A_URL_DO_APPS_SCRIPT_AQUI'` with the URL
+7. In `src/assets/js/script.js`, replace the `APPS_SCRIPT_URL` constant with your new URL
 
 Submissions are saved to a sheet tab named **"SIPOP Contacts"**, created automatically on the first submission. Email notifications are sent via `MailApp.sendEmail` — update the recipient addresses directly in `apps-script.gs`. The hidden `source` field and UTM fields on the Technical Review form let you distinguish landing-page leads and campaign traffic in the sheet; the `preferredLanguage` and `source` values are kept in English across all site languages so responses stay consistent for filtering.
 
