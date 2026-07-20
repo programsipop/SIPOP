@@ -41,4 +41,17 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Toggle do detalhamento de periódicos (internacional/nacional) - funciona em clique e toque
+    document.querySelectorAll('.pub-stat__toggle').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const expanded = btn.getAttribute('aria-expanded') === 'true';
+            const targetId = btn.getAttribute('aria-controls');
+            const panel = document.getElementById(targetId);
+            btn.setAttribute('aria-expanded', String(!expanded));
+            if (panel) {
+                panel.hidden = expanded;
+            }
+        });
+    });
+
 });

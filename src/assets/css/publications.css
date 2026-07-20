@@ -67,6 +67,133 @@
     font-weight: 500;
 }
 
+.pub-stat--expandable {
+    position: relative;
+}
+
+.pub-stat__toggle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: var(--font-main);
+    padding: 4px 10px;
+    border-radius: 8px;
+    transition: background 0.15s ease;
+}
+
+.pub-stat__toggle:hover,
+.pub-stat__toggle:focus-visible {
+    background: rgba(44, 122, 123, 0.08);
+    outline: none;
+}
+
+.pub-stat__chevron {
+    font-size: 11px;
+    color: var(--pine-blue);
+    margin-top: 2px;
+    transition: transform 0.2s ease;
+}
+
+.pub-stat__toggle[aria-expanded="true"] .pub-stat__chevron {
+    transform: rotate(180deg);
+}
+
+.pub-stat__breakdown {
+    margin-top: 8px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.pub-stat__breakdown-item {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    background: var(--bg-secondary);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    padding: 4px 12px;
+}
+
+
+    margin: 20px auto 0;
+    font-size: 12.5px;
+    color: var(--text-muted);
+    font-style: italic;
+    max-width: 480px;
+}
+
+/* ============================================
+   1b. AREAS OF FOCUS
+   ============================================ */
+
+.pub-areas {
+    padding: 56px 0;
+    background: var(--bg-secondary);
+    border-bottom: 1px solid var(--card-border);
+}
+
+.pub-areas__title {
+    text-align: center;
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--text-primary);
+    margin-bottom: 32px;
+}
+
+.pub-areas__list {
+    max-width: 640px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.pub-areas__row {
+    display: grid;
+    grid-template-columns: 220px 1fr 44px;
+    align-items: center;
+    gap: 14px;
+}
+
+.pub-areas__label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+.pub-areas__bar-track {
+    background: var(--card-border);
+    border-radius: 6px;
+    height: 8px;
+    overflow: hidden;
+}
+
+.pub-areas__bar-fill {
+    background: var(--pine-blue);
+    height: 100%;
+    border-radius: 6px;
+}
+
+.pub-areas__percent {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--pine-blue);
+    text-align: right;
+}
+
+@media (max-width: 640px) {
+    .pub-areas__row {
+        grid-template-columns: 1fr;
+        gap: 6px;
+    }
+    .pub-areas__percent { text-align: left; }
+}
+
 /* ============================================
    2. FILTERS
    ============================================ */

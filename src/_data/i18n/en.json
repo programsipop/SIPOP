@@ -214,22 +214,62 @@
     "description": "Peer-reviewed research supported by SIPOP — systematic reviews, meta-analyses, and randomized trials published in international journals.",
     "hero": {
       "tag": "Peer-Reviewed Research",
-      "title": "Publications",
-      "subtitle": "Research supported by SIPOP and published in international peer-reviewed journals. Each study reflects the methodological rigor and strategic coherence we bring to every project.",
+      "title": "Selected Publications",
+      "subtitle": "Research supported by SIPOP and published in international peer-reviewed journals. Each study reflects the methodological rigor and strategic coherence we bring to every project. A curated selection of Dr. Chiappa's published work.",
       "stats": [
         {
-          "number": "9",
+          "number": "88",
           "label": "Publications"
         },
         {
-          "number": "6",
+          "number": "12",
           "label": "Systematic Reviews & Meta-Analyses"
         },
         {
-          "number": "4+",
-          "label": "International Journals"
+          "number": "58",
+          "label": "Journals",
+          "breakdown": [
+            {
+              "number": "52",
+              "label": "International"
+            },
+            {
+              "number": "6",
+              "label": "National/Regional"
+            }
+          ]
+        },
+        {
+          "number": "20",
+          "label": "Years of Published Research"
         }
-      ]
+      ],
+      "statsCaption": "Figures reflect his complete publication record.",
+      "areas": {
+        "title": "Areas of Focus",
+        "items": [
+          {
+            "label": "Cardiopulmonary & Exercise Physiology",
+            "percent": 75
+          },
+          {
+            "label": "Sports & Performance Science",
+            "percent": 12
+          },
+          {
+            "label": "Neurological & Mental Health",
+            "percent": 5
+          },
+          {
+            "label": "Metabolic & Endocrine Health",
+            "percent": 3
+          },
+          {
+            "label": "Other Clinical Research",
+            "percent": 5
+          }
+        ]
+      }
     },
     "filters": {
       "all": "All",

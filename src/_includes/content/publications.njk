@@ -10,9 +10,41 @@
         <p>{{ p.hero.subtitle }}</p>
         <div class="pub-hero__stats">
             {% for stat in p.hero.stats %}
-            <div class="pub-stat">
+            <div class="pub-stat{% if stat.breakdown %} pub-stat--expandable{% endif %}">
+                {% if stat.breakdown %}
+                <button type="button" class="pub-stat__toggle" aria-expanded="false" aria-controls="journal-breakdown">
+                    <span class="pub-stat__number">{{ stat.number }}</span>
+                    <span class="pub-stat__label">{{ stat.label }}</span>
+                    <span class="pub-stat__chevron" aria-hidden="true">▾</span>
+                </button>
+                <div class="pub-stat__breakdown" id="journal-breakdown" hidden>
+                    {% for b in stat.breakdown %}
+                    <span class="pub-stat__breakdown-item">{{ b.number }} {{ b.label }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
                 <span class="pub-stat__number">{{ stat.number }}</span>
                 <span class="pub-stat__label">{{ stat.label }}</span>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+        <p class="pub-hero__stats-caption">{{ p.hero.statsCaption }}</p>
+    </div>
+</section>
+
+<!-- ========== AREAS OF FOCUS ========== -->
+<section class="pub-areas">
+    <div class="container">
+        <h2 class="pub-areas__title">{{ p.hero.areas.title }}</h2>
+        <div class="pub-areas__list">
+            {% for area in p.hero.areas.items %}
+            <div class="pub-areas__row">
+                <span class="pub-areas__label">{{ area.label }}</span>
+                <div class="pub-areas__bar-track">
+                    <div class="pub-areas__bar-fill" style="width: {{ area.percent }}%;"></div>
+                </div>
+                <span class="pub-areas__percent">{{ area.percent }}%</span>
             </div>
             {% endfor %}
         </div>

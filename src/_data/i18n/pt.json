@@ -214,22 +214,62 @@
     "description": "Pesquisas revisadas por pares e apoiadas pelo SIPOP — revisões sistemáticas, meta-análises e ensaios randomizados publicados em revistas internacionais.",
     "hero": {
       "tag": "Pesquisa Revisada por Pares",
-      "title": "Publicações",
-      "subtitle": "Pesquisas apoiadas pelo SIPOP e publicadas em revistas internacionais revisadas por pares. Cada estudo reflete o rigor metodológico e a coerência estratégica que trazemos a cada projeto.",
+      "title": "Publicações Selecionadas",
+      "subtitle": "Pesquisas apoiadas pelo SIPOP e publicadas em revistas internacionais revisadas por pares. Cada estudo reflete o rigor metodológico e a coerência estratégica que trazemos a cada projeto. Uma seleção curada da obra publicada do Dr. Chiappa.",
       "stats": [
         {
-          "number": "9",
+          "number": "88",
           "label": "Publicações"
         },
         {
-          "number": "6",
+          "number": "12",
           "label": "Revisões Sistemáticas & Meta-análises"
         },
         {
-          "number": "4+",
-          "label": "Revistas Internacionais"
+          "number": "58",
+          "label": "Revistas",
+          "breakdown": [
+            {
+              "number": "52",
+              "label": "Internacionais"
+            },
+            {
+              "number": "6",
+              "label": "Nacionais/Regionais"
+            }
+          ]
+        },
+        {
+          "number": "20",
+          "label": "Anos de Pesquisa Publicada"
         }
-      ]
+      ],
+      "statsCaption": "Os números refletem seu histórico completo de publicações.",
+      "areas": {
+        "title": "Áreas de Atuação",
+        "items": [
+          {
+            "label": "Fisiologia Cardiopulmonar e do Exercício",
+            "percent": 75
+          },
+          {
+            "label": "Ciência do Esporte e Desempenho",
+            "percent": 12
+          },
+          {
+            "label": "Saúde Neurológica e Mental",
+            "percent": 5
+          },
+          {
+            "label": "Saúde Metabólica e Endócrina",
+            "percent": 3
+          },
+          {
+            "label": "Outras Pesquisas Clínicas",
+            "percent": 5
+          }
+        ]
+      }
     },
     "filters": {
       "all": "Todas",
