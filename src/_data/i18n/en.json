@@ -215,7 +215,7 @@
     "hero": {
       "tag": "Peer-Reviewed Research",
       "title": "Selected Publications",
-      "subtitle": "Research supported by SIPOP and published in international peer-reviewed journals. Each study reflects the methodological rigor and strategic coherence we bring to every project. A curated selection of Dr. Chiappa's published work.",
+      "subtitle": "Research supported by SIPOP and published in international peer-reviewed journals. Each study reflects the methodological rigor and strategic coherence we bring to every project. A curated selection of the published work behind it.",
       "stats": [
         {
           "number": "88",
@@ -244,7 +244,7 @@
           "label": "Years of Published Research"
         }
       ],
-      "statsCaption": "Figures reflect his complete publication record.",
+      "statsCaption": "Figures reflect the complete publication record.",
       "areas": {
         "title": "Areas of Focus",
         "items": [

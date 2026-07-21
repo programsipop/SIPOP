@@ -215,7 +215,7 @@
     "hero": {
       "tag": "Investigación Revisada por Pares",
       "title": "Publicaciones Seleccionadas",
-      "subtitle": "Investigaciones respaldadas por SIPOP y publicadas en revistas internacionales revisadas por pares. Cada estudio refleja el rigor metodológico y la coherencia estratégica que aportamos a cada proyecto. Una selección curada de la obra publicada del Dr. Chiappa.",
+      "subtitle": "Investigaciones respaldadas por SIPOP y publicadas en revistas internacionales revisadas por pares. Cada estudio refleja el rigor metodológico y la coherencia estratégica que aportamos a cada proyecto. Una selección curada de la obra publicada detrás de este trabajo.",
       "stats": [
         {
           "number": "88",
@@ -244,7 +244,7 @@
           "label": "Años de Investigación Publicada"
         }
       ],
-      "statsCaption": "Las cifras reflejan su historial completo de publicaciones.",
+      "statsCaption": "Las cifras reflejan el historial completo de publicaciones.",
       "areas": {
         "title": "Áreas de Enfoque",
         "items": [
