@@ -226,11 +226,11 @@
           "label": "Revisões Sistemáticas & Meta-análises"
         },
         {
-          "number": "58",
+          "number": "56",
           "label": "Revistas",
           "breakdown": [
             {
-              "number": "52",
+              "number": "50",
               "label": "Internacionais"
             },
             {
@@ -238,6 +238,10 @@
               "label": "Nacionais/Regionais"
             }
           ]
+        },
+        {
+          "number": "51",
+          "label": "Publicações em Revistas Q1 (SJR)"
         },
         {
           "number": "20",

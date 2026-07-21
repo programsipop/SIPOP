@@ -226,11 +226,11 @@
           "label": "Systematic Reviews & Meta-Analyses"
         },
         {
-          "number": "58",
+          "number": "56",
           "label": "Journals",
           "breakdown": [
             {
-              "number": "52",
+              "number": "50",
               "label": "International"
             },
             {
@@ -238,6 +238,10 @@
               "label": "National/Regional"
             }
           ]
+        },
+        {
+          "number": "51",
+          "label": "Publications in Q1-Ranked Journals (SJR)"
         },
         {
           "number": "20",
