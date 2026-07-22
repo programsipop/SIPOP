@@ -297,10 +297,12 @@
 .pub-tag--sr  { background: #EBF8FF; color: #2B6CB0; }
 .pub-tag--ma  { background: #E6FFFA; color: #234E52; }
 .pub-tag--rct { background: #FAF5FF; color: #553C9A; }
+.pub-tag--other { background: var(--bg-secondary); color: var(--text-secondary); }
 
 [data-theme="dark"] .pub-tag--sr  { background: #1a3a5c; color: #90CDF4; }
 [data-theme="dark"] .pub-tag--ma  { background: #1a3a38; color: var(--pearl-aqua); }
 [data-theme="dark"] .pub-tag--rct { background: #2d1f4a; color: #D6BCFA; }
+[data-theme="dark"] .pub-tag--other { background: #2a2a2a; color: var(--text-secondary); }
 
 .pub-card__title {
     font-size: 16px;

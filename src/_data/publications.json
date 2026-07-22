@@ -123,5 +123,33 @@
     "externalUrl": "https://dom-pubs.pericles-prod.literatumonline.com/doi/10.1111/dom.70996",
     "sourceLabel": "DOM",
     "pdf": "/assets/publications/09-high-protein-renal.pdf"
+  },
+  {
+    "id": "10-adolescent-depression-exercise",
+    "dataType": "meta-analysis",
+    "tags": [
+      { "class": "pub-tag--ma", "en": "Meta-Analysis", "pt": "Meta-análise", "es": "Meta-análisis" }
+    ],
+    "en": { "title": "Impact of Structured Physical Exercise on Adolescent Depression: A Comprehensive Meta-Analysis of RCTs", "journal": "CNS & Neurological Disorders - Drug Targets · 2025", "abstract": "A comprehensive meta-analysis evaluating the effectiveness of structured physical exercise in alleviating depressive symptoms in adolescents with major depressive disorder." },
+    "pt": { "title": "Impacto do Exercício Físico Estruturado na Depressão em Adolescentes: Uma Meta-análise Abrangente de ECRs", "journal": "CNS & Neurological Disorders - Drug Targets · 2025", "abstract": "Uma meta-análise abrangente avaliando a eficácia do exercício físico estruturado no alívio de sintomas depressivos em adolescentes com transtorno depressivo maior." },
+    "es": { "title": "Impacto del Ejercicio Físico Estructurado en la Depresión en Adolescentes: Un Meta-análisis Integral de ECAs", "journal": "CNS & Neurological Disorders - Drug Targets · 2025", "abstract": "Un meta-análisis integral que evalúa la eficacia del ejercicio físico estructurado para aliviar los síntomas depresivos en adolescentes con trastorno depresivo mayor." },
+    "externalUrl": "https://www.benthamdirect.com/content/journals/cnsnddt/10.2174/0118715273377485251013035653",
+    "sourceLabel": "Bentham Science",
+    "purchase": true,
+    "pdf": null
+  },
+  {
+    "id": "11-muscle-wasting-trauma",
+    "dataType": "original-research",
+    "tags": [
+      { "class": "pub-tag--other", "en": "Observational Study", "pt": "Estudo Observacional", "es": "Estudio Observacional" }
+    ],
+    "en": { "title": "Early Detection of Muscle Wasting Assessed by Ultrasound and Analysis of Growth Factor and Systemic Inflammation Mediators in Critically Ill Trauma Patients", "journal": "European Journal of Trauma and Emergency Surgery · 2025", "abstract": "An observational study describing early changes in muscle thickness, growth signaling mediators, and systemic inflammation in critically ill patients after major trauma." },
+    "pt": { "title": "Detecção Precoce de Perda Muscular por Ultrassom e Análise de Fatores de Crescimento e Mediadores de Inflamação Sistêmica em Pacientes Críticos de Trauma", "journal": "European Journal of Trauma and Emergency Surgery · 2025", "abstract": "Um estudo observacional descrevendo alterações precoces na espessura muscular, mediadores de sinalização de crescimento e inflamação sistêmica em pacientes críticos após trauma maior." },
+    "es": { "title": "Detección Temprana de Pérdida Muscular Mediante Ultrasonido y Análisis de Factores de Crecimiento y Mediadores de Inflamación Sistémica en Pacientes Críticos de Trauma", "journal": "European Journal of Trauma and Emergency Surgery · 2025", "abstract": "Un estudio observacional que describe cambios tempranos en el espesor muscular, mediadores de señalización de crecimiento e inflamación sistémica en pacientes críticos tras trauma mayor." },
+    "externalUrl": "https://link.springer.com/article/10.1007/s00068-024-02683-9",
+    "sourceLabel": "Springer",
+    "purchase": true,
+    "pdf": null
   }
 ]
