@@ -43,7 +43,7 @@
   },
   {
     "id": "04-aerobic-anaerobic-strength",
-    "dataType": "meta-analysis",
+    "dataType": "predictive-analysis",
     "tags": [
       { "class": "pub-tag--ma", "en": "Predictive Analysis", "pt": "Análise Preditiva", "es": "Análisis Predictivo" }
     ],
@@ -70,7 +70,7 @@
   },
   {
     "id": "06-cpap-glp1-sleep-apnea",
-    "dataType": "systematic-review meta-analysis",
+    "dataType": "meta-analysis rct",
     "tags": [
       { "class": "pub-tag--ma", "en": "Network Meta-Analysis", "pt": "Meta-análise em Rede", "es": "Meta-análisis en Red" },
       { "class": "pub-tag--rct", "en": "RCT", "pt": "Ensaio Clínico Randomizado", "es": "Ensayo Clínico Aleatorizado" }
@@ -112,7 +112,7 @@
   },
   {
     "id": "09-high-protein-renal",
-    "dataType": "systematic-review meta-analysis",
+    "dataType": "meta-analysis rct",
     "tags": [
       { "class": "pub-tag--ma", "en": "Meta-Analysis", "pt": "Meta-análise", "es": "Meta-análisis" },
       { "class": "pub-tag--rct", "en": "RCT", "pt": "Ensaio Clínico Randomizado", "es": "Ensayo Clínico Aleatorizado" }
@@ -140,7 +140,7 @@
   },
   {
     "id": "11-muscle-wasting-trauma",
-    "dataType": "original-research",
+    "dataType": "observational-study",
     "tags": [
       { "class": "pub-tag--other", "en": "Observational Study", "pt": "Estudo Observacional", "es": "Estudio Observacional" }
     ],
