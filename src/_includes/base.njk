@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ t[pageKey].title }} — SIPOP</title>
+    <title>{% if pageKey == "home" %}{{ t[pageKey].title }}{% else %}{{ t[pageKey].title }} - SIPOP{% endif %}</title>
     <meta name="description" content="{{ t[pageKey].description }}">
     <link rel="icon" type="image/x-icon" href="/assets/images/favicon/Icon.ico">
     <link rel="stylesheet" href="/assets/css/style.css">
@@ -22,6 +22,31 @@
     <link rel="alternate" hreflang="{{ locale.htmlLang }}" href="{{ baseUrl }}{{ locale.urlPrefix }}/{{ slug }}">
     {% endfor %}
     <link rel="alternate" hreflang="x-default" href="{{ baseUrl }}/{{ slug }}">
+
+    <!-- Open Graph / Twitter Card -->
+    {% set ogTitle = t[pageKey].title %}
+    {% set ogDescription = t[pageKey].description %}
+    {% set ogUrl = baseUrl + t.urlPrefix + "/" + slug %}
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="SIPOP">
+    <meta property="og:locale" content="{{ t.htmlLang | replace('-', '_') }}">
+    <meta property="og:title" content="{{ ogTitle }}">
+    <meta property="og:description" content="{{ ogDescription }}">
+    <meta property="og:url" content="{{ ogUrl }}">
+    <meta property="og:image" content="{{ baseUrl }}/assets/images/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="SIPOP — Scientific Integrity and Publication Oversight Program">
+    {% for code, locale in i18n %}
+        {% if locale.htmlLang != t.htmlLang %}
+    <meta property="og:locale:alternate" content="{{ locale.htmlLang | replace('-', '_') }}">
+        {% endif %}
+    {% endfor %}
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ ogTitle }}">
+    <meta name="twitter:description" content="{{ ogDescription }}">
+    <meta name="twitter:image" content="{{ baseUrl }}/assets/images/og-image.png">
 
     <!-- Meta Pixel Code -->
     <script>

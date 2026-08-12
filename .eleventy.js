@@ -7,6 +7,7 @@ module.exports = function(eleventyConfig) {
     // prefixo "src/" no output — ou seja, src/assets/css/style.css
     // vira _site/assets/css/style.css.
     eleventyConfig.addPassthroughCopy("src/assets");
+    eleventyConfig.addPassthroughCopy("src/robots.txt");
 
     return {
         // Templates em Nunjucks

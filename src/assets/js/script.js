@@ -89,10 +89,18 @@ document.addEventListener('DOMContentLoaded', () => {
      * 1. Abra Google Sheets e crie uma planilha chamada "SIPOP Contacts"
      * 2. Vá em Extensões > Apps Script e cole o código do arquivo apps-script.gs
      * 3. Implante como Web App (Execute as: Me | Who has access: Anyone)
-     * 4. Copie a URL gerada e cole em APPS_SCRIPT_URL abaixo
+     * 4. Cole a URL gerada em APPS_SCRIPT_URL dentro de
+     *    netlify/functions/submit-form.js (não aqui — o front não fala
+     *    mais direto com o Apps Script, veja o porquê abaixo)
+     *
+     * O front chama /.netlify/functions/submit-form, uma Netlify Function
+     * que repassa a submissão pro Apps Script no servidor (server-to-server,
+     * sem a limitação de 'no-cors' do browser) e devolve um status real —
+     * assim o usuário só vê "enviado com sucesso" quando o lead realmente
+     * foi salvo na planilha.
      */
 
-    const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyj_x-S65t3iPFqQ-eDgrqYvmMEGscp-Yk6wXAarIxcddTt9iyTsF_tZfe1I96T3gzH/exec';
+    const FORM_ENDPOINT = '/.netlify/functions/submit-form';
 
     const form     = document.getElementById('sipop-form');
     const statusEl = document.getElementById('formStatus');
@@ -130,18 +138,28 @@ document.addEventListener('DOMContentLoaded', () => {
             };
 
             try {
-                await fetch(APPS_SCRIPT_URL, {
+                const response = await fetch(FORM_ENDPOINT, {
                     method:  'POST',
-                    mode:    'no-cors', // Google Apps Script exige no-cors
                     headers: { 'Content-Type': 'application/json' },
                     body:    JSON.stringify(data),
                 });
 
-                // no-cors não retorna status legível — assumimos sucesso se não houve erro
+                let result = {};
+                try {
+                    result = await response.json();
+                } catch (parseErr) {
+                    // resposta sem corpo JSON legível — trata como falha
+                }
+
+                if (!response.ok || result.status !== 'success') {
+                    throw new Error(result.message || `Request failed (${response.status})`);
+                }
+
                 statusEl.textContent = '✓ Message sent successfully. We will get back to you soon.';
                 statusEl.className   = 'form-status';
 
                 // Eventos de conversão — Meta Pixel + GA4
+                // (só disparam quando o lead realmente foi salvo)
                 if (typeof fbq === 'function') {
                     fbq('track', 'Lead', {
                         content_name: data.source,
@@ -161,7 +179,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 captureUTMs();
 
             } catch (error) {
-                statusEl.textContent = 'Connection error. Please try again or email us directly at contact@sipopscience.com';
+                statusEl.textContent = 'Something went wrong and your message was not sent. Please try again or email us directly at contact@sipopscience.com';
                 statusEl.className   = 'form-status error';
                 console.error('Form error:', error);
 

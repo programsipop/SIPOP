@@ -1,0 +1,26 @@
+---
+permalink: "sitemap.xml"
+eleventyExcludeFromCollections: true
+---
+{%- set baseUrl = "https://sipopscience.com" -%}
+{%- set pages = [
+    { slug: "" },
+    { slug: "technical-review" },
+    { slug: "publications" },
+    { slug: "testimonials" }
+] -%}
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+{%- for page in pages %}
+{%- for code, locale in i18n %}
+    <url>
+        <loc>{{ baseUrl }}{{ locale.urlPrefix }}/{{ page.slug }}</loc>
+{%- for code2, locale2 in i18n %}
+        <xhtml:link rel="alternate" hreflang="{{ locale2.htmlLang }}" href="{{ baseUrl }}{{ locale2.urlPrefix }}/{{ page.slug }}" />
+{%- endfor %}
+        <xhtml:link rel="alternate" hreflang="x-default" href="{{ baseUrl }}/{{ page.slug }}" />
+    </url>
+{%- endfor %}
+{%- endfor %}
+</urlset>
