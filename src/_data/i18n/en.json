@@ -39,8 +39,28 @@
     "nationalityPlaceholder": "e.g. Brazilian",
     "preferredLanguageLabel": "Preferred language",
     "specialtyLabel": "Specialty",
-    "objectiveLabel": "Objective",
-    "objectivePlaceholder": "Tell us a little about your trajectory and what motivates you to seek SIPOP at this time",
+    "careerStageLabel": "Current academic/professional stage",
+    "careerStagePlaceholder": "Select an option",
+    "careerStageOptions": [
+      { "value": "student", "label": "Undergraduate student" },
+      { "value": "postgrad", "label": "Graduate student (Master's or PhD)" },
+      { "value": "postdoc", "label": "Postdoctoral researcher" },
+      { "value": "faculty_progressing", "label": "Faculty/researcher building their career" },
+      { "value": "faculty_senior", "label": "Tenured professor / senior researcher" },
+      { "value": "non_academic", "label": "Professional outside academia" },
+      { "value": "other", "label": "Other" }
+    ],
+    "objectiveTypeLabel": "Main objective",
+    "objectiveTypePlaceholder": "Select an option",
+    "objectiveTypeOptions": [
+      { "value": "requirement", "label": "Completing an academic requirement (thesis, dissertation)" },
+      { "value": "career", "label": "Career progression (tenure, funding, CV)" },
+      { "value": "quality", "label": "Improving the methodological quality of a study" },
+      { "value": "q1", "label": "Publishing in a high-impact (Q1) journal" },
+      { "value": "other", "label": "Other" }
+    ],
+    "objectiveLabel": "Additional details (optional)",
+    "objectivePlaceholder": "Briefly describe (2-3 sentences) what you need",
     "submitLabel": "Submit"
   },
   "home": {
@@ -408,8 +428,8 @@
       ],
       "emailPrompt": "Prefer to write directly?",
       "specialtyLabel": "Research area / Specialty",
-      "objectiveLabel": "Tell us about your manuscript",
-      "objectivePlaceholder": "What is your study about? Which journal are you targeting? What stage is the manuscript at?",
+      "objectiveLabel": "About your manuscript (optional)",
+      "objectivePlaceholder": "Briefly describe (2-3 sentences): study topic, target journal, and current stage",
       "submitLabel": "Request a Technical Review"
     }
   }

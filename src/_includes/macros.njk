@@ -28,6 +28,8 @@
 {% set specialtyLabel = specialtyLabel or t.form.specialtyLabel %}
 {% set objectiveLabel = objectiveLabel or t.form.objectiveLabel %}
 {% set objectivePlaceholder = objectivePlaceholder or t.form.objectivePlaceholder %}
+{% set objectiveTypeLabel = t.form.objectiveTypeLabel %}
+{% set objectiveTypePlaceholder = t.form.objectiveTypePlaceholder %}
 <form id="{{ formId }}">
     {% if sourceValue %}
     <!-- Campo oculto para identificar a origem -->
@@ -84,8 +86,26 @@
         <input type="text" id="specialty" name="specialty">
     </div>
     <div class="form-group">
+        <label for="careerStage">{{ t.form.careerStageLabel }}</label>
+        <select id="careerStage" name="careerStage" required>
+            <option value="" disabled selected>{{ t.form.careerStagePlaceholder }}</option>
+            {% for opt in t.form.careerStageOptions %}
+            <option value="{{ opt.value }}">{{ opt.label }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="objectiveType">{{ objectiveTypeLabel }}</label>
+        <select id="objectiveType" name="objectiveType" required>
+            <option value="" disabled selected>{{ objectiveTypePlaceholder }}</option>
+            {% for opt in t.form.objectiveTypeOptions %}
+            <option value="{{ opt.value }}">{{ opt.label }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="form-group">
         <label for="objective">{{ objectiveLabel }}</label>
-        <textarea id="objective" name="objective" rows="4" placeholder="{{ objectivePlaceholder }}"></textarea>
+        <textarea id="objective" name="objective" rows="3" placeholder="{{ objectivePlaceholder }}"></textarea>
     </div>
     <button type="submit" class="btn-submit">{{ submitLabel }}</button>
     <p class="form-status" id="formStatus" aria-live="polite"></p>

@@ -129,6 +129,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 nationality:        form.nationality        ? form.nationality.value        : '',
                 preferredLanguage:  form.preferredLanguage   ? form.preferredLanguage.value   : '',
                 specialty:          form.specialty.value,
+                careerStage:        form.careerStage    ? form.careerStage.value    : '',
+                objectiveType:      form.objectiveType ? form.objectiveType.value : '',
                 objective:          form.objective.value,
                 utm_source:         form.utm_source   ? form.utm_source.value   : '',
                 utm_medium:         form.utm_medium   ? form.utm_medium.value   : '',

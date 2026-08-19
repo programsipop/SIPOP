@@ -39,8 +39,28 @@
     "nationalityPlaceholder": "ej.: Brasileña",
     "preferredLanguageLabel": "Idioma preferido",
     "specialtyLabel": "Especialidad",
-    "objectiveLabel": "Objetivo",
-    "objectivePlaceholder": "Cuéntanos un poco sobre tu trayectoria y qué te motiva a buscar SIPOP en este momento",
+    "careerStageLabel": "Etapa académica/profesional actual",
+    "careerStagePlaceholder": "Selecciona una opción",
+    "careerStageOptions": [
+      { "value": "student", "label": "Estudiante de grado" },
+      { "value": "postgrad", "label": "Estudiante de posgrado (maestría o doctorado)" },
+      { "value": "postdoc", "label": "Investigador postdoctoral" },
+      { "value": "faculty_progressing", "label": "Profesor/investigador en progresión de carrera" },
+      { "value": "faculty_senior", "label": "Profesor titular / investigador sénior" },
+      { "value": "non_academic", "label": "Profesional fuera de la academia" },
+      { "value": "other", "label": "Otro" }
+    ],
+    "objectiveTypeLabel": "Objetivo principal",
+    "objectiveTypePlaceholder": "Selecciona una opción",
+    "objectiveTypeOptions": [
+      { "value": "requirement", "label": "Cumplir un requisito académico (tesina, tesis)" },
+      { "value": "career", "label": "Progresión de carrera (titularidad, financiamiento, currículum)" },
+      { "value": "quality", "label": "Mejorar la calidad metodológica de una investigación" },
+      { "value": "q1", "label": "Publicar en una revista de alto impacto (Q1)" },
+      { "value": "other", "label": "Otro" }
+    ],
+    "objectiveLabel": "Detalles adicionales (opcional)",
+    "objectivePlaceholder": "Describe brevemente (2-3 frases) lo que necesitas",
     "submitLabel": "Enviar"
   },
   "home": {
@@ -408,8 +428,8 @@
       ],
       "emailPrompt": "¿Prefieres escribir directamente?",
       "specialtyLabel": "Área de investigación / Especialidad",
-      "objectiveLabel": "Cuéntanos sobre tu manuscrito",
-      "objectivePlaceholder": "¿De qué trata tu estudio? ¿A qué revista aspiras? ¿En qué etapa se encuentra el manuscrito?",
+      "objectiveLabel": "Sobre tu manuscrito (opcional)",
+      "objectivePlaceholder": "Describe brevemente (2-3 frases): tema del estudio, revista objetivo y etapa actual",
       "submitLabel": "Solicitar Revisión Técnica"
     }
   }
