@@ -82,3 +82,18 @@
   from   = "/li-featured"
   to     = "/technical-review/?utm_source=linkedin&utm_medium=profile&utm_campaign=organic_2026&utm_content=featured"
   status = 302
+
+[[redirects]]
+  from   = "/li-post"
+  to     = "/technical-review/?utm_source=linkedin&utm_medium=organic_post&utm_campaign=organic_2026&utm_content=caption"
+  status = 302
+
+[[redirects]]
+  from   = "/li-dm"
+  to     = "/technical-review/?utm_source=linkedin&utm_medium=dm&utm_campaign=organic_2026&utm_content=direct_message"
+  status = 302
+
+[[redirects]]
+  from   = "/ig-bio"
+  to     = "/technical-review/?utm_source=instagram&utm_medium=bio&utm_campaign=organic_2026&utm_content=bio_link"
+  status = 302
