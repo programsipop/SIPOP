@@ -65,3 +65,20 @@
   from   = "/es/testimonials"
   to     = "/es/testimonials/index.html"
   status = 200
+
+# Links curtos com UTM para o perfil do LinkedIn do Gaspar
+# (redirect de verdade, 302 — não reescrita interna como os de cima)
+[[redirects]]
+  from   = "/li-about"
+  to     = "/technical-review/?utm_source=linkedin&utm_medium=profile&utm_campaign=organic_2026&utm_content=about"
+  status = 302
+
+[[redirects]]
+  from   = "/li-contact"
+  to     = "/technical-review/?utm_source=linkedin&utm_medium=profile&utm_campaign=organic_2026&utm_content=contact_info"
+  status = 302
+
+[[redirects]]
+  from   = "/li-featured"
+  to     = "/technical-review/?utm_source=linkedin&utm_medium=profile&utm_campaign=organic_2026&utm_content=featured"
+  status = 302
