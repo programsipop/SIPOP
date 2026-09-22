@@ -3,8 +3,60 @@
    Paleta: Pine Blue #2C7A7B | Pearl Aqua #81C7B7
            White Smoke #F4F4F4 | Pale Slate #CBD5E0
            Slate Black #0F172A | Pure White #FFFFFF
-   Fonte: Inter (Google Fonts)
+   Fonte: Inter (self-hosted em /assets/fonts/)
    ============================================ */
+
+/* ============================================
+   0. FONTE — Inter (self-hosted, era Google Fonts)
+   ============================================ */
+
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('/assets/fonts/inter-v20-latin-regular.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Inter';
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
+    src: url('/assets/fonts/inter-v20-latin-italic.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url('/assets/fonts/inter-v20-latin-500.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url('/assets/fonts/inter-v20-latin-600.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url('/assets/fonts/inter-v20-latin-700.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 900;
+    font-display: swap;
+    src: url('/assets/fonts/inter-v20-latin-900.woff2') format('woff2');
+}
 
 /* ============================================
    1. VARIÁVEIS — LIGHT & DARK
