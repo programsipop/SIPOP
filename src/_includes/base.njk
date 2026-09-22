@@ -57,33 +57,56 @@
     <meta name="twitter:description" content="{{ ogDescription }}">
     <meta name="twitter:image" content="{{ baseUrl }}/assets/images/og-image.png">
 
-    <!-- Meta Pixel Code -->
+    <!-- Meta Pixel + Google tag (gtag.js) — carregados de forma adiada -->
+    <!-- Motivo: no PageSpeed, esses dois scripts eram o maior consumidor de -->
+    <!-- CPU logo no início da página (78 KiB + 73 KiB de JS não usado), -->
+    <!-- atrasando em ~2s a pintura do elemento de LCP. O rastreamento -->
+    <!-- (fbq/gtag) segue funcionando normalmente — só a inicialização passa -->
+    <!-- a ocorrer depois que a página termina de carregar, e não durante o -->
+    <!-- carregamento crítico. O evento de conversão (Lead/generate_lead) só -->
+    <!-- dispara no envio do formulário, bem mais tarde, então isso não afeta -->
+    <!-- o rastreamento de leads. -->
     <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '1995945461035340');
-    fbq('track', 'PageView');
+    function sipopLoadTrackingScripts() {
+        // Meta Pixel
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '1995945461035340');
+        fbq('track', 'PageView');
+
+        // Google tag (gtag.js)
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        window.gtag = gtag;
+        gtag('js', new Date());
+        gtag('config', 'G-9MEJZE3T7Q');
+
+        var gtagScript = document.createElement('script');
+        gtagScript.async = true;
+        gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-9MEJZE3T7Q';
+        document.head.appendChild(gtagScript);
+    }
+
+    if (document.readyState === 'complete') {
+        sipopLoadTrackingScripts();
+    } else {
+        window.addEventListener('load', function () {
+            // pequeno atraso pra garantir que o LCP já pintou antes desses
+            // scripts começarem a rodar
+            setTimeout(sipopLoadTrackingScripts, 1000);
+        });
+    }
     </script>
     <noscript><img height="1" width="1" style="display:none"
     src="https://www.facebook.com/tr?id=1995945461035340&ev=PageView&noscript=1"
     /></noscript>
-    <!-- End Meta Pixel Code -->
-
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9MEJZE3T7Q"></script>
-    <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-9MEJZE3T7Q');
-    </script>
+    <!-- End Meta Pixel + gtag -->
 
 </head>
 <body{% if bodyClass %} class="{{ bodyClass }}"{% endif %}>
