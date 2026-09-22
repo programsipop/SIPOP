@@ -42,7 +42,7 @@
         <div class="process-grid">
             {% for item in h.process.items %}
             <div class="process-item">
-                <img src="/assets/images/icons/{{ item.icon }}" alt="{{ item.title }}">
+                <img src="{{ ('/assets/images/icons/' + item.icon) | asset }}" alt="{{ item.title }}">
                 <h3>{{ item.title }}</h3>
                 <p>{{ item.body }}</p>
             </div>
@@ -84,7 +84,7 @@
         <div class="benefits-grid">
             {% for item in h.benefits.items %}
             <div class="benefit-card">
-                <img src="/assets/images/icons/{{ item.icon }}" alt="{{ item.title }}">
+                <img src="{{ ('/assets/images/icons/' + item.icon) | asset }}" alt="{{ item.title }}">
                 <h3>{{ item.title }}</h3>
                 <p>{{ item.body }}</p>
             </div>

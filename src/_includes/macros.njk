@@ -117,7 +117,7 @@
 <blockquote class="testimonial-card">
     <p>&ldquo;{{ item.quote }}&rdquo;</p>
     <cite>
-        <img src="/assets/images/testimonials/{{ item.avatar }}" alt="{{ item.name }}" class="testimonial-avatar">
+        <img src="{{ ('/assets/images/testimonials/' + item.avatar) | asset }}" alt="{{ item.name }}" class="testimonial-avatar">
         <span class="cite-info">
             <strong>{{ item.name }}</strong>
             {{ item.role }}<br>
@@ -136,7 +136,7 @@
     </blockquote>
     <div class="test-card__person">
         {% if item.avatar %}
-        <img src="/assets/images/testimonials/{{ item.avatar }}" alt="{{ item.name }}" class="test-avatar">
+        <img src="{{ ('/assets/images/testimonials/' + item.avatar) | asset }}" alt="{{ item.name }}" class="test-avatar">
         {% else %}
         <div class="test-avatar test-avatar--initials" aria-hidden="true">{{ item.initials }}</div>
         {% endif %}

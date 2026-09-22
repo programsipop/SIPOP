@@ -8,16 +8,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% if pageKey == "home" %}{{ t[pageKey].title }}{% else %}{{ t[pageKey].title }} - SIPOP{% endif %}</title>
     <meta name="description" content="{{ t[pageKey].description }}">
-    <link rel="icon" type="image/x-icon" href="/assets/images/favicon/Icon.ico">
+    <link rel="icon" type="image/x-icon" href="{{ '/assets/images/favicon/Icon.ico' | asset }}">
 
     <!-- Fonte Inter — self-hosted em /assets/fonts/ (era Google Fonts). Preload do peso -->
     <!-- regular, que é o mais usado acima da dobra em todas as páginas. -->
     <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/inter-v20-latin-regular.woff2" crossorigin>
 
     <!-- Preload da imagem de fundo do hero (background-image via CSS só é descoberta após o parse do CSS) -->
-    <link rel="preload" as="image" href="/assets/images/backgrounds/BG1.webp" fetchpriority="high">
+    <link rel="preload" as="image" href="{{ '/assets/images/backgrounds/BG1.webp' | asset }}" fetchpriority="high">
 
-    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="{{ '/assets/css/style.css' | asset }}">
     {% if extraCss %}
         {% for css in extraCss %}
             <style>{% inlineCss css %}</style>
@@ -41,7 +41,7 @@
     <meta property="og:title" content="{{ ogTitle }}">
     <meta property="og:description" content="{{ ogDescription }}">
     <meta property="og:url" content="{{ ogUrl }}">
-    <meta property="og:image" content="{{ baseUrl }}/assets/images/og-image.png">
+    <meta property="og:image" content="{{ baseUrl }}{{ '/assets/images/og-image.png' | asset }}">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="SIPOP — Scientific Integrity and Publication Oversight Program">
@@ -54,7 +54,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{{ ogTitle }}">
     <meta name="twitter:description" content="{{ ogDescription }}">
-    <meta name="twitter:image" content="{{ baseUrl }}/assets/images/og-image.png">
+    <meta name="twitter:image" content="{{ baseUrl }}{{ '/assets/images/og-image.png' | asset }}">
 
     <!-- Meta Pixel + Google tag (gtag.js) — carregados de forma adiada -->
     <!-- Motivo: no PageSpeed, esses dois scripts eram o maior consumidor de -->
@@ -122,10 +122,10 @@
 
     {% include "footer.njk" %}
 
-    <script src="/assets/js/script.js" defer></script>
+    <script src="{{ '/assets/js/script.js' | asset }}" defer></script>
     {% if extraJs %}
         {% for js in extraJs %}
-            <script src="/assets/js/{{ js }}"></script>
+            <script src="{{ ('/assets/js/' + js) | asset }}"></script>
         {% endfor %}
     {% endif %}
 </body>
