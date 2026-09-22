@@ -8,6 +8,12 @@
 [build.environment]
   NODE_VERSION = "18"
 
+# Cache de longa duração pros assets estáticos (imagens, CSS, JS)
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
 # Redireciona /publications para /publications/index.html (URLs limpas)
 [[redirects]]
   from   = "/publications"

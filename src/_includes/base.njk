@@ -9,6 +9,15 @@
     <title>{% if pageKey == "home" %}{{ t[pageKey].title }}{% else %}{{ t[pageKey].title }} - SIPOP{% endif %}</title>
     <meta name="description" content="{{ t[pageKey].description }}">
     <link rel="icon" type="image/x-icon" href="/assets/images/favicon/Icon.ico">
+
+    <!-- Fonte Inter — preconnect + link (troca do @import, que serializava o carregamento) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400&display=swap">
+
+    <!-- Preload da imagem de fundo do hero (background-image via CSS só é descoberta após o parse do CSS) -->
+    <link rel="preload" as="image" href="/assets/images/backgrounds/BG1.webp">
+
     <link rel="stylesheet" href="/assets/css/style.css">
     {% if extraCss %}
         {% for css in extraCss %}
@@ -91,7 +100,7 @@
 
     {% include "footer.njk" %}
 
-    <script src="/assets/js/script.js"></script>
+    <script src="/assets/js/script.js" defer></script>
     {% if extraJs %}
         {% for js in extraJs %}
             <script src="/assets/js/{{ js }}"></script>
