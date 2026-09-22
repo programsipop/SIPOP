@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="/assets/css/style.css">
     {% if extraCss %}
         {% for css in extraCss %}
-            <link rel="stylesheet" href="/assets/css/{{ css }}">
+            <style>{% inlineCss css %}</style>
         {% endfor %}
     {% endif %}
 
