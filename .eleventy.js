@@ -70,9 +70,9 @@ module.exports = function(eleventyConfig) {
 
         const srcDir = path.join(__dirname, "src");
 
-        // Imagens e JS: hash direto do conteúdo original, sem reescrita —
-        // nenhum dos dois referencia outros assets por caminho.
-        for (const dir of [path.join(srcDir, "assets", "images"), path.join(srcDir, "assets", "js")]) {
+        // Imagens, vídeos e JS: hash direto do conteúdo original, sem
+        // reescrita — nenhum deles referencia outros assets por caminho.
+        for (const dir of [path.join(srcDir, "assets", "images"), path.join(srcDir, "assets", "videos"), path.join(srcDir, "assets", "js")]) {
             for (const file of walk(dir)) {
                 const buffer = fs.readFileSync(file);
                 const urlPath = "/" + path.relative(srcDir, file).split(path.sep).join("/");

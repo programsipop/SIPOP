@@ -1,0 +1,17 @@
+---
+layout: lp-ads.njk
+lang: pt
+slug: "obrigado-prioridade"
+title: "Recebemos seu projeto. | SIPOP"
+description: "Recebemos seu projeto. Vamos falar com você pelo WhatsApp em breve."
+noindex: true
+thanksType: prioridade
+---
+{% from "lp-macros.njk" import publicationList %}
+<section class="lp-section lp-thanks">
+    <div class="container lp-thanks__inner">
+        <h1>Recebemos seu projeto.</h1>
+        <p>Vamos falar com você pelo WhatsApp em breve. Enquanto isso, conheça alguns dos estudos que já apoiamos.</p>
+        {{ publicationList(lpPublicar.article, publications) }}
+    </div>
+</section>

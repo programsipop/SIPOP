@@ -1,0 +1,15 @@
+{# src/_includes/lp-macros.njk — lista de publicações das páginas de anúncio, sem links de saída #}
+{% macro publicationList(article, publications) %}
+<ul class="lp-pubs">
+    <li>
+        <strong>{{ article.title }}</strong>
+        <span>{{ article.journal }}</span>
+    </li>
+    {% for pub in publications %}
+    <li>
+        <strong>{{ pub.pt.title }}</strong>
+        <span>{{ pub.pt.journal }}</span>
+    </li>
+    {% endfor %}
+</ul>
+{% endmacro %}

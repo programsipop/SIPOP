@@ -1,0 +1,132 @@
+{
+  "gtmId": "GTM-XXXXXXX",
+  "privacyUrl": "",
+  "showPrices": false,
+
+  "audience": [
+    { "lead": "Médicos e profissionais da saúde", "rest": "que têm dados do serviço, mas nunca transformaram em artigo." },
+    { "lead": "Mestrandos e doutorandos", "rest": "com prazo de defesa e uma revisão sistemática que não anda." },
+    { "lead": "Docentes e pesquisadores", "rest": "que precisam publicar em revistas de alto impacto para progredir na carreira." }
+  ],
+
+  "pains": [
+    "Seu artigo voltou com \"falhas metodológicas\" e você não sabe por onde começar.",
+    "Você não encontra um estatístico disposto a entrar no seu projeto.",
+    "Seu orientador não tem tempo para revisar a análise.",
+    "Você tem a ideia e os dados, mas não domina PRISMA, GRADE ou meta-análise."
+  ],
+
+  "steps": [
+    { "icon": "Icon1.webp", "width": 597, "height": 571, "lead": "Você conta seu projeto", "rest": "no formulário." },
+    { "icon": "Icon2.webp", "width": 800, "height": 800, "lead": "Analisamos", "rest": "metodologia, estatística e o estágio do estudo." },
+    { "icon": "Icon3.webp", "width": 800, "height": 597, "lead": "Indicamos o formato", "rest": "de acompanhamento que faz sentido para o seu prazo." },
+    { "icon": "Icon4.webp", "width": 800, "height": 737, "lead": "Você submete", "rest": "um manuscrito revisado com o rigor que o revisor procura." }
+  ],
+
+  "formats": [
+    {
+      "name": "Revisão Técnica",
+      "audience": "Já tem o manuscrito pronto",
+      "includes": "Auditoria metodológica, revisão da escrita, formatação e relatório com recomendações em até 7 dias úteis"
+    },
+    {
+      "name": "Mentoria (Padrão, Avançada e Premium)",
+      "audience": "Está com o estudo em andamento",
+      "includes": "Da pergunta de pesquisa e estratégia de busca até análise estatística, forest plots e auditoria pré-submissão"
+    },
+    {
+      "name": "Consultoria Científica",
+      "audience": "Tem um projeto complexo ou prazo curto",
+      "includes": "Participação ativa: busca, extração de dados, interpretação estatística e suporte à escrita"
+    }
+  ],
+
+  "article": {
+    "title": "The clinical spectrum of suicide-related outcomes in amyotrophic lateral sclerosis: A systematic review and meta-analysis",
+    "journal": "General Hospital Psychiatry · 2026",
+    "citation": "Moreira JVA, et al. General Hospital Psychiatry 103 (2026) 204–212.",
+    "doi": "10.1016/j.genhosppsych.2026.10.002"
+  },
+
+  "faq": [
+    { "q": "Vocês escrevem o artigo?", "a": "Não. Orientamos, revisamos e auditamos. O texto e a autoria são seus." },
+    { "q": "Vocês garantem a publicação?", "a": "Ninguém pode garantir. Garantimos que o método esteja no padrão que os revisores exigem." },
+    { "q": "Preciso já ter dados coletados?", "a": "Não. Atendemos desde a definição da pergunta de pesquisa até a auditoria antes da submissão." },
+    { "q": "Atendem quais áreas?", "a": "Ciências biomédicas e da saúde: medicina, fisioterapia, odontologia, nutrição, enfermagem, educação física e áreas afins." },
+    { "q": "Como é o atendimento?", "a": "[Confirmar com o cliente: online, por reuniões e relatórios escritos.]", "placeholder": true }
+  ],
+
+  "selects": [
+    {
+      "name": "area",
+      "label": "Área de atuação",
+      "options": [
+        { "value": "medicina", "label": "Medicina" },
+        { "value": "fisioterapia", "label": "Fisioterapia" },
+        { "value": "odontologia", "label": "Odontologia" },
+        { "value": "nutricao", "label": "Nutrição" },
+        { "value": "enfermagem", "label": "Enfermagem" },
+        { "value": "educacao_fisica", "label": "Educação física" },
+        { "value": "farmacia", "label": "Farmácia" },
+        { "value": "psicologia", "label": "Psicologia" },
+        { "value": "outra_saude", "label": "Outra área da saúde" },
+        { "value": "fora_saude", "label": "Fora da área da saúde" }
+      ]
+    },
+    {
+      "name": "estagio",
+      "label": "Estágio acadêmico/profissional atual",
+      "options": [
+        { "value": "graduando", "label": "Graduando" },
+        { "value": "pos_graduando", "label": "Pós-graduando (mestrado ou doutorado)" },
+        { "value": "pos_doutorando", "label": "Pós-doutorando" },
+        { "value": "professor_progressao", "label": "Professor/pesquisador em progressão de carreira" },
+        { "value": "professor_titular", "label": "Professor titular / pesquisador sênior" },
+        { "value": "fora_academia", "label": "Profissional fora da academia" },
+        { "value": "outro", "label": "Outro" }
+      ]
+    },
+    {
+      "name": "objetivo",
+      "label": "Objetivo principal",
+      "options": [
+        { "value": "requisito_academico", "label": "Concluir um requisito acadêmico (TCC, dissertação, tese)" },
+        { "value": "progressao_carreira", "label": "Progressão de carreira (titularidade, fomento, currículo)" },
+        { "value": "qualidade_metodologica", "label": "Melhorar a qualidade metodológica de uma pesquisa" },
+        { "value": "alto_impacto_q1", "label": "Publicar em revista de alto impacto (Q1)" },
+        { "value": "outro", "label": "Outro" }
+      ]
+    },
+    {
+      "name": "fase",
+      "label": "Em que fase está seu estudo?",
+      "options": [
+        { "value": "ideia", "label": "Só a ideia" },
+        { "value": "protocolo", "label": "Protocolo pronto" },
+        { "value": "dados_coletados", "label": "Dados coletados" },
+        { "value": "manuscrito", "label": "Manuscrito escrito" },
+        { "value": "rejeitado", "label": "Já submetido e rejeitado" }
+      ]
+    },
+    {
+      "name": "tipo_estudo",
+      "label": "Que tipo de estudo é?",
+      "options": [
+        { "value": "revisao_meta", "label": "Revisão sistemática ou meta-análise" },
+        { "value": "ensaio_clinico", "label": "Ensaio clínico" },
+        { "value": "observacional", "label": "Estudo observacional" },
+        { "value": "nao_sei", "label": "Ainda não sei" }
+      ]
+    },
+    {
+      "name": "prazo",
+      "label": "Qual o seu prazo?",
+      "options": [
+        { "value": "ate_3_meses", "label": "Até 3 meses" },
+        { "value": "3_a_6_meses", "label": "3 a 6 meses" },
+        { "value": "mais_6_meses", "label": "Mais de 6 meses" },
+        { "value": "sem_prazo", "label": "Sem prazo definido" }
+      ]
+    }
+  ]
+}

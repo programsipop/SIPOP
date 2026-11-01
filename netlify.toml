@@ -51,6 +51,22 @@
   to     = "/pt/testimonials/index.html"
   status = 200
 
+# Landing page de anúncios e páginas de obrigado (só em português)
+[[redirects]]
+  from   = "/pt/publicar"
+  to     = "/pt/publicar/index.html"
+  status = 200
+
+[[redirects]]
+  from   = "/pt/obrigado"
+  to     = "/pt/obrigado/index.html"
+  status = 200
+
+[[redirects]]
+  from   = "/pt/obrigado-prioridade"
+  to     = "/pt/obrigado-prioridade/index.html"
+  status = 200
+
 # Versão em espanhol (subpasta /es/)
 [[redirects]]
   from   = "/es"
