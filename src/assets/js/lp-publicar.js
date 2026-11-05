@@ -273,6 +273,11 @@ async function sendLead(payload) {
 
 // Com o GTM ativo, espera as tags dispararem antes de sair da página.
 // Sem ele não há o que esperar, e o redirecionamento é imediato.
+// O eventCallback do GTM avisa quando as tags rodaram, não quando os
+// pedidos terminaram: o Meta Pixel envia por imagem, e sair da página
+// logo em seguida cancela o envio. Por isso a folga depois do callback.
+const PIXEL_GRACE_MS = 700;
+
 function pushEventsAndRedirect(events, url) {
     let redirected = false;
     const redirect = () => {
@@ -283,14 +288,17 @@ function pushEventsAndRedirect(events, url) {
 
     const gtmActive = Boolean(window.google_tag_manager);
     if (gtmActive) {
-        Object.assign(events[events.length - 1], { eventCallback: redirect, eventTimeout: 1000 });
+        Object.assign(events[events.length - 1], {
+            eventCallback: () => setTimeout(redirect, PIXEL_GRACE_MS),
+            eventTimeout: 1000,
+        });
     }
 
     window.dataLayer = window.dataLayer || [];
     events.forEach((event) => window.dataLayer.push(event));
 
     if (gtmActive) {
-        setTimeout(redirect, 1500);
+        setTimeout(redirect, 2000);
     } else {
         redirect();
     }
