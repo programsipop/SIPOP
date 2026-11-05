@@ -1,0 +1,96 @@
+{# src/_includes/lp-ads.njk — layout das páginas de anúncio (/pt/publicar e obrigados).
+   Separado do base.njk de propósito: aqui não há navbar, seletor de idioma,
+   nem Pixel/GA4 direto. Toda a medição passa pelo GTM. #}
+{% set baseUrl = "https://sipopscience.com" %}
+{% set pageUrl = baseUrl + "/pt/" + slug %}
+{% set ogImage = baseUrl + ('/assets/images/og-image.png' | asset) %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <meta name="description" content="{{ description }}">
+    {% if noindex %}<meta name="robots" content="noindex">{% endif %}
+    <link rel="canonical" href="{{ pageUrl }}">
+    <link rel="icon" type="image/x-icon" href="{{ '/assets/images/favicon/Icon.ico' | asset }}">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="SIPOP">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:title" content="{{ title }}">
+    <meta property="og:description" content="{{ description }}">
+    <meta property="og:url" content="{{ pageUrl }}">
+    <meta property="og:image" content="{{ ogImage }}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ title }}">
+    <meta name="twitter:description" content="{{ description }}">
+    <meta name="twitter:image" content="{{ ogImage }}">
+
+    <!-- Respeita a preferência de tema salva no site. Sem preferência, segue o sistema. -->
+    <script>
+    try {
+        var sipopTheme = localStorage.getItem('sipop-theme');
+        if (sipopTheme === 'light' || sipopTheme === 'dark') {
+            document.documentElement.setAttribute('data-theme', sipopTheme);
+        }
+    } catch (e) {}
+    </script>
+
+    <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/inter-v20-latin-regular.woff2" crossorigin>
+    <link rel="stylesheet" href="{{ '/assets/css/style.css' | asset }}">
+    <style>{% inlineCss "lp-publicar.css" %}</style>
+
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    {% if thanksType %}dataLayer.push({ event: 'pagina_obrigado', tipo: '{{ thanksType }}' });{% endif %}
+    </script>
+
+    <!-- Google Tag Manager (ID em src/_data/lpPublicar.json) -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','{{ lpPublicar.gtmId }}');</script>
+    <!-- End Google Tag Manager -->
+</head>
+<body class="lp-body">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{ lpPublicar.gtmId }}" title="Google Tag Manager" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <header class="lp-header">
+        <div class="lp-header__inner">
+            <div class="lp-header__logo">
+                <img src="{{ '/assets/images/logo/Logo1.webp' | asset }}" alt="SIPOP" class="brand-logo brand-logo--light" width="976" height="140">
+                <img src="{{ '/assets/images/logo/Logo2.webp' | asset }}" alt="SIPOP" class="brand-logo brand-logo--dark" width="976" height="140">
+            </div>
+            {% if showHeaderCta %}<a href="#formulario" class="lp-btn lp-btn--small">Quero avaliar meu projeto</a>{% endif %}
+        </div>
+    </header>
+
+    <main>
+        {{ content | safe }}
+    </main>
+
+    <footer class="lp-footer">
+        <div class="container lp-footer__inner">
+            <img src="{{ '/assets/images/logo/Logo2.webp' | asset }}" alt="SIPOP" class="lp-footer__logo" width="976" height="140" loading="lazy">
+            <p>Não escrevemos artigos por você, não fabricamos dados e não prometemos publicação.</p>
+            <p>
+                © SIPOP Science ·
+                {% if lpPublicar.privacyUrl %}
+                <a href="{{ lpPublicar.privacyUrl }}" target="_blank" rel="noopener">Política de privacidade</a>
+                {% else %}
+                <!-- TODO: preencher (o site ainda não tem política de privacidade; definir "privacyUrl" em src/_data/lpPublicar.json) -->
+                <span class="lp-placeholder">[link da política de privacidade]</span>
+                {% endif %}
+            </p>
+        </div>
+    </footer>
+
+    {% if extraJs %}<script src="{{ ('/assets/js/' + extraJs) | asset }}" defer></script>{% endif %}
+</body>
+</html>

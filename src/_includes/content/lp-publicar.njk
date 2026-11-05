@@ -1,0 +1,256 @@
+{# src/_includes/content/lp-publicar.njk — conteúdo da landing page /pt/publicar #}
+{% from "lp-macros.njk" import publicationList %}
+{% set lp = lpPublicar %}
+{% set depoimentos = i18n.pt.home.testimonials.items %}
+
+<!-- Bloco 1: topo -->
+<section class="lp-hero">
+    <div class="container lp-hero__inner">
+        <h1>Seu estudo no padrão que as revistas internacionais exigem.</h1>
+        <p class="lp-hero__sub">Supervisão metodológica e estatística para profissionais da saúde que querem publicar revisões sistemáticas, meta-análises e estudos clínicos. Você continua autor. Nós garantimos o rigor.</p>
+        <a href="#formulario" class="lp-btn">Quero avaliar meu projeto</a>
+        <p class="lp-hero__note">Leva 2 minutos. Retorno em até 1 dia útil.</p>
+        <p class="lp-seals">PRISMA · CONSORT · GRADE</p>
+    </div>
+</section>
+
+<!-- Bloco 2: para quem é -->
+<section class="lp-section lp-section--tint">
+    <div class="container">
+        <h2>Para quem é</h2>
+        <div class="lp-grid lp-grid--3">
+            {% for item in lp.audience %}
+            <div class="lp-card"><p><strong>{{ item.lead }}</strong> {{ item.rest }}</p></div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Bloco 3: você se reconhece? -->
+<section class="lp-section">
+    <div class="container lp-narrow">
+        <h2>Você se reconhece?</h2>
+        <ul class="lp-checks">
+            {% for item in lp.pains %}<li>{{ item }}</li>{% endfor %}
+        </ul>
+        <p class="lp-highlight">Quase sempre o problema não é a sua pesquisa. É o método. E método se corrige.</p>
+    </div>
+</section>
+
+<!-- Bloco 4: como funciona -->
+<section class="lp-section lp-section--tint">
+    <div class="container">
+        <h2>Como funciona</h2>
+        <ol class="lp-grid lp-grid--4 lp-steps">
+            {% for step in lp.steps %}
+            <li class="lp-card lp-step">
+                <span class="lp-step__num" aria-hidden="true">{{ loop.index }}</span>
+                <img src="{{ ('/assets/images/icons/' + step.icon) | asset }}" alt="" width="{{ step.width }}" height="{{ step.height }}" loading="lazy">
+                <p><strong>{{ step.lead }}</strong> {{ step.rest }}</p>
+            </li>
+            {% endfor %}
+        </ol>
+    </div>
+</section>
+
+<!-- Bloco 5: formatos de acompanhamento -->
+<section class="lp-section">
+    <div class="container">
+        <h2>Formatos de acompanhamento</h2>
+        <div class="lp-grid lp-grid--3">
+            {% for format in lp.formats %}
+            <article class="lp-card lp-format">
+                <h3>{{ format.name }}</h3>
+                <p class="lp-format__label">Indicado para quem</p>
+                <p>{{ format.audience }}</p>
+                <p class="lp-format__label">Inclui</p>
+                <p class="lp-format__includes">{{ format.includes }}</p>
+                <!-- TODO: preencher valor. Para exibir, definir "showPrices": true em src/_data/lpPublicar.json -->
+                <p class="lp-format__price"{% if not lp.showPrices %} hidden{% endif %}>a partir de R$ [valor]</p>
+                <a href="#formulario" class="lp-btn lp-btn--small lp-format__cta">Quero este formato</a>
+            </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Bloco 6: quem revisa seu estudo -->
+<section class="lp-section lp-section--tint">
+    <div class="container">
+        <h2>Quem revisa seu estudo</h2>
+        <div class="lp-card lp-reviewer">
+            <img class="lp-photo lp-photo--small" src="{{ lp.reviewer.photo | asset }}" alt="" width="640" height="800" loading="lazy">
+            <div>
+                <h3>{{ lp.reviewer.name }}</h3>
+                <p>{{ lp.reviewer.education }}</p>
+                <p>{{ lp.reviewer.reviews }}</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Bloco 6b: publicações de destaque do revisor (capas renderizadas da 1ª página de cada PDF) -->
+<section class="lp-section">
+    <div class="container">
+        <h2>Publicações de destaque</h2>
+        <div class="lp-grid lp-grid--3 lp-featured">
+            {% for pub in lp.reviewer.featured %}
+            <article class="lp-featured__item">
+                <div class="lp-cover">
+                    <img src="{{ pub.cover | asset }}" alt="" width="520" height="{{ pub.coverHeight }}" loading="lazy">
+                </div>
+                <h3>{{ pub.title }}</h3>
+                <p>{{ pub.journal }}</p>
+            </article>
+            {% endfor %}
+        </div>
+        <div class="lp-featured__more">
+            <button type="button" class="lp-btn lp-btn--secondary" id="openPublications" aria-haspopup="dialog">Ver todas as publicações</button>
+        </div>
+    </div>
+</section>
+
+<dialog class="lp-dialog" id="publicationsDialog" aria-labelledby="publicationsTitle">
+    <div class="lp-dialog__head">
+        <h2 id="publicationsTitle">Publicações</h2>
+        <button type="button" class="lp-dialog__close" id="closePublications" aria-label="Fechar lista de publicações">×</button>
+    </div>
+    {{ publicationList(lp.recentPublications, publications) }}
+</dialog>
+
+<!-- Bloco 7: depoimentos (textos copiados da home via i18n/pt.json) -->
+<section class="lp-section lp-section--tint">
+    <div class="container">
+        <h2>Depoimentos</h2>
+
+        <div class="lp-card lp-video">
+            <video controls playsinline preload="none" width="474" height="850"
+                   poster="{{ '/assets/images/testimonials/joao-video-poster.webp' | asset }}"
+                   aria-label="Depoimento em vídeo sobre o aceite do artigo na General Hospital Psychiatry">
+                <source src="{{ '/assets/videos/depoimento-joao.mp4' | asset }}" type="video/mp4">
+                <track kind="captions" src="{{ '/assets/videos/depoimento-joao.vtt' | asset }}" srclang="pt-BR" label="Português" default>
+            </video>
+            <div>
+                <h3>João Victor Aguiar Moreira</h3>
+                <p>Depoimento sobre o aceite do artigo na General Hospital Psychiatry.</p>
+                <blockquote class="lp-article">
+                    <strong>{{ lp.article.title }}</strong>
+                    <span>{{ lp.article.citation }}</span>
+                    <span>DOI: {{ lp.article.doi }}</span>
+                </blockquote>
+                <details class="lp-transcript">
+                    <summary>Ler transcrição do vídeo</summary>
+                    <p>Boa tarde, pessoal, acabamos de receber excelente notícia aqui: o artigo acabou de ser aceito para a publicação na General Hospital Psychiatry, uma excelente revista de psiquiatria. Passando aqui para agradecer a colaboração de toda a nossa equipe, principalmente da equipe do SIPOP Science, que foi fundamental no nosso processo metodológico, de editoração, de auxílio em todas as etapas. Realmente foi muito diferencial poder contar com o apoio técnico e a disponibilidade de toda a equipe também. Então, muito feliz com esse aceite do artigo, e que venham muito mais. Muito obrigado.</p>
+                </details>
+            </div>
+        </div>
+
+        <div class="lp-grid lp-grid--3">
+            {% for item in depoimentos %}
+            <figure class="lp-card lp-quote">
+                <blockquote>&ldquo;{{ item.quote }}&rdquo;</blockquote>
+                <figcaption>
+                    <img src="{{ ('/assets/images/testimonials/' + item.avatar) | asset }}" alt="" width="150" height="150" loading="lazy">
+                    <span><strong>{{ item.name }}</strong>{{ item.role }}<br>{{ item.org }}</span>
+                </figcaption>
+            </figure>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Bloco 8: compromisso ético -->
+<section class="lp-section">
+    <div class="container lp-narrow lp-ethics">
+        <h2>O que não fazemos.</h2>
+        <p>Não escrevemos artigos por você, não fabricamos dados e não prometemos publicação. Nosso papel é auditar a metodologia, fortalecer a análise estatística e garantir conformidade com PRISMA, CONSORT e GRADE. A autoria e a responsabilidade intelectual continuam sendo suas.</p>
+    </div>
+</section>
+
+<!-- Bloco 9: perguntas frequentes -->
+<section class="lp-section lp-section--tint">
+    <div class="container lp-narrow">
+        <h2>Perguntas frequentes</h2>
+        <div class="lp-faq">
+            {% for item in lp.faq %}
+            <details>
+                <summary>{{ item.q }}</summary>
+                {% if item.placeholder %}
+                <!-- TODO: preencher -->
+                <p class="lp-placeholder">{{ item.a }}</p>
+                {% else %}
+                <p>{{ item.a }}</p>
+                {% endif %}
+            </details>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Bloco 10: formulário -->
+<section class="lp-section" id="formulario">
+    <div class="container lp-form-wrap">
+        <h2>Conte sobre o seu projeto.</h2>
+        <p class="lp-form-intro">Responda as perguntas abaixo. Com elas, indicamos o formato certo antes mesmo da primeira conversa.</p>
+
+        <form id="leadForm" class="lp-card lp-form" novalidate>
+            <input type="hidden" name="utm_source">
+            <input type="hidden" name="utm_medium">
+            <input type="hidden" name="utm_campaign">
+            <input type="hidden" name="utm_content">
+            <input type="hidden" name="utm_term">
+            <input type="hidden" name="gclid">
+            <input type="hidden" name="fbclid">
+            <input type="hidden" name="pagina_origem">
+            <input type="hidden" name="idioma" value="pt">
+            <input type="hidden" name="nota_lead">
+            <input type="hidden" name="lead_qualificado">
+            <input type="hidden" name="event_id">
+
+            <div class="form-group">
+                <label for="nome">Nome</label>
+                <input type="text" id="nome" name="nome" autocomplete="name" required aria-describedby="nome-erro">
+                <span class="lp-field-error" id="nome-erro"></span>
+            </div>
+            <div class="form-group">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" autocomplete="email" required aria-describedby="email-erro">
+                <span class="lp-field-error" id="email-erro"></span>
+            </div>
+            <div class="form-group">
+                <label for="whatsapp">WhatsApp</label>
+                <div class="lp-phone">
+                    <select id="whatsapp_ddi" aria-label="Código do país (DDI)">
+                        {% for c in countryCodes %}
+                        <option value="{{ c.code }}"{% if c.selected %} selected{% endif %}>{{ c.pt }} {{ c.code }}</option>
+                        {% endfor %}
+                    </select>
+                    <input type="tel" id="whatsapp" name="whatsapp" inputmode="tel" autocomplete="tel-national" required aria-describedby="whatsapp-dica whatsapp-erro">
+                </div>
+                <span class="form-hint lp-hint" id="whatsapp-dica">Inclua o DDD</span>
+                <span class="lp-field-error" id="whatsapp-erro"></span>
+            </div>
+            {% for field in lp.selects %}
+            <div class="form-group">
+                <label for="{{ field.name }}">{{ field.label }}</label>
+                <select id="{{ field.name }}" name="{{ field.name }}" required aria-describedby="{{ field.name }}-erro">
+                    <option value="">Selecione</option>
+                    {% for opt in field.options %}
+                    <option value="{{ opt.value }}">{{ opt.label }}</option>
+                    {% endfor %}
+                </select>
+                <span class="lp-field-error" id="{{ field.name }}-erro"></span>
+            </div>
+            {% endfor %}
+            <div class="form-group">
+                <label for="detalhes">Conte mais sobre o projeto (opcional)</label>
+                <textarea id="detalhes" name="detalhes" rows="4"></textarea>
+            </div>
+            <button type="submit" class="btn-submit lp-submit">Enviar meu projeto para avaliação</button>
+            <p class="lp-form-status" id="formStatus" role="alert"></p>
+            {% if lp.privacyUrl %}
+            <p class="lp-form-privacy">Usamos seus dados só para avaliar seu projeto e falar com você. Veja a <a href="{{ lp.privacyUrl }}" target="_blank" rel="noopener">política de privacidade</a>.</p>
+            {% endif %}
+        </form>
+    </div>
+</section>

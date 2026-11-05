@@ -1,0 +1,18 @@
+{# src/_includes/lp-macros.njk — lista de publicações das páginas de anúncio, sem links de saída #}
+{# recent: artigos novos que ainda não estão em publications.json (lpPublicar.recentPublications) #}
+{% macro publicationList(recent, publications) %}
+<ul class="lp-pubs">
+    {% for pub in recent %}
+    <li>
+        <strong>{{ pub.title }}</strong>
+        <span>{{ pub.journal }}</span>
+    </li>
+    {% endfor %}
+    {% for pub in publications %}
+    <li>
+        <strong>{{ pub.pt.title }}</strong>
+        <span>{{ pub.pt.journal }}</span>
+    </li>
+    {% endfor %}
+</ul>
+{% endmacro %}
