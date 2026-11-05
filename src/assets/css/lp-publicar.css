@@ -668,6 +668,18 @@ img.lp-photo {
 
 .lp-form-status:empty { display: none; }
 
+.lp-form-privacy {
+    margin-top: 14px;
+    font-size: 13px;
+    text-align: center;
+    color: var(--text-secondary);
+}
+
+.lp-form-privacy a {
+    color: inherit;
+    text-decoration: underline;
+}
+
 /* ============================================
    5. OBRIGADO E RODAPÉ
    ============================================ */
@@ -690,6 +702,51 @@ img.lp-photo {
     font-size: 18px;
     color: var(--text-secondary);
     margin-bottom: 28px;
+}
+
+/* Política de privacidade */
+.lp-legal__inner { max-width: 760px; }
+
+.lp-legal h1 {
+    font-size: 32px;
+    line-height: 1.2;
+    color: var(--lp-title);
+    margin-bottom: 8px;
+}
+
+/* Seletor mais específico que .lp-section h2 (inclusive no media query do desktop) */
+.lp-legal .lp-legal__inner h2 {
+    font-size: 21px;
+    text-align: left;
+    color: var(--lp-title-small);
+    margin: 36px 0 12px;
+}
+
+.lp-legal h3 {
+    font-size: 17px;
+    color: var(--text-primary);
+    margin: 20px 0 8px;
+}
+
+.lp-legal p,
+.lp-legal li {
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--text-primary);
+}
+
+.lp-legal p { margin-bottom: 12px; }
+
+.lp-legal ul {
+    margin: 0 0 12px 22px;
+}
+
+.lp-legal li { margin-bottom: 6px; }
+
+.lp-legal p.lp-legal__updated {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 24px;
 }
 
 .lp-footer {

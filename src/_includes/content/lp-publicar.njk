@@ -248,6 +248,9 @@
             </div>
             <button type="submit" class="btn-submit lp-submit">Enviar meu projeto para avaliação</button>
             <p class="lp-form-status" id="formStatus" role="alert"></p>
+            {% if lp.privacyUrl %}
+            <p class="lp-form-privacy">Usamos seus dados só para avaliar seu projeto e falar com você. Veja a <a href="{{ lp.privacyUrl }}" target="_blank" rel="noopener">política de privacidade</a>.</p>
+            {% endif %}
         </form>
     </div>
 </section>

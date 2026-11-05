@@ -67,6 +67,11 @@
   to     = "/pt/obrigado-prioridade/index.html"
   status = 200
 
+[[redirects]]
+  from   = "/pt/privacidade"
+  to     = "/pt/privacidade/index.html"
+  status = 200
+
 # Versão em espanhol (subpasta /es/)
 [[redirects]]
   from   = "/es"
