@@ -5,15 +5,12 @@
 
 <!-- Bloco 1: topo -->
 <section class="lp-hero">
-    <div class="container lp-hero__grid">
-        <div>
-            <h1>Seu estudo no padrão que as revistas internacionais exigem.</h1>
-            <p class="lp-hero__sub">Supervisão metodológica e estatística para profissionais da saúde que querem publicar revisões sistemáticas, meta-análises e estudos clínicos. Você continua autor. Nós garantimos o rigor.</p>
-            <a href="#formulario" class="lp-btn">Quero avaliar meu projeto</a>
-            <p class="lp-hero__note">Leva 2 minutos. Retorno em até 1 dia útil.</p>
-            <p class="lp-seals">PRISMA · CONSORT · GRADE</p>
-        </div>
-        <img class="lp-photo" src="{{ lp.reviewer.photo | asset }}" alt="{{ lp.reviewer.name }}, revisor do SIPOP Science" width="640" height="800" fetchpriority="high">
+    <div class="container lp-hero__inner">
+        <h1>Seu estudo no padrão que as revistas internacionais exigem.</h1>
+        <p class="lp-hero__sub">Supervisão metodológica e estatística para profissionais da saúde que querem publicar revisões sistemáticas, meta-análises e estudos clínicos. Você continua autor. Nós garantimos o rigor.</p>
+        <a href="#formulario" class="lp-btn">Quero avaliar meu projeto</a>
+        <p class="lp-hero__note">Leva 2 minutos. Retorno em até 1 dia útil.</p>
+        <p class="lp-seals">PRISMA · CONSORT · GRADE</p>
     </div>
 </section>
 
@@ -87,14 +84,28 @@
                 <h3>{{ lp.reviewer.name }}</h3>
                 <p>{{ lp.reviewer.education }}</p>
                 <p>{{ lp.reviewer.reviews }}</p>
-                <p class="lp-format__label">Publicações de destaque</p>
-                <ul class="lp-pubs lp-reviewer__pubs">
-                    {% for pub in lp.reviewer.featured %}
-                    <li><strong>{{ pub.title }}</strong><span>{{ pub.journal }}</span></li>
-                    {% endfor %}
-                </ul>
-                <button type="button" class="lp-btn lp-btn--secondary" id="openPublications" aria-haspopup="dialog">Ver publicações</button>
             </div>
+        </div>
+    </div>
+</section>
+
+<!-- Bloco 6b: publicações de destaque do revisor (capas renderizadas da 1ª página de cada PDF) -->
+<section class="lp-section">
+    <div class="container">
+        <h2>Publicações de destaque</h2>
+        <div class="lp-grid lp-grid--3 lp-featured">
+            {% for pub in lp.reviewer.featured %}
+            <article class="lp-featured__item">
+                <div class="lp-cover">
+                    <img src="{{ pub.cover | asset }}" alt="" width="520" height="{{ pub.coverHeight }}" loading="lazy">
+                </div>
+                <h3>{{ pub.title }}</h3>
+                <p>{{ pub.journal }}</p>
+            </article>
+            {% endfor %}
+        </div>
+        <div class="lp-featured__more">
+            <button type="button" class="lp-btn lp-btn--secondary" id="openPublications" aria-haspopup="dialog">Ver todas as publicações</button>
         </div>
     </div>
 </section>
@@ -108,7 +119,7 @@
 </dialog>
 
 <!-- Bloco 7: depoimentos (textos copiados da home via i18n/pt.json) -->
-<section class="lp-section">
+<section class="lp-section lp-section--tint">
     <div class="container">
         <h2>Depoimentos</h2>
 
@@ -120,8 +131,7 @@
                 <track kind="captions" src="{{ '/assets/videos/depoimento-joao.vtt' | asset }}" srclang="pt-BR" label="Português" default>
             </video>
             <div>
-                <!-- TODO: preencher (confirmar quem fala no vídeo; ele não diz o nome. Depois trocar por um h3 simples) -->
-                <h3><span class="lp-placeholder">[Confirmar nome: João Victor Aguiar Moreira]</span></h3>
+                <h3>João Victor Aguiar Moreira</h3>
                 <p>Depoimento sobre o aceite do artigo na General Hospital Psychiatry.</p>
                 <blockquote class="lp-article">
                     <strong>{{ lp.article.title }}</strong>
@@ -150,7 +160,7 @@
 </section>
 
 <!-- Bloco 8: compromisso ético -->
-<section class="lp-section lp-section--tint">
+<section class="lp-section">
     <div class="container lp-narrow lp-ethics">
         <h2>O que não fazemos.</h2>
         <p>Não escrevemos artigos por você, não fabricamos dados e não prometemos publicação. Nosso papel é auditar a metodologia, fortalecer a análise estatística e garantir conformidade com PRISMA, CONSORT e GRADE. A autoria e a responsabilidade intelectual continuam sendo suas.</p>
@@ -158,7 +168,7 @@
 </section>
 
 <!-- Bloco 9: perguntas frequentes -->
-<section class="lp-section">
+<section class="lp-section lp-section--tint">
     <div class="container lp-narrow">
         <h2>Perguntas frequentes</h2>
         <div class="lp-faq">
@@ -178,7 +188,7 @@
 </section>
 
 <!-- Bloco 10: formulário -->
-<section class="lp-section lp-section--tint" id="formulario">
+<section class="lp-section" id="formulario">
     <div class="container lp-form-wrap">
         <h2>Conte sobre o seu projeto.</h2>
         <p class="lp-form-intro">Responda as perguntas abaixo. Com elas, indicamos o formato certo antes mesmo da primeira conversa.</p>

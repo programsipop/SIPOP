@@ -174,22 +174,24 @@ img.lp-photo {
     padding: 44px 0 52px;
 }
 
-.lp-hero__grid {
-    display: grid;
-    gap: 36px;
+.lp-hero__inner {
+    max-width: 880px;
+    text-align: center;
 }
 
 .lp-hero h1 {
-    font-size: 32px;
-    line-height: 1.2;
+    font-size: 36px;
+    line-height: 1.15;
+    letter-spacing: -0.5px;
     color: var(--lp-title);
-    margin-bottom: 18px;
+    margin-bottom: 20px;
 }
 
 .lp-hero__sub {
-    font-size: 17px;
+    max-width: 680px;
+    margin: 0 auto 28px;
+    font-size: 18px;
     color: var(--text-primary);
-    margin-bottom: 26px;
 }
 
 .lp-hero__note {
@@ -356,9 +358,78 @@ img.lp-photo {
 .lp-reviewer p { margin-bottom: 10px; }
 .lp-reviewer h3.lp-placeholder { display: inline-block; }
 .lp-reviewer p.lp-placeholder { width: fit-content; max-width: 100%; }
-.lp-reviewer__pubs { margin-bottom: 20px; }
-.lp-reviewer__pubs li { padding: 10px 0; }
-.lp-reviewer__pubs strong { font-size: 14px; }
+
+/* Publicações de destaque: capa do artigo em mockup de folha impressa */
+.lp-featured { gap: 40px; }
+
+.lp-featured__item {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.lp-cover {
+    position: relative;
+    width: 78%;
+    max-width: 210px;
+    margin: 8px auto 28px;
+    perspective: 900px;
+}
+
+/* Duas folhas por trás, para parecer um artigo impresso */
+.lp-cover::before,
+.lp-cover::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: #FFFFFF;
+    border: 1px solid #D9DEE5;
+    border-radius: 2px;
+}
+
+.lp-cover::before { transform: translate(10px, 10px) rotate(3deg); opacity: 0.55; }
+.lp-cover::after  { transform: translate(5px, 5px) rotate(1.5deg); opacity: 0.8; }
+
+.lp-cover img {
+    position: relative;
+    z-index: 1;
+    display: block;
+    width: 100%;
+    height: auto;
+    /* Mesma proporção para todas as capas (A4/Letter variam), alinhando os títulos */
+    aspect-ratio: 520 / 684;
+    object-fit: cover;
+    object-position: top center;
+    background: #FFFFFF;
+    border-radius: 2px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.18), 0 14px 30px -8px rgba(0, 0, 0, 0.45);
+    transform: rotateY(-10deg) rotateX(3deg);
+    transform-origin: left center;
+    transition: transform 0.35s ease;
+}
+
+.lp-featured__item:hover .lp-cover img { transform: none; }
+
+.lp-featured__item h3 {
+    font-size: 15px;
+    line-height: 1.4;
+    color: var(--text-primary);
+    margin-bottom: 6px;
+}
+
+.lp-featured__item p {
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.lp-featured__more {
+    margin-top: 36px;
+    text-align: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .lp-cover img { transition: none; }
+}
 
 /* Modal e lista de publicações */
 .lp-dialog {
@@ -535,6 +606,8 @@ img.lp-photo {
    ============================================ */
 
 #formulario { scroll-margin-top: 64px; }
+/* O título recebe foco depois da rolagem só para leitores de tela */
+#formulario h2:focus { outline: none; }
 
 .lp-form-wrap { max-width: 640px; }
 
@@ -654,16 +727,13 @@ img.lp-photo {
     .lp-section h2 { font-size: 32px; margin-bottom: 44px; }
     .lp-header .brand-logo { height: 40px; }
     .lp-hero { padding: 72px 0 80px; }
-    .lp-hero h1 { font-size: 44px; }
-    .lp-hero__sub { font-size: 18px; }
-    .lp-hero__grid {
-        grid-template-columns: 1.5fr 1fr;
-        align-items: center;
-        gap: 48px;
-    }
+    .lp-hero { padding: 96px 0 104px; }
+    .lp-hero h1 { font-size: 56px; }
+    .lp-hero__sub { font-size: 20px; }
     .lp-grid--3 { grid-template-columns: repeat(3, 1fr); }
     .lp-grid--4 { grid-template-columns: repeat(2, 1fr); }
-    .lp-reviewer { flex-direction: row; align-items: flex-start; }
+    .lp-reviewer { flex-direction: row; align-items: center; }
+    .lp-cover { max-width: 260px; }
     .lp-video { grid-template-columns: 300px 1fr; align-items: start; }
     .lp-thanks h1 { font-size: 40px; }
 }

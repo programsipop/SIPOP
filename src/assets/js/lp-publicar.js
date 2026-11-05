@@ -54,6 +54,7 @@ const STORAGE_PREFIX = 'sipop_lp_';
 
 document.addEventListener('DOMContentLoaded', () => {
     setupPublicationsDialog();
+    setupScrollToForm();
 
     const form = document.getElementById('leadForm');
     if (!form) return;
@@ -370,4 +371,60 @@ function setupPublicationsDialog() {
     dialog.addEventListener('click', (e) => {
         if (e.target === dialog) dialog.close();
     });
+}
+
+// ==========================================
+// 6. Rolagem animada até o formulário
+// ==========================================
+
+function setupScrollToForm() {
+    const target = document.getElementById('formulario');
+    if (!target) return;
+    const heading = target.querySelector('h2');
+    if (heading) heading.setAttribute('tabindex', '-1');
+
+    document.querySelectorAll('a[href="#formulario"]').forEach((link) => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const offset = parseFloat(getComputedStyle(target).scrollMarginTop) || 0;
+            const top = target.getBoundingClientRect().top + window.scrollY - offset;
+            const done = () => { if (heading) heading.focus({ preventScroll: true }); };
+
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                window.scrollTo({ top, behavior: 'instant' });
+                done();
+                return;
+            }
+            animateScroll(top, done);
+        });
+    });
+}
+
+// Animação própria em vez de scroll-behavior: smooth, para ter a mesma
+// duração e curva em todos os navegadores. Para se a pessoa rolar no meio.
+function animateScroll(top, onDone) {
+    const start = window.scrollY;
+    const distance = top - start;
+    const duration = Math.min(1100, Math.max(500, Math.abs(distance) * 0.25));
+    const ease = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
+    let startTime = null;
+    let cancelled = false;
+
+    const cancel = () => { cancelled = true; };
+    const events = ['wheel', 'touchstart', 'keydown'];
+    events.forEach((ev) => window.addEventListener(ev, cancel, { once: true, passive: true }));
+
+    function step(now) {
+        if (cancelled) return;
+        if (startTime === null) startTime = now;
+        const progress = Math.min(1, (now - startTime) / duration);
+        window.scrollTo({ top: start + distance * ease(progress), behavior: 'instant' });
+        if (progress < 1) {
+            requestAnimationFrame(step);
+        } else {
+            events.forEach((ev) => window.removeEventListener(ev, cancel));
+            onDone();
+        }
+    }
+    requestAnimationFrame(step);
 }
