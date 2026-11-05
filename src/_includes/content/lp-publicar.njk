@@ -13,8 +13,7 @@
             <p class="lp-hero__note">Leva 2 minutos. Retorno em até 1 dia útil.</p>
             <p class="lp-seals">PRISMA · CONSORT · GRADE</p>
         </div>
-        <!-- TODO: preencher (foto real do pesquisador; nunca usar imagem gerada por IA ou banco de imagens) -->
-        <div class="lp-photo lp-placeholder">[foto do pesquisador]</div>
+        <img class="lp-photo" src="{{ lp.reviewer.photo | asset }}" alt="{{ lp.reviewer.name }}, revisor do SIPOP Science" width="640" height="800" fetchpriority="high">
     </div>
 </section>
 
@@ -83,17 +82,17 @@
     <div class="container">
         <h2>Quem revisa seu estudo</h2>
         <div class="lp-card lp-reviewer">
-            <!-- TODO: preencher (foto real do pesquisador) -->
-            <div class="lp-photo lp-photo--small lp-placeholder">[Foto do pesquisador]</div>
+            <img class="lp-photo lp-photo--small" src="{{ lp.reviewer.photo | asset }}" alt="" width="640" height="800" loading="lazy">
             <div>
-                <!-- TODO: preencher -->
-                <h3 class="lp-placeholder">[Nome]</h3>
-                <!-- TODO: preencher -->
-                <p class="lp-placeholder">[Formação e instituição]</p>
-                <!-- TODO: preencher -->
-                <p>Revisor de <span class="lp-placeholder">[número]</span> periódicos internacionais em ciências biomédicas</p>
-                <!-- TODO: preencher -->
-                <p class="lp-placeholder">[2 ou 3 publicações de destaque]</p>
+                <h3>{{ lp.reviewer.name }}</h3>
+                <p>{{ lp.reviewer.education }}</p>
+                <p>{{ lp.reviewer.reviews }}</p>
+                <p class="lp-format__label">Publicações de destaque</p>
+                <ul class="lp-pubs lp-reviewer__pubs">
+                    {% for pub in lp.reviewer.featured %}
+                    <li><strong>{{ pub.title }}</strong><span>{{ pub.journal }}</span></li>
+                    {% endfor %}
+                </ul>
                 <button type="button" class="lp-btn lp-btn--secondary" id="openPublications" aria-haspopup="dialog">Ver publicações</button>
             </div>
         </div>
@@ -105,7 +104,7 @@
         <h2 id="publicationsTitle">Publicações</h2>
         <button type="button" class="lp-dialog__close" id="closePublications" aria-label="Fechar lista de publicações">×</button>
     </div>
-    {{ publicationList(lp.article, publications) }}
+    {{ publicationList(lp.recentPublications, publications) }}
 </dialog>
 
 <!-- Bloco 7: depoimentos (textos copiados da home via i18n/pt.json) -->

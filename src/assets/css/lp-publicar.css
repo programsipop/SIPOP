@@ -149,6 +149,12 @@
     border-radius: 12px;
 }
 
+img.lp-photo {
+    display: block;
+    height: auto;
+    object-fit: cover;
+}
+
 .lp-photo--small {
     max-width: 180px;
     margin: 0;
@@ -350,6 +356,9 @@
 .lp-reviewer p { margin-bottom: 10px; }
 .lp-reviewer h3.lp-placeholder { display: inline-block; }
 .lp-reviewer p.lp-placeholder { width: fit-content; max-width: 100%; }
+.lp-reviewer__pubs { margin-bottom: 20px; }
+.lp-reviewer__pubs li { padding: 10px 0; }
+.lp-reviewer__pubs strong { font-size: 14px; }
 
 /* Modal e lista de publicações */
 .lp-dialog {

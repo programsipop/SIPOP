@@ -48,6 +48,25 @@
     "doi": "10.1016/j.genhosppsych.2026.10.002"
   },
 
+  "reviewer": {
+    "name": "Gaspar R. Chiappa",
+    "photo": "/assets/images/team/gaspar-chiappa.webp",
+    "education": "Curso de Fisioterapia, Universidade Federal de Santa Maria (RS)",
+    "reviews": "Revisor de 30 periódicos internacionais em ciências da saúde, nas áreas de cardiologia, pneumologia, fisiologia, endocrinologia, psiquiatria e neurologia.",
+    "featured": [
+      { "title": "SGLT2 Inhibitors and Nephrolithiasis Risk in Adults With Type 2 Diabetes: A Systematic Review and Meta-analysis", "journal": "Endocrine Practice · 2026" },
+      { "title": "Comparative effectiveness of continuous positive airway pressure and glucagon-like peptide-1 receptor agonists in obstructive sleep apnea: A network meta-analysis of randomised trials", "journal": "Diabetes, Obesity and Metabolism · 2026" },
+      { "title": "Body Composition Remodelling During GLP-1-Based Therapy: A Systematic Review and Meta-Analysis Using a Hierarchical Physiological Framework", "journal": "Diabetes, Obesity and Metabolism · 2026" }
+    ]
+  },
+
+  "recentPublications": [
+    { "title": "The clinical spectrum of suicide-related outcomes in amyotrophic lateral sclerosis: A systematic review and meta-analysis", "journal": "General Hospital Psychiatry · 2026" },
+    { "title": "SGLT2 Inhibitors and Nephrolithiasis Risk in Adults With Type 2 Diabetes: A Systematic Review and Meta-analysis", "journal": "Endocrine Practice · 2026" },
+    { "title": "Body Composition Remodelling During GLP-1-Based Therapy: A Systematic Review and Meta-Analysis Using a Hierarchical Physiological Framework", "journal": "Diabetes, Obesity and Metabolism · 2026" },
+    { "title": "Contemporary Initial Glucose-Lowering Strategies for Type 2 Diabetes: A Systematic Review and Bayesian Network Meta-Analysis", "journal": "Diabetes, Obesity and Metabolism · 2026" }
+  ],
+
   "faq": [
     { "q": "Vocês escrevem o artigo?", "a": "Não. Orientamos, revisamos e auditamos. O texto e a autoria são seus." },
     { "q": "Vocês garantem a publicação?", "a": "Ninguém pode garantir. Garantimos que o método esteja no padrão que os revisores exigem." },
