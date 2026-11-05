@@ -72,7 +72,7 @@
     { "q": "Vocês garantem a publicação?", "a": "Ninguém pode garantir. Garantimos que o método esteja no padrão que os revisores exigem." },
     { "q": "Preciso já ter dados coletados?", "a": "Não. Atendemos desde a definição da pergunta de pesquisa até a auditoria antes da submissão." },
     { "q": "Atendem quais áreas?", "a": "Ciências biomédicas e da saúde: medicina, fisioterapia, odontologia, nutrição, enfermagem, educação física e áreas afins." },
-    { "q": "Como é o atendimento?", "a": "[Confirmar com o cliente: online, por reuniões e relatórios escritos.]", "placeholder": true }
+    { "q": "Como é o atendimento?", "a": "Por meio de reuniões periódicas online, organizadas em etapas de planejamento, desenvolvimento e revisão." }
   ],
 
   "selects": [
