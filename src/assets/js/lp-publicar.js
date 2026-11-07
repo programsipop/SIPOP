@@ -118,6 +118,13 @@ function toE164(ddi, rawNumber) {
     return '+' + ddi.replace(/\D/g, '') + nationalDigits(ddi, rawNumber);
 }
 
+// Aceita "@perfil", "perfil" ou o link do perfil e devolve só o nome de usuário
+function instagramHandle(rawValue) {
+    const value = rawValue.trim();
+    const fromUrl = value.match(/instagram\.com\/([^/?#\s]+)/i);
+    return (fromUrl ? fromUrl[1] : value).replace(/^@+/, '');
+}
+
 function validateField(form, field) {
     const value = field.value.trim();
 
@@ -135,6 +142,10 @@ function validateField(form, field) {
     if (field.name === 'nome') {
         return value ? '' : 'Informe seu nome.';
     }
+    if (field.name === 'instagram') {
+        if (!value) return '';
+        return /^[a-z0-9._]{1,30}$/i.test(instagramHandle(value)) ? '' : 'Informe um perfil válido, como @seuperfil.';
+    }
     if (field.tagName === 'SELECT' && field.required && !value) {
         return 'Selecione uma opção.';
     }
@@ -151,8 +162,9 @@ function showFieldError(form, field, message) {
     }
 }
 
+// Campos obrigatórios e os opcionais que têm formato a conferir
 function requiredFields(form) {
-    return Array.from(form.querySelectorAll('[required]'));
+    return Array.from(form.querySelectorAll('[required], #instagram'));
 }
 
 function setupValidation(form) {
@@ -212,8 +224,11 @@ function selectedLabel(form, fieldName) {
 function buildPayload(form, score, qualified, phone) {
     const get = (name) => form.elements[name].value.trim();
 
+    const instagram = instagramHandle(get('instagram'));
+
     const summary = [
         'Nota do lead: ' + score + ' (qualificado: ' + (qualified ? 'sim' : 'não') + ')',
+        'Instagram: ' + (instagram ? '@' + instagram : '—'),
         'Fase: ' + selectedLabel(form, 'fase'),
         'Tipo de estudo: ' + selectedLabel(form, 'tipo_estudo'),
         'Prazo: ' + selectedLabel(form, 'prazo'),
@@ -232,6 +247,7 @@ function buildPayload(form, score, qualified, phone) {
 
     return Object.assign(fields, {
         whatsapp:          phone,
+        instagram:         instagram ? '@' + instagram : '',
         source:            'Landing Page — Publicar',
         name:              get('nome'),
         phone:             phone,

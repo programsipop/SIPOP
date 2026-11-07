@@ -230,6 +230,11 @@
                 <span class="form-hint lp-hint" id="whatsapp-dica">Inclua o DDD</span>
                 <span class="lp-field-error" id="whatsapp-erro"></span>
             </div>
+            <div class="form-group">
+                <label for="instagram">Instagram (opcional)</label>
+                <input type="text" id="instagram" name="instagram" placeholder="@seuperfil" autocomplete="off" autocapitalize="none" spellcheck="false" aria-describedby="instagram-erro">
+                <span class="lp-field-error" id="instagram-erro"></span>
+            </div>
             {% for field in lp.selects %}
             <div class="form-group">
                 <label for="{{ field.name }}">{{ field.label }}</label>
