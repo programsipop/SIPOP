@@ -52,6 +52,7 @@ SIPOP is an institutional website built from the ground up, including brand iden
 - **Vanilla JavaScript** — no frameworks or dependencies
 - **Google Apps Script** — serverless form handling, data stored in Google Sheets
 - **Netlify** — build and hosting
+- **Resend** — transactional email (first-contact email to new leads)
 - **Google Fonts** — Inter typeface
 
 ---
@@ -65,6 +66,7 @@ SIPOP is an institutional website built from the ground up, including brand iden
 - ✅ Contact form connected to Google Sheets via Apps Script, with per-language labels, country codes, and nationality suggestions
 - ✅ WhatsApp Business, LinkedIn, and Instagram contact links in the footer, with a pre-filled greeting message per language
 - ✅ Email notifications on form submission via MailApp
+- ✅ Automatic first-contact email to the lead (in their preferred language) via Resend, sent the moment the form is saved
 - ✅ Smooth scroll navigation
 - ✅ Background images swap between light/dark versions
 - ✅ Semantic HTML with `aria-label` and `aria-live` attributes
@@ -253,6 +255,22 @@ Push to the connected branch to trigger an automatic deploy.
 Submissions are saved to a sheet tab named **"SIPOP Contacts"**, created automatically on the first submission. Email notifications are sent via `MailApp.sendEmail` — update the recipient addresses directly in `apps-script.gs`. The hidden `source` field and UTM fields on the Technical Review form let you distinguish landing-page leads and campaign traffic in the sheet; the `preferredLanguage` and `source` values are kept in English across all site languages so responses stay consistent for filtering.
 
 ---
+
+## First-Contact Email (Resend)
+
+When a lead is saved, `netlify/functions/submit-form.js` immediately sends them a welcome email through the [Resend](https://resend.com) API. The text (PT / EN / ES, chosen from the form's `preferredLanguage`) lives in `netlify/emails/first-contact.js` — edit the `COPY` blocks to change it.
+
+Setup:
+
+1. In Resend, add and verify the sending domain (`sipopscience.com`) by adding the DNS records it shows.
+2. Create an API key with **Sending access**.
+3. In Netlify → Site configuration → Environment variables, set:
+   - `RESEND_API_KEY` — required; without it the email is skipped (the lead is still saved)
+   - `RESEND_FROM` — optional, default `SIPOP <contact@sipopscience.com>`
+   - `RESEND_REPLY_TO` — optional, default `contact@sipopscience.com`
+4. Redeploy.
+
+A Resend failure never breaks the form: the lead is already in the sheet, and the error shows up in the function logs (Netlify → Logs → Functions → `submit-form`). Repeated submissions of the same lead reuse an idempotency key, so the lead doesn't get the email twice.
 
 ## Links
 
