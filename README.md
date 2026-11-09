@@ -66,6 +66,7 @@ SIPOP is an institutional website built from the ground up, including brand iden
 - ✅ Contact form connected to Google Sheets via Apps Script, with per-language labels, country codes, and nationality suggestions
 - ✅ WhatsApp Business, LinkedIn, and Instagram contact links in the footer, with a pre-filled greeting message per language
 - ✅ Email notifications on form submission via MailApp
+- ✅ 4-email remarketing sequence (every 7 days) for leads marked "Sem resposta", with one-click unsubscribe
 - ✅ Automatic first-contact email to the lead (in their preferred language) via Resend, sent the moment the form is saved
 - ✅ Smooth scroll navigation
 - ✅ Background images swap between light/dark versions
@@ -131,6 +132,7 @@ sipop/
 ├── netlify.toml                  # Build command, publish dir, clean URL redirects (EN/PT/ES)
 ├── package.json
 ├── apps-script.gs                # Google Apps Script — paste into Apps Script editor
+├── remarketing.gs                # Remarketing sequence — second file in the same Apps Script project
 ├── README.md
 │
 ├── src/                          # Eleventy input dir
@@ -271,6 +273,32 @@ Setup:
 4. Redeploy.
 
 A Resend failure never breaks the form: the lead is already in the sheet, and the error shows up in the function logs (Netlify → Logs → Functions → `submit-form`). Repeated submissions of the same lead reuse an idempotency key, so the lead doesn't get the email twice.
+
+## Remarketing Sequence (Apps Script + Resend)
+
+`remarketing.gs` sends a 4-email sequence to leads whose **Status** is `Sem resposta`. It runs once a day from a time-driven trigger:
+
+| Email | When | Topic |
+|---|---|---|
+| 1 | 7 days after the lead came in (Date column) | Follow-up: is the research still on the agenda? |
+| 2 | 7 days after email 1 | Social proof: testimonials and publications |
+| 3 | 7 days after email 2 | Why good manuscripts get rejected + Technical Review |
+| 4 | 7 days after email 3 | Last email: closing the request, door left open |
+
+- Columns are found by header name (Date, Name, Email, Preferred Language, Status), like `apps-script-details.gs`, so added or moved columns don't break it.
+- Language follows the Preferred Language column. The texts live in `REMARKETING_COPY` at the top of `remarketing.gs`.
+- Progress is stored in two columns the script creates at the end of the sheet: `Remarketing (etapa)` (step sent, 1–4) and `Remarketing (último envio)` (date of the last send).
+- Changing the Status stops the sequence; switching back to `Sem resposta` resumes it where it stopped.
+- Every email has an unsubscribe link (signed with an HMAC, handled by `doGet`). Unsubscribed leads get `Descadastrado` in `Remarketing (etapa)` and never receive another email.
+- A Resend failure doesn't advance the step, so the email is retried the next day.
+
+Setup:
+
+1. In the Apps Script project (the one bound to the sheet), add a second file named `remarketing.gs` and paste the code.
+2. Project Settings → Script Properties → add `RESEND_API_KEY`.
+3. Run `setupRemarketingTrigger()` once and authorize it (creates the daily trigger at 9 AM).
+4. Deploy a new version of the Web App (Deploy → Manage deployments → edit → New version) so the unsubscribe link works. The URL doesn't change.
+5. Optional: run `previewRemarketing()` to see in the log who would get which email today, without sending anything, and `sendRemarketingTest()` to receive all 4 emails at the test address.
 
 ## Links
 
