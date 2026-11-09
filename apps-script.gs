@@ -15,6 +15,9 @@
 // O script SEMPRE escreve só A-P (16 colunas). Q-S nunca são
 // tocadas por aqui — são preenchidas manualmente.
 //
+// A sequência de remarketing (remarketing.gs) cria no fim da planilha
+// as colunas "Remarketing (etapa)" e "Remarketing (último envio)".
+//
 // COMO USAR:
 // 1. Abra Google Sheets > Extensões > Apps Script
 // 2. Cole este código, substituindo o existente

@@ -12,6 +12,9 @@ module.exports = function(eleventyConfig) {
     eleventyConfig.addPassthroughCopy("src/assets/fonts");
     eleventyConfig.addPassthroughCopy("src/assets/publications");
     eleventyConfig.addPassthroughCopy("src/robots.txt");
+    // Imagens usadas nos e-mails (remarketing.gs): precisam de URL fixa,
+    // então ficam fora de /assets (sem hash no nome e sem cache "immutable").
+    eleventyConfig.addPassthroughCopy({ "src/email": "email" });
 
     // Shortcode que lê um CSS de src/assets/css/ em build time e devolve o
     // conteúdo pra ser inlinado direto num <style> no <head>. Usado pros
