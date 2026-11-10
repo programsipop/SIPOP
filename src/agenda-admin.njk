@@ -1,0 +1,98 @@
+---
+layout: agenda-layout.njk
+title: "Painel da agenda | SIPOP"
+extraJs: agenda-admin.js
+wide: true
+eleventyExcludeFromCollections: true
+---
+{# Painel do pesquisador: horários disponíveis, janela de datas e calls marcadas.
+   Protegido pela senha AGENDA_ADMIN_KEY (Propriedades do script no Apps Script). #}
+<div id="adm" data-view="login">
+
+    <section class="ag-card ag-card--center adm-view" data-view-name="login">
+        <h1>Painel da agenda</h1>
+        <p class="ag-sub">Digite a senha do painel para gerenciar os horários das calls.</p>
+        <form id="adm-login" class="adm-login">
+            <div class="form-group">
+                <label for="adm-key">Senha do painel</label>
+                <input type="password" id="adm-key" autocomplete="current-password" required>
+            </div>
+            <p class="ag-error" id="adm-login-error" role="alert" hidden></p>
+            <button type="submit" class="ag-btn ag-btn--primary ag-btn--block">Entrar</button>
+        </form>
+    </section>
+
+    <div class="adm-view" data-view-name="loading">
+        <div class="ag-spinner" role="status" aria-label="Carregando"></div>
+    </div>
+
+    <div class="adm-view" data-view-name="panel">
+        <div class="adm-top">
+            <h1>Agenda de calls</h1>
+            <button type="button" class="adm-link" id="adm-logout">Sair</button>
+        </div>
+
+        <section class="ag-card adm-card">
+            <h2>Configurações</h2>
+            <div class="adm-config">
+                <div class="form-group">
+                    <label for="adm-window">Datas visíveis para o lead</label>
+                    <select id="adm-window">
+                        <option value="7">Próximos 7 dias</option>
+                        <option value="14">Próximos 14 dias</option>
+                        <option value="30">Próximos 30 dias</option>
+                        <option value="60">Próximos 60 dias</option>
+                        <option value="custom">Até uma data específica</option>
+                    </select>
+                </div>
+                <div class="form-group" id="adm-custom-wrap" hidden>
+                    <label for="adm-custom">Mostrar até</label>
+                    <input type="date" id="adm-custom">
+                </div>
+                <div class="form-group">
+                    <label for="adm-duration">Duração da call</label>
+                    <select id="adm-duration">
+                        <option value="30">30 minutos</option>
+                        <option value="60">1 hora</option>
+                        <option value="90">1 hora e 30</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="adm-notice">Antecedência mínima (horas)</label>
+                    <input type="number" id="adm-notice" min="0" max="168" step="1" inputmode="numeric">
+                </div>
+            </div>
+        </section>
+
+        <section class="ag-card adm-card">
+            <div class="adm-card__head">
+                <div>
+                    <h2>Horários disponíveis</h2>
+                    <p class="ag-small">Clique (ou clique e arraste) para marcar os blocos de 30 minutos em que você pode atender. Horário de Brasília. Só os horários marcados aparecem para o lead.</p>
+                </div>
+                <div class="adm-tools">
+                    <button type="button" class="ag-btn ag-btn--ghost" id="adm-repeat">Repetir a 1ª semana</button>
+                    <button type="button" class="ag-btn ag-btn--ghost" id="adm-clear">Limpar tudo</button>
+                </div>
+            </div>
+            <div class="adm-legend">
+                <span><i class="adm-swatch adm-swatch--on"></i>Disponível</span>
+                <span><i class="adm-swatch adm-swatch--booked"></i>Call marcada</span>
+                <span><i class="adm-swatch"></i>Indisponível</span>
+            </div>
+            <div class="adm-grid-wrap" id="adm-grid-wrap">
+                <table class="adm-grid" id="adm-grid"></table>
+            </div>
+        </section>
+
+        <section class="ag-card adm-card">
+            <h2>Calls marcadas</h2>
+            <div id="adm-bookings"></div>
+        </section>
+
+        <div class="adm-savebar" id="adm-savebar">
+            <span id="adm-save-status"></span>
+            <button type="button" class="ag-btn ag-btn--primary" id="adm-save">Salvar alterações</button>
+        </div>
+    </div>
+</div>

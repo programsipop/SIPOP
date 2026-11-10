@@ -1,0 +1,45 @@
+{# src/_includes/agenda-layout.njk — layout das páginas de agendamento de calls
+   (/agendar, /confirmar e /agenda-admin). Sem navbar, sem analytics e fora do
+   Google (noindex): são páginas abertas a partir de um link pessoal.
+   O idioma (PT/EN/ES) é aplicado pelo JS, a partir do lead. #}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="referrer" content="no-referrer">
+    <link rel="icon" type="image/x-icon" href="{{ '/assets/images/favicon/Icon.ico' | asset }}">
+
+    <!-- Respeita a preferência de tema salva no site. Sem preferência, segue o sistema. -->
+    <script>
+    try {
+        var sipopTheme = localStorage.getItem('sipop-theme');
+        if (sipopTheme === 'light' || sipopTheme === 'dark') {
+            document.documentElement.setAttribute('data-theme', sipopTheme);
+        }
+    } catch (e) {}
+    </script>
+
+    <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/inter-v20-latin-regular.woff2" crossorigin>
+    <link rel="stylesheet" href="{{ '/assets/css/style.css' | asset }}">
+    <style>{% inlineCss "agenda.css" %}</style>
+</head>
+<body class="ag-body">
+    <header class="ag-header">
+        <a href="/" class="ag-header__logo" aria-label="SIPOP">
+            <img src="{{ '/assets/images/logo/Logo1.webp' | asset }}" alt="SIPOP" class="brand-logo brand-logo--light" width="976" height="140">
+            <img src="{{ '/assets/images/logo/Logo2.webp' | asset }}" alt="SIPOP" class="brand-logo brand-logo--dark" width="976" height="140">
+        </a>
+    </header>
+
+    <main class="ag-main{% if wide %} ag-main--wide{% endif %}">
+        {{ content | safe }}
+    </main>
+
+    <footer class="ag-footer">© SIPOP Science · <a href="https://sipopscience.com">sipopscience.com</a></footer>
+
+    <script src="{{ ('/assets/js/' + extraJs) | asset }}" defer></script>
+</body>
+</html>

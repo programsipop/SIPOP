@@ -6,8 +6,13 @@
 // (English / Spanish / Portuguese); sem ele, cai em português.
 //
 // Para mudar o texto, edite só os blocos COPY abaixo. Cada idioma tem
-// assunto, saudação, parágrafos e assinatura. "{firstName}" é trocado
-// pelo primeiro nome do lead.
+// assunto, saudação, parágrafos, botão de agendamento (cta), parágrafos
+// depois do botão (afterCta) e assinatura. "{firstName}" é trocado pelo
+// primeiro nome do lead.
+//
+// O botão leva para a página de agendamento de calls (/agendar). Quando o
+// Apps Script devolve o token do lead (lead.agendaToken), o link é pessoal
+// e o lead não precisa digitar os dados de novo.
 // ============================================
 
 const COPY = {
@@ -17,7 +22,10 @@ const COPY = {
         greetingNoName: 'Olá!',
         paragraphs: [
             'Obrigado por entrar em contato com o SIPOP. Recebemos suas informações e nossa equipe já está analisando o seu caso.',
-            'Em breve um dos nossos especialistas vai falar com você para entender melhor o seu projeto e explicar os próximos passos.',
+            'O próximo passo é uma conversa rápida por vídeo com um dos nossos especialistas, para entender melhor o seu projeto e explicar os próximos passos. Escolha o dia e o horário que ficam melhores para você:',
+        ],
+        cta: 'Agendar minha call',
+        afterCta: [
             'Se quiser adiantar a conversa, é só responder este e-mail contando em que fase está o seu estudo, o prazo que você tem em mente e, se já tiver, a revista em que pretende publicar.',
         ],
         signoff:   'Um abraço,',
@@ -29,7 +37,10 @@ const COPY = {
         greetingNoName: 'Hi,',
         paragraphs: [
             'Thank you for reaching out to SIPOP. We have received your information and our team is already reviewing it.',
-            'One of our specialists will contact you shortly to learn more about your project and walk you through the next steps.',
+            'The next step is a short video call with one of our specialists, to learn more about your project and walk you through the next steps. Pick the day and time that suit you best:',
+        ],
+        cta: 'Schedule my call',
+        afterCta: [
             'If you would like to get a head start, simply reply to this email and tell us what stage your study is at, your target timeline and, if you already have one, the journal you are aiming for.',
         ],
         signoff:   'Best regards,',
@@ -41,7 +52,10 @@ const COPY = {
         greetingNoName: '¡Hola!',
         paragraphs: [
             'Gracias por contactar a SIPOP. Recibimos tu información y nuestro equipo ya la está analizando.',
-            'En breve uno de nuestros especialistas se comunicará contigo para conocer mejor tu proyecto y explicarte los próximos pasos.',
+            'El próximo paso es una breve videollamada con uno de nuestros especialistas, para conocer mejor tu proyecto y explicarte los próximos pasos. Elige el día y el horario que prefieras:',
+        ],
+        cta: 'Agendar mi llamada',
+        afterCta: [
             'Si quieres adelantar la conversación, responde este correo contándonos en qué etapa está tu estudio, el plazo que tienes en mente y, si ya la tienes, la revista en la que piensas publicar.',
         ],
         signoff:   'Un saludo,',
@@ -74,10 +88,17 @@ function escapeHtml(value) {
         .replace(/'/g, '&#39;');
 }
 
+function scheduleUrlFor(lead, lang) {
+    const token = String(lead.agendaToken || '');
+    if (/^s[0-9a-f]{16}$/.test(token)) return SITE_URL + '/agendar/?t=' + token;
+    return SITE_URL + '/agendar/' + (lang === 'pt' ? '' : '?lang=' + lang);
+}
+
 function buildFirstContactEmail(lead) {
     const lang = pickLang(lead.preferredLanguage);
     const copy = COPY[lang];
     const firstName = firstNameOf(lead.name);
+    const scheduleUrl = scheduleUrlFor(lead, lang);
 
     const greeting = firstName
         ? copy.greeting.replace('{firstName}', firstName)
@@ -87,14 +108,21 @@ function buildFirstContactEmail(lead) {
         greeting,
         '',
         ...copy.paragraphs.flatMap((p) => [p, '']),
+        copy.cta + ': ' + scheduleUrl,
+        '',
+        ...copy.afterCta.flatMap((p) => [p, '']),
         copy.signoff,
         copy.signature,
         SITE_URL,
     ].join('\n');
 
-    const paragraphsHtml = copy.paragraphs
+    const toHtml = (list) => list
         .map((p) => `<p style="margin:0 0 16px;">${escapeHtml(p)}</p>`)
         .join('\n');
+
+    const paragraphsHtml = toHtml(copy.paragraphs) +
+        `\n<p style="margin:8px 0 24px;"><a href="${scheduleUrl}" style="display:inline-block;background:${BRAND_COLOR};color:#ffffff;text-decoration:none;padding:12px 22px;border-radius:6px;font-weight:600;">${escapeHtml(copy.cta)}</a></p>\n` +
+        toHtml(copy.afterCta);
 
     const html = `<!doctype html>
 <html lang="${lang === 'pt' ? 'pt-BR' : lang}">
@@ -115,7 +143,7 @@ function buildFirstContactEmail(lead) {
 </body>
 </html>`;
 
-    return { subject: copy.subject, html, text, lang };
+    return { subject: copy.subject, html, text, lang, scheduleUrl };
 }
 
 module.exports = { buildFirstContactEmail };

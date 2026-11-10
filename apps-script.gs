@@ -17,6 +17,8 @@
 //
 // A sequência de remarketing (remarketing.gs) cria no fim da planilha
 // as colunas "Remarketing (etapa)" e "Remarketing (último envio)".
+// O agendamento de calls (agenda.gs) cria "Agendamento (token)" e
+// "Call agendada", e usa este doPost como porta de entrada ("agenda.*").
 //
 // COMO USAR:
 // 1. Abra Google Sheets > Extensões > Apps Script
@@ -59,6 +61,13 @@ function formatPhoneBR(value) {
     const digits = String(value).replace(/\D/g, ''); // remove tudo que não for número
     let rest = digits;
 
+    // número com código de outro país (ex.: "+1 5551234567") — não é BR,
+    // mesmo que tenha 10 ou 11 dígitos. Sem isso ele virava "+55 (15) ..."
+    // e o WhatsApp automático iria para um número brasileiro errado.
+    if (String(value).trim().charAt(0) === '+' && !digits.startsWith('55')) {
+        return '+' + digits;
+    }
+
     // se já vem com "55" na frente (código do país) e tamanho compatível, remove
     if (digits.startsWith('55') && (digits.length === 12 || digits.length === 13)) {
         rest = digits.slice(2);
@@ -94,6 +103,14 @@ function asTextFormula(value) {
 
 function doPost(e) {
     try {
+        // Parse dos dados recebidos
+        const data = JSON.parse(e.postData.contents);
+
+        // Agendamento de calls (agenda.gs): o site manda { action: 'agenda.*', ... }
+        if (data.action && String(data.action).indexOf('agenda.') === 0) {
+            return agendaHandleRequest_(data);
+        }
+
         const ss    = SpreadsheetApp.getActiveSpreadsheet();
         let   sheet = ss.getSheetByName(SHEET_NAME);
 
@@ -132,9 +149,6 @@ function doPost(e) {
             sheet.setColumnWidth(12, 400); // Objective
             sheet.setColumnWidth(15, 130); // UTM Campaign
         }
-
-        // Parse dos dados recebidos
-        const data = JSON.parse(e.postData.contents);
 
         // Identifica a origem — fallback para 'Main Website' se não enviado
         const source = data.source || 'Main Website';
@@ -177,6 +191,16 @@ function doPost(e) {
               rowRange.setBackground('#EBF8FF'); // azul claro
           }
 
+        // Token do link de agendamento (agenda.gs). Volta na resposta para a
+        // Netlify Function colocar o link no e-mail de primeiro contato.
+        // Falha aqui nunca derruba o formulário.
+        let agendaToken = '';
+        try {
+            agendaToken = agendaAssignLeadToken_(sheet, lastRow);
+        } catch (tokenError) {
+            Logger.log('doPost: não consegui gerar o token de agendamento: ' + tokenError);
+        }
+
         // Notificação por e-mail para todos os destinatários
         const subject  = '[SIPOP] New contact — ' + source + ': ' + (data.name || 'Unknown');
         const utmLine  = data.utm_campaign
@@ -208,7 +232,7 @@ function doPost(e) {
         });
 
         return ContentService
-            .createTextOutput(JSON.stringify({ status: 'success' }))
+            .createTextOutput(JSON.stringify({ status: 'success', agendaToken: agendaToken }))
             .setMimeType(ContentService.MimeType.JSON);
 
     } catch (error) {
