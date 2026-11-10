@@ -1,0 +1,45 @@
+---
+layout: agenda-layout.njk
+title: "Confirme sua call | SIPOP"
+extraJs: agenda.js
+eleventyExcludeFromCollections: true
+---
+{# Página aberta pelo lembrete de 24h (WhatsApp): /confirmar/?t=TOKEN.
+   Verde confirma a presença; vermelho abre a tela de agendamento para escolher outra data. #}
+<section class="ag-card ag-card--center" id="ag-app" data-page="confirm" data-view="loading" aria-live="polite">
+
+    <div class="ag-view" data-view-name="loading">
+        <div class="ag-spinner" role="status" aria-label="Carregando"></div>
+    </div>
+
+    <div class="ag-view" data-view-name="ask">
+        <h1 data-t="askTitle"></h1>
+        <p class="ag-when" id="ag-ask-when"></p>
+        <p class="ag-sub" data-t="askText"></p>
+        <p class="ag-error" id="ag-error" role="alert" hidden></p>
+        <div class="ag-choice">
+            <button type="button" class="ag-btn ag-btn--confirm" id="ag-confirm" data-t="confirmBtn"></button>
+            <a class="ag-btn ag-btn--reschedule" id="ag-reschedule" data-t="rescheduleBtn"></a>
+        </div>
+    </div>
+
+    <div class="ag-view" data-view-name="confirmed">
+        <div class="ag-check" aria-hidden="true">✓</div>
+        <h1 data-t="confirmedTitle"></h1>
+        <p class="ag-when" id="ag-confirmed-when"></p>
+        <p class="ag-sub" data-t="confirmedText"></p>
+        <a class="ag-btn ag-btn--primary" id="ag-confirmed-link" target="_blank" rel="noopener" data-t="openLink" hidden></a>
+    </div>
+
+    <div class="ag-view" data-view-name="none">
+        <h1 data-t="noneTitle"></h1>
+        <p class="ag-sub" data-t="noneText"></p>
+        <a class="ag-btn ag-btn--primary" id="ag-none-link" data-t="noneCta"></a>
+    </div>
+
+    <div class="ag-view" data-view-name="error">
+        <h1 data-t="errorTitle"></h1>
+        <p class="ag-sub" data-t="errorText"></p>
+        <button type="button" class="ag-btn ag-btn--primary" id="ag-retry" data-t="retry"></button>
+    </div>
+</section>

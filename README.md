@@ -68,6 +68,7 @@ SIPOP is an institutional website built from the ground up, including brand iden
 - ✅ Email notifications on form submission via MailApp
 - ✅ 4-email remarketing sequence (every 7 days) for leads marked "Sem resposta", with one-click unsubscribe
 - ✅ Automatic first-contact email to the lead (in their preferred language) via Resend, sent the moment the form is saved
+- ✅ Call scheduling: the researcher sets available slots, the lead books from a personal link, a Google Meet is created, and confirmation + reminders (24h / 2h) go out automatically
 - ✅ Smooth scroll navigation
 - ✅ Background images swap between light/dark versions
 - ✅ Semantic HTML with `aria-label` and `aria-live` attributes
@@ -133,6 +134,8 @@ sipop/
 ├── package.json
 ├── apps-script.gs                # Google Apps Script — paste into Apps Script editor
 ├── remarketing.gs                # Remarketing sequence — second file in the same Apps Script project
+├── whatsapp-first-contact.gs     # First-contact WhatsApp — same Apps Script project
+├── agenda.gs                     # Call scheduling backend — same Apps Script project
 ├── README.md
 │
 ├── src/                          # Eleventy input dir
@@ -299,6 +302,59 @@ Setup:
 3. Run `setupRemarketingTrigger()` once and authorize it (creates the daily trigger at 9 AM).
 4. Deploy a new version of the Web App (Deploy → Manage deployments → edit → New version) so the unsubscribe link works. The URL doesn't change.
 5. Optional: run `previewRemarketing()` to see in the log who would get which email today, without sending anything, and `sendRemarketingTest()` to receive all 4 emails at the test address.
+
+## First-Contact WhatsApp (Apps Script + Evolution API)
+
+`whatsapp-first-contact.gs` sends each new lead a WhatsApp message inviting them to schedule a call, from the SIPOP number connected to a self-hosted [Evolution API](https://doc.evolution-api.com) (v2) instance. A time-driven trigger checks the sheet every 5 minutes.
+
+- Sent 30 minutes after the form (the first-contact email goes out immediately), Monday to Friday, 9:30 AM to 6 PM Brasília time. Leads arriving outside that window get it at 9:30 AM on the next business day.
+- Language follows the Preferred Language column. The texts live in `WHATSAPP_COPY` at the top of the file.
+- The result is stored in a `WhatsApp (primeiro contato)` column the script creates: the send date/time, or `Sem WhatsApp`, `Duplicado` (phone already messaged in another row), `Ignorado (status)` (the team already filled in Status) or `Expirado` (lead waited more than 100 hours). A row with that cell filled is never processed again.
+- Only leads that arrive after `setupWhatsAppTrigger()` is first run are messaged. Older leads are never touched.
+- An Evolution API failure leaves the cell empty, so the send is retried on the next run.
+
+Setup:
+
+1. Run Evolution API v2 on a server and connect an instance to the SIPOP WhatsApp number (QR code).
+2. In the Apps Script project, add a file named `whatsapp-first-contact.gs` and paste the code. Also update `apps-script.gs` (phone formatting fix for non-Brazilian numbers) and deploy a new version of the Web App.
+3. Project Settings → Script Properties → add `EVOLUTION_API_URL`, `EVOLUTION_API_KEY`, `EVOLUTION_INSTANCE` and, optionally, `WHATSAPP_TEST_NUMBER` (your own number with country code).
+4. Run `sendWhatsAppTest()` and check the message on your phone.
+5. Run `setupWhatsAppTrigger()` once and authorize it. `previewWhatsAppFirstContact()` logs who would be messaged right now without sending; `removeWhatsAppTrigger()` turns the automation off.
+
+Evolution API is an unofficial WhatsApp client: automated sends carry a risk of the number being restricted by Meta. The script keeps volume low (one message per lead, typing delay, spaced sends, at most 10 per run).
+
+## Call Scheduling (Apps Script + Google Meet + Resend + Evolution API)
+
+Leads book a call themselves from a link in the first-contact email and WhatsApp.
+
+| Page | Who | What |
+|---|---|---|
+| `/agenda-admin` | Researcher | Marks the free 30-minute blocks (Brasília time), sets how far ahead leads can book (next 7 / 14 / 30 / 60 days or up to a specific date; default 14), call length and minimum notice. Lists booked calls and can cancel them. Protected by a password. |
+| `/agendar/?t=TOKEN` | Lead | Shows only the slots the researcher marked, in the lead's own time zone and language (PT / EN / ES). Opening it with an active booking reschedules it. Without a token it asks for name, email and WhatsApp. |
+| `/confirmar/?t=TOKEN` | Lead | Opened from the 24h reminder: a green **CONFIRMAR** button and a red **REAGENDAR** button (which opens `/agendar`). |
+
+Flow:
+
+1. Every new lead gets a token (column `Agendamento (token)` in the contacts sheet). The Apps Script returns it to `submit-form`, which puts the personal link in the first-contact email; `whatsapp-first-contact.gs` puts the same link in the WhatsApp message (and skips leads who already booked — `Já agendou`).
+2. When the lead picks a slot, `agenda.gs` records it in the **Agenda** tab (one row per booking) and in the `Call agendada` column of the contacts sheet, and creates a Google Calendar event with a Google Meet link on the calendar of the account that runs the script. The team gets an email.
+3. Right away the lead gets a confirmation by email (Resend) and WhatsApp (Evolution API) with the meeting link.
+4. 24 hours before: WhatsApp reminder asking for explicit confirmation, with the `/confirmar` link.
+5. 2 hours before: short WhatsApp reminder with instructions and the meeting link.
+
+Steps 4 and 5 are WhatsApp-only and run from a 5-minute trigger (`runAgendaReminders`). A call booked less than 24h (or 2h) ahead skips the corresponding reminder (`Dispensado`). A failed send leaves the cell empty and is retried on the next run. Rescheduling keeps the same row and Meet link, frees the old slot and restarts confirmation and reminders.
+
+The pages talk to the Apps Script through `netlify/functions/agenda.js`; all rules live in `agenda.gs`. Availability is stored in the **Disponibilidade** tab (one row per day: date and the start time of each free 30-minute block) and can also be edited by hand. Message texts are in `AGENDA_COPY` at the top of `agenda.gs`; page texts are in `src/assets/js/agenda.js`.
+
+Setup:
+
+1. In the Apps Script project, add a file named `agenda.gs` and paste the code. Update `apps-script.gs` and `whatsapp-first-contact.gs` with the versions from this repo.
+2. In the Apps Script editor: **Services (+)** → add **Google Calendar API** (identifier `Calendar`). This is what creates the Meet link.
+3. Project Settings → Script Properties → add `AGENDA_ADMIN_KEY` (the panel password; make it long) and, optionally, `AGENDA_FALLBACK_LINK` (a fixed meeting link used if Meet creation fails). `RESEND_API_KEY` and `EVOLUTION_*` are already there.
+4. Run `testAgendaMeet()` (creates and deletes a test event, logs the Meet link) and then `setupAgendaTrigger()` once, authorizing Calendar access.
+5. Deploy a new version of the Web App (Deploy → Manage deployments → edit → New version). The URL doesn't change.
+6. Deploy the site, open `/agenda-admin`, enter the password and mark the available slots.
+
+Notes: cancelling from the panel does not message the lead (only Google Calendar sends its own cancellation notice). If Meet creation fails, the booking is still recorded and the team email says so. To use Zoom instead of Meet, replace `agendaUpsertMeeting_` in `agenda.gs` with a call to the Zoom API (requires a Zoom Server-to-Server OAuth app).
 
 ## Links
 

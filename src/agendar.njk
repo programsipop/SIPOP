@@ -1,0 +1,68 @@
+---
+layout: agenda-layout.njk
+title: "Agende sua call | SIPOP"
+extraJs: agenda.js
+eleventyExcludeFromCollections: true
+---
+{# Página de agendamento do lead. Link: /agendar/?t=TOKEN (ou sem token: pede nome, e-mail e WhatsApp).
+   Todo o texto vem de src/assets/js/agenda.js (PT/EN/ES). #}
+<section class="ag-card" id="ag-app" data-page="book" data-view="loading" aria-live="polite">
+
+    <div class="ag-view" data-view-name="loading">
+        <div class="ag-spinner" role="status" aria-label="Carregando"></div>
+    </div>
+
+    <div class="ag-view" data-view-name="pick">
+        <h1 data-t="title"></h1>
+        <p class="ag-sub" data-t="subtitle"></p>
+
+        <p class="ag-notice" id="ag-current" hidden></p>
+
+        <h2 class="ag-step"><span>1</span><span data-t="pickDay"></span></h2>
+        <div class="ag-days" id="ag-days"></div>
+
+        <h2 class="ag-step"><span>2</span><span data-t="pickTime"></span></h2>
+        <div class="ag-times" id="ag-times"></div>
+        <p class="ag-tz" id="ag-tz"></p>
+
+        <form id="ag-contact" class="ag-contact" hidden novalidate>
+            <h2 class="ag-step"><span>3</span><span data-t="yourData"></span></h2>
+            <div class="form-group">
+                <label for="ag-name" data-t="name"></label>
+                <input type="text" id="ag-name" autocomplete="name" maxlength="120" required>
+            </div>
+            <div class="form-group">
+                <label for="ag-email" data-t="email"></label>
+                <input type="email" id="ag-email" autocomplete="email" maxlength="160" required>
+            </div>
+            <div class="form-group">
+                <label for="ag-phone" data-t="phone"></label>
+                <input type="tel" id="ag-phone" autocomplete="tel" maxlength="24" placeholder="+55 11 99999-8888" required>
+            </div>
+        </form>
+
+        <p class="ag-error" id="ag-error" role="alert" hidden></p>
+        <button type="button" class="ag-btn ag-btn--primary ag-btn--block" id="ag-submit" disabled></button>
+    </div>
+
+    <div class="ag-view" data-view-name="empty">
+        <h1 data-t="emptyTitle"></h1>
+        <p class="ag-sub" data-t="emptyText"></p>
+        <a class="ag-btn ag-btn--primary" id="ag-whatsapp" target="_blank" rel="noopener" data-t="emptyCta"></a>
+    </div>
+
+    <div class="ag-view" data-view-name="done">
+        <div class="ag-check" aria-hidden="true">✓</div>
+        <h1 data-t="doneTitle"></h1>
+        <p class="ag-when" id="ag-done-when"></p>
+        <p class="ag-sub" data-t="doneText"></p>
+        <a class="ag-btn ag-btn--primary" id="ag-done-link" target="_blank" rel="noopener" data-t="openLink" hidden></a>
+        <p class="ag-small"><a href="#" id="ag-done-change" data-t="change"></a></p>
+    </div>
+
+    <div class="ag-view" data-view-name="error">
+        <h1 data-t="errorTitle"></h1>
+        <p class="ag-sub" data-t="errorText"></p>
+        <button type="button" class="ag-btn ag-btn--primary" id="ag-retry" data-t="retry"></button>
+    </div>
+</section>

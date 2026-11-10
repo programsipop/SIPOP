@@ -150,7 +150,9 @@ exports.handler = async (event) => {
 
         // Precisa ser aguardado: a Netlify congela a function assim que
         // ela responde, e um envio "solto" poderia nunca sair.
-        await sendFirstContactEmail(payload);
+        // O Apps Script devolve o token do link de agendamento (agenda.gs);
+        // com ele o botão do e-mail abre a agenda já identificando o lead.
+        await sendFirstContactEmail({ ...payload, agendaToken: gasData.agendaToken });
 
         return {
             statusCode: 200,

@@ -72,6 +72,23 @@
   to     = "/pt/privacidade/index.html"
   status = 200
 
+# Agendamento de calls: página do lead, confirmação (lembrete de 24h) e
+# painel do pesquisador. O token do lead vai na query string (?t=...).
+[[redirects]]
+  from   = "/agendar"
+  to     = "/agendar/index.html"
+  status = 200
+
+[[redirects]]
+  from   = "/confirmar"
+  to     = "/confirmar/index.html"
+  status = 200
+
+[[redirects]]
+  from   = "/agenda-admin"
+  to     = "/agenda-admin/index.html"
+  status = 200
+
 # Versão em espanhol (subpasta /es/)
 [[redirects]]
   from   = "/es"
