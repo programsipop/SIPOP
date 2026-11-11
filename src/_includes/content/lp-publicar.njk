@@ -145,6 +145,24 @@
             </div>
         </div>
 
+        <div class="lp-card lp-video">
+            <video controls playsinline preload="none" width="474" height="842"
+                   poster="{{ '/assets/images/testimonials/carla-video-poster.webp' | asset }}"
+                   aria-label="Depoimento em vídeo da professora Carla Regina Farias André sobre a mentoria na pesquisa de metanálise">
+                <source src="{{ '/assets/videos/depoimento-carla.mp4' | asset }}" type="video/mp4">
+                <track kind="captions" src="{{ '/assets/videos/depoimento-carla.vtt' | asset }}" srclang="pt-BR" label="Português" default>
+            </video>
+            <div>
+                <h3>Carla Regina Farias André</h3>
+                <p>Professora Universitária<br>Faculdade União das Aldeias de Ensino Superior (FAC-UNILAGOS)</p>
+                <p>Depoimento sobre o suporte na pesquisa de metanálise.</p>
+                <details class="lp-transcript">
+                    <summary>Ler transcrição do vídeo</summary>
+                    <p>Olá, professor Gaspar, tudo bom? Passando aqui para agradecer pelo suporte na minha pesquisa de metanálise. Foi um sucesso, foi um privilégio poder contar com a sua mentoria, com a sua disposição de compartilhar tanto conhecimento. A sua capacidade de traduzir pontos complexos em explicações tão didáticas fez toda diferença. Então, eu deixo aqui o meu agradecimento. Muito obrigada.</p>
+                </details>
+            </div>
+        </div>
+
         <div class="lp-grid lp-grid--3">
             {% for item in depoimentos %}
             <figure class="lp-card lp-quote">
