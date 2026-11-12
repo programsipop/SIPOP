@@ -12,8 +12,11 @@
 // M utm_source | N utm_medium | O utm_campaign | P utm_content |
 // Q Status (manual) | R Objeção (manual) | S Observações (manual)
 //
-// O script SEMPRE escreve só A-P (16 colunas). Q-S nunca são
-// tocadas por aqui — são preenchidas manualmente.
+// O doPost grava cada campo pela coluna com o NOME do cabeçalho
+// (LEAD_FIELDS), não pela posição: dá para inserir/mover colunas
+// (ex.: "Instagram") sem deslocar os leads novos. As colunas manuais
+// (Status, Objeção, Observações) nunca são tocadas.
+// Para conferir o mapeamento: rode checkLeadColumns() pelo editor.
 //
 // A sequência de remarketing (remarketing.gs) cria no fim da planilha
 // as colunas "Remarketing (etapa)" e "Remarketing (último envio)".
@@ -101,6 +104,82 @@ function asTextFormula(value) {
     return '="' + escaped + '"';
 }
 
+// Campos do lead -> nomes aceitos para o cabeçalho da coluna (sem diferenciar
+// maiúsculas/acentos). O primeiro nome é o usado se a coluna precisar ser criada.
+const LEAD_FIELDS = {
+    date:          ['Date', 'Data'],
+    time:          ['Time', 'Hora', 'Horário'],
+    source:        ['Source', 'Origem'],
+    name:          ['Name', 'Nome'],
+    email:         ['Email', 'E-mail'],
+    phone:         ['Phone', 'Telefone', 'WhatsApp'],
+    instagram:     ['Instagram'],
+    nationality:   ['Nationality', 'Nacionalidade'],
+    language:      ['Preferred Language', 'Idioma preferido', 'Idioma'],
+    specialty:     ['Specialty', 'Especialidade', 'Área'],
+    careerStage:   ['Career Stage', 'Fase da carreira', 'Estágio'],
+    objectiveType: ['Objective Type', 'Main Objective', 'Objetivo principal'],
+    objective:     ['Objective', 'Details', 'Nota', 'Message', 'Mensagem', 'Objetivo'],
+    utm_source:    ['UTM Source', 'utm_source'],
+    utm_medium:    ['UTM Medium', 'utm_medium'],
+    utm_campaign:  ['UTM Campaign', 'utm_campaign'],
+    utm_content:   ['UTM Content', 'utm_content'],
+};
+
+function leadNorm_(value) {
+    return String(value || '').normalize('NFD').replace(/[̀-ͯ]/g, '').trim().toLowerCase();
+}
+
+// Linha de cabeçalho: a primeira (das 5 do topo) que tem uma coluna "Email".
+function findLeadHeaderRow_(sheet) {
+    const lastCol = sheet.getLastColumn();
+    const rows    = Math.min(5, sheet.getLastRow());
+    if (!lastCol || !rows) return { row: 1, headers: [] };
+    const top    = sheet.getRange(1, 1, rows, lastCol).getDisplayValues();
+    const emails = LEAD_FIELDS.email.map(leadNorm_);
+    for (let r = 0; r < top.length; r++) {
+        const headers = top[r].map(leadNorm_);
+        if (headers.some(function (h) { return emails.indexOf(h) !== -1; })) return { row: r + 1, headers: headers };
+    }
+    return { row: 1, headers: top[0].map(leadNorm_) };
+}
+
+// { campo: número da coluna }. Campo sem coluna na planilha: se tiver valor,
+// ganha uma coluna nova no FIM (nunca no meio); se estiver vazio, é ignorado.
+function resolveLeadColumns_(sheet, values) {
+    const header = findLeadHeaderRow_(sheet);
+    const cols   = {};
+    Object.keys(LEAD_FIELDS).forEach(function (key) {
+        const names = LEAD_FIELDS[key].map(leadNorm_);
+        const idx   = header.headers.findIndex(function (h) { return names.indexOf(h) !== -1; });
+        if (idx !== -1) { cols[key] = idx + 1; return; }
+        if (!values || values[key] === '' || values[key] == null) return;
+
+        const col = sheet.getLastColumn() + 1;
+        if (col > sheet.getMaxColumns()) sheet.insertColumnAfter(sheet.getMaxColumns());
+        sheet.getRange(header.row, col).setValue(LEAD_FIELDS[key][0]);
+        header.headers[col - 1] = leadNorm_(LEAD_FIELDS[key][0]);
+        cols[key] = col;
+        Logger.log('doPost: coluna "' + LEAD_FIELDS[key][0] + '" não existia e foi criada no fim (col ' + col + ').');
+    });
+    return cols;
+}
+
+// Rode pelo editor: mostra no log em qual coluna cada campo vai ser gravado.
+function checkLeadColumns() {
+    const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(SHEET_NAME);
+    const header = findLeadHeaderRow_(sheet);
+    const raw = sheet.getRange(header.row, 1, 1, sheet.getLastColumn()).getDisplayValues()[0];
+    Logger.log('Cabeçalho na linha ' + header.row);
+    Object.keys(LEAD_FIELDS).forEach(function (key) {
+        const names = LEAD_FIELDS[key].map(leadNorm_);
+        const idx   = header.headers.findIndex(function (h) { return names.indexOf(h) !== -1; });
+        Logger.log(key + ' -> ' + (idx === -1
+            ? 'NÃO ENCONTRADA (seria criada no fim se vier preenchida)'
+            : 'coluna ' + sheet.getRange(header.row, idx + 1).getA1Notation().replace(/\d+/, '') + ' "' + raw[idx] + '"'));
+    });
+}
+
 function doPost(e) {
     try {
         // Parse dos dados recebidos
@@ -160,36 +239,43 @@ function doPost(e) {
         // duas colunas, o formato de cada célula decide o que aparece
         const brDateTime = toBRDateTime(data.timestamp);
 
-        // Adiciona linha (A-P — Q, R, S nunca são tocadas aqui)
-        sheet.appendRow([
-            brDateTime,                    // A — Date
-            brDateTime,                    // B — Time
-            source,                        // C
-            data.name             || '',   // D
-            data.email             || '',  // E
-            asTextFormula(phoneFormatted), // F
-            data.nationality        || '', // G
-            data.preferredLanguage   || '',// H
-            data.specialty            || '',// I
-            data.careerStage           || '',// J
-            data.objectiveType          || '',// K
-            data.objective                || '',// L
-            data.utm_source                 || '',// M
-            data.utm_medium                   || '',// N
-            data.utm_campaign                   || '',// O
-            data.utm_content                     || '' // P
-        ]);
+        // Grava cada campo na coluna pelo NOME do cabeçalho (LEAD_FIELDS),
+        // não pela posição. Assim inserir/mover colunas na planilha não
+        // desloca mais os leads novos.
+        const values = {
+            date:          brDateTime,
+            time:          brDateTime,
+            source:        source,
+            name:          data.name              || '',
+            email:         data.email             || '',
+            phone:         asTextFormula(phoneFormatted),
+            instagram:     data.instagram         || '',
+            nationality:   data.nationality       || '',
+            language:      data.preferredLanguage || '',
+            specialty:     data.specialty         || '',
+            careerStage:   data.careerStage       || '',
+            objectiveType: data.objectiveType     || '',
+            objective:     data.objective         || '',
+            utm_source:    data.utm_source        || '',
+            utm_medium:    data.utm_medium        || '',
+            utm_campaign:  data.utm_campaign      || '',
+            utm_content:   data.utm_content       || ''
+        };
+        const leadCols = resolveLeadColumns_(sheet, values);
+        const width    = Math.max(sheet.getLastColumn(), Math.max.apply(null, Object.keys(leadCols).map(function (k) { return leadCols[k]; })));
+        const row      = new Array(width).fill('');
+        Object.keys(leadCols).forEach(function (key) { row[leadCols[key] - 1] = values[key]; });
+        sheet.appendRow(row);
 
         // Formata as células recém-criadas de Date e Time
         const lastRow = sheet.getLastRow();
-        sheet.getRange(lastRow, 1).setNumberFormat('yyyy-mm-dd');
-        sheet.getRange(lastRow, 2).setNumberFormat('hh:mm:ss');
+        sheet.getRange(lastRow, leadCols.date).setNumberFormat('yyyy-mm-dd');
+        sheet.getRange(lastRow, leadCols.time).setNumberFormat('hh:mm:ss');
 
-        // Destaca visualmente leads da Landing Page
-          if (source.includes('Landing Page')) {
-              const rowRange = sheet.getRange(lastRow, 1, 1, 19); // A até S — inclui Status/Objeção/Observações
-              rowRange.setBackground('#EBF8FF'); // azul claro
-          }
+        // Destaca visualmente leads da Landing Page (linha inteira)
+        if (source.includes('Landing Page')) {
+            sheet.getRange(lastRow, 1, 1, sheet.getLastColumn()).setBackground('#EBF8FF'); // azul claro
+        }
 
         // Token do link de agendamento (agenda.gs). Volta na resposta para a
         // Netlify Function colocar o link no e-mail de primeiro contato.
@@ -199,6 +285,14 @@ function doPost(e) {
             agendaToken = agendaAssignLeadToken_(sheet, lastRow);
         } catch (tokenError) {
             Logger.log('doPost: não consegui gerar o token de agendamento: ' + tokenError);
+        }
+
+        // Separa na hora o resumo da LP em colunas (details.gs), sem esperar
+        // o gatilho de 5 minutos. Falha aqui nunca derruba o formulário.
+        try {
+            splitDetails();
+        } catch (splitError) {
+            Logger.log('doPost: não consegui separar o resumo: ' + splitError);
         }
 
         // Notificação por e-mail para todos os destinatários
