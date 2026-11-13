@@ -44,8 +44,7 @@ const SHEET_NAME = 'SIPOP Contacts';
 // Destinatários das notificações por e-mail
 const EMAIL_RECIPIENTS = [
     'program.sipop@gmail.com',
-    'gaspar.chiappa@gmail.com',
-    'victor-g@outlook.com.br'
+    'gaspar.chiappa@gmail.com'
 ];
 
 // O timestamp já vem em UTC (ISO). Não precisa converter aqui, pois
