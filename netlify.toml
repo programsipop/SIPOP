@@ -67,6 +67,17 @@
   to     = "/pt/obrigado-prioridade/index.html"
   status = 200
 
+# LP de anúncio que leva ao WhatsApp + obrigado (conversão) que abre o WhatsApp
+[[redirects]]
+  from   = "/pt/whatsapp"
+  to     = "/pt/whatsapp/index.html"
+  status = 200
+
+[[redirects]]
+  from   = "/pt/obrigado-whatsapp"
+  to     = "/pt/obrigado-whatsapp/index.html"
+  status = 200
+
 [[redirects]]
   from   = "/pt/privacidade"
   to     = "/pt/privacidade/index.html"
