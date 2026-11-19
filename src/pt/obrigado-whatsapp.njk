@@ -1,0 +1,49 @@
+---
+layout: lp-ads.njk
+lang: pt
+slug: "obrigado-whatsapp"
+title: "Abrindo o WhatsApp… | SIPOP"
+description: "Estamos abrindo o WhatsApp para você falar com a equipe SIPOP."
+noindex: true
+thanksType: whatsapp
+---
+{# Página de conversão da LP /pt/whatsapp. Empurra { event: 'lead_whatsapp' }
+   no dataLayer; no GTM, o acionador "CE - lead_whatsapp" dispara o Contact
+   do Meta Pixel e o evento contact_whatsapp do GA4.
+   Depois de dar tempo para as tags dispararem, abre o WhatsApp com a
+   mensagem pré-preenchida. ?c=prazo|erro|forest|orientador|etapas acrescenta
+   o marcador do criativo, como no funil (funil-whatsapp-qualificacao.md). #}
+<section class="lp-section lp-thanks">
+    <div class="container lp-thanks__inner">
+        <h1>Abrindo o WhatsApp…</h1>
+        <p>Se o WhatsApp não abrir sozinho, toque no botão abaixo e envie a mensagem.</p>
+        <p><a href="https://wa.me/5551935001294?text=Oi%2C%20quero%20avaliar%20meu%20projeto" class="lp-btn lp-btn--wa" id="waLink">Abrir o WhatsApp</a></p>
+    </div>
+</section>
+
+<style>
+.lp-btn--wa { background: #25D366; color: #fff; border-color: #25D366; margin-top: 8px; }
+.lp-btn--wa:hover { color: #fff; }
+</style>
+
+<script>
+(function () {
+    var PHONE = '5551935001294';
+    var MESSAGE = 'Oi, quero avaliar meu projeto';
+    var VARIANTS = ['prazo', 'erro', 'forest', 'orientador', 'etapas'];
+    // Tempo para o GTM carregar e o Pixel enviar o evento antes de sair da página.
+    var REDIRECT_MS = 1500;
+
+    var params = new URLSearchParams(window.location.search);
+    var variant = (params.get('c') || '').toLowerCase();
+    var text = VARIANTS.indexOf(variant) >= 0 ? MESSAGE + ' (' + variant + ')' : MESSAGE;
+    var url = 'https://wa.me/' + PHONE + '?text=' + encodeURIComponent(text);
+
+    // Evento que o GTM usa para disparar "Meta Pixel - Contact (WhatsApp)".
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: 'lead_whatsapp', criativo: variant || 'padrao' });
+
+    document.getElementById('waLink').href = url;
+    setTimeout(function () { window.location.replace(url); }, REDIRECT_MS);
+})();
+</script>

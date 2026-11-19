@@ -1,0 +1,37 @@
+---
+layout: lp-ads.njk
+lang: pt
+slug: "whatsapp"
+title: "Avalie seu projeto pelo WhatsApp | SIPOP"
+description: "Supervisão metodológica e estatística para profissionais da saúde que querem publicar em revistas internacionais. Fale com a gente pelo WhatsApp."
+noindex: true
+---
+{# LP de anúncio que leva ao WhatsApp. Existe porque o número do funil não é
+   o da API oficial e não dá para conectá-lo à BM para campanha de mensagens.
+   O botão vai para /pt/obrigado-whatsapp/ (a conversão), que abre o WhatsApp.
+   Parâmetros da URL (utm_*, fbclid, c=prazo etc.) são repassados ao obrigado. #}
+<section class="lp-hero lp-wa">
+    <div class="container lp-hero__inner">
+        <h1>Seu estudo no padrão que as revistas internacionais exigem.</h1>
+        <p class="lp-hero__sub">Supervisão metodológica e estatística para profissionais da saúde que querem publicar revisões sistemáticas, meta-análises e estudos clínicos. Você continua autor. Nós garantimos o rigor.</p>
+        <a href="/pt/obrigado-whatsapp/" class="lp-btn lp-btn--wa" id="waCta">
+            <svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm5.8 14.02c-.24.68-1.42 1.31-1.97 1.36-.5.05-.97.23-3.27-.68-2.77-1.09-4.52-3.93-4.66-4.11-.13-.18-1.11-1.48-1.11-2.82 0-1.34.7-2 .95-2.27.25-.27.54-.34.72-.34h.52c.17 0 .39-.06.61.47.24.56.79 1.92.86 2.06.07.14.11.3.02.48-.09.18-.14.3-.27.46-.14.16-.29.36-.41.48-.14.14-.28.29-.12.56.16.27.71 1.17 1.52 1.9 1.05.93 1.93 1.22 2.2 1.36.27.14.43.11.59-.07.16-.18.68-.79.86-1.07.18-.27.36-.23.61-.14.25.09 1.58.75 1.85.88.27.14.45.2.52.32.07.11.07.66-.17 1.33z"/></svg>
+            Quero avaliar meu projeto
+        </a>
+        <p class="lp-hero__note">Você fala direto com a nossa equipe no WhatsApp.</p>
+        <p class="lp-seals">PRISMA · CONSORT · GRADE</p>
+    </div>
+</section>
+
+<style>
+.lp-wa { min-height: 62vh; display: flex; align-items: center; }
+.lp-btn--wa { display: inline-flex; align-items: center; gap: 10px; background: #25D366; color: #fff; border-color: #25D366; }
+.lp-btn--wa:hover { color: #fff; }
+</style>
+
+<script>
+(function () {
+    var cta = document.getElementById('waCta');
+    if (cta && window.location.search) cta.href = cta.getAttribute('href') + window.location.search;
+})();
+</script>
