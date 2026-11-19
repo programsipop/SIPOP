@@ -44,8 +44,7 @@ const SHEET_NAME = 'SIPOP Contacts';
 // Destinatários das notificações por e-mail
 const EMAIL_RECIPIENTS = [
     'program.sipop@gmail.com',
-    'gaspar.chiappa@gmail.com',
-    'victor-g@outlook.com.br'
+    'gaspar.chiappa@gmail.com'
 ];
 
 // O timestamp já vem em UTC (ISO). Não precisa converter aqui, pois
@@ -184,6 +183,11 @@ function doPost(e) {
     try {
         // Parse dos dados recebidos
         const data = JSON.parse(e.postData.contents);
+
+        // Webhook da Evolution API (whatsapp-funil.gs): mensagens do WhatsApp
+        if (funilIsWebhook_(data)) {
+            return funilHandleWebhook_(e, data);
+        }
 
         // Agendamento de calls (agenda.gs): o site manda { action: 'agenda.*', ... }
         if (data.action && String(data.action).indexOf('agenda.') === 0) {
