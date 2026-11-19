@@ -1270,16 +1270,17 @@ function setupFunilWebhook() {
         props.setProperty('FUNIL_WEBHOOK_SECRET', secret);
         Logger.log('FUNIL_WEBHOOK_SECRET criado.');
     }
-    const appUrl = ScriptApp.getService().getUrl();
-    if (!appUrl) throw new Error('Implante o Web App antes (Implantar > Gerenciar implantações).');
-    const execUrl = appUrl.replace(/\/dev$/, '/exec');
+    // Mesma implantação que o site usa (Netlify Function). ScriptApp.getService().getUrl()
+    // pode devolver outra implantação quando o projeto tem mais de uma.
+    const execUrl = props.getProperty('FUNIL_WEBHOOK_URL') || REMARKETING.WEB_APP_URL;
     const config = getEvolutionConfig_();
     const headers = { apikey: config.apiKey };
 
     const current = UrlFetchApp.fetch(config.url + '/webhook/find/' + encodeURIComponent(config.instance), { headers: headers, muteHttpExceptions: true });
     let existing = {};
     try { existing = JSON.parse(current.getContentText()) || {}; } catch (e) { existing = {}; }
-    if (existing.enabled && existing.url && existing.url.indexOf(execUrl) !== 0) {
+    // Um webhook anterior do próprio funil (?funil=) pode ser substituído
+    if (existing.enabled && existing.url && existing.url.indexOf(execUrl) !== 0 && existing.url.indexOf('?funil=') < 0) {
         Logger.log('A instância já tem outro webhook ativo: ' + existing.url + '\nNada foi alterado. ' +
             'Se ele puder ser trocado, desative-o na Evolution e rode de novo.');
         return;
