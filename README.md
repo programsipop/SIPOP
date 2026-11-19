@@ -135,6 +135,7 @@ sipop/
 ├── apps-script.gs                # Google Apps Script — paste into Apps Script editor
 ├── remarketing.gs                # Remarketing sequence — second file in the same Apps Script project
 ├── whatsapp-first-contact.gs     # First-contact WhatsApp — same Apps Script project
+├── whatsapp-funil.gs             # WhatsApp qualification funnel (Evolution webhook) — same Apps Script project
 ├── agenda.gs                     # Call scheduling backend — same Apps Script project
 ├── README.md
 │

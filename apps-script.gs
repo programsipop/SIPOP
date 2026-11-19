@@ -184,6 +184,11 @@ function doPost(e) {
         // Parse dos dados recebidos
         const data = JSON.parse(e.postData.contents);
 
+        // Webhook da Evolution API (whatsapp-funil.gs): mensagens do WhatsApp
+        if (funilIsWebhook_(data)) {
+            return funilHandleWebhook_(e, data);
+        }
+
         // Agendamento de calls (agenda.gs): o site manda { action: 'agenda.*', ... }
         if (data.action && String(data.action).indexOf('agenda.') === 0) {
             return agendaHandleRequest_(data);

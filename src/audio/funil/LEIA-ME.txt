@@ -1,0 +1,23 @@
+Áudios do funil de WhatsApp (whatsapp-funil.gs)
+
+Coloque aqui os áudios do Gaspar em MP3, com estes nomes exatos:
+
+  A1.mp3   Boas-vindas
+  A2a.mp3  Rota A: só a ideia / protocolo pronto
+  A2b.mp3  Rota A: dados coletados
+  A2c.mp3  Rota A: manuscrito escrito
+  A2d.mp3  Rota A: já submetido e rejeitado
+  A3.mp3   Rota B
+  A4.mp3   Rota C (despedida)
+  A5.mp3   Follow-up: parou no meio das perguntas
+  A6.mp3   Follow-up: recebeu o link e não agendou
+  A7.mp3   "Quem é você?"
+
+O texto de cada um está em FUNIL_AUDIOS (whatsapp-funil.gs) e em
+../funil-whatsapp-qualificacao.md. Depois do deploy, cada um fica em
+https://sipopscience.com/audio/funil/A1.mp3 e o bot passa a usá-lo em até 10 minutos.
+Enquanto um arquivo não existir, o bot manda o mesmo texto por escrito.
+
+Para trocar um áudio, substitua o arquivo mantendo o mesmo nome e faça o deploy.
+Se a versão antiga continuar saindo, é cache da Cloudflare: limpe o cache desse
+endereço no painel.
