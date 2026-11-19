@@ -743,9 +743,20 @@ function funilShouldStart_(contact, inbound) {
     const props = PropertiesService.getScriptProperties();
     const only  = String(props.getProperty('FUNIL_SO_NUMEROS') || '').split(',')
         .map(function (n) { return n.replace(/\D/g, ''); }).filter(String);
-    if (only.length) return only.indexOf(contact.phone) !== -1;
+    if (only.length) return only.some(function (n) { return funilPhoneVariants_(n).indexOf(contact.phone) !== -1; });
     if (funilNorm_(props.getProperty('FUNIL_ENTRADA')) === 'todos') return !funilIsKnownLead_(contact.phone);
     return inbound.kind === 'text' && funilNorm_(inbound.text).indexOf(FUNIL.ENTRY_TEXT) !== -1;
+}
+
+// O WhatsApp identifica alguns celulares brasileiros sem o 9º dígito (55 51 91078194).
+// Devolve o número como foi digitado e a outra forma (com ou sem o 9).
+function funilPhoneVariants_(number) {
+    const n = String(number || '').replace(/\D/g, '');
+    if (!/^55\d{10,11}$/.test(n)) return [n];
+    const ddd = n.slice(2, 4), local = n.slice(4);
+    if (local.length === 9 && local[0] === '9') return [n, '55' + ddd + local.slice(1)];
+    if (local.length === 8 && /^[6-9]/.test(local)) return [n, '55' + ddd + '9' + local];
+    return [n];
 }
 
 // No modo "todos": quem já é lead do formulário não entra no funil (a equipe já fala com ele).
@@ -1346,7 +1357,7 @@ function funilProcessForTest_(contact, inbound) {
 function resetFunilContato() {
     const number = String(PropertiesService.getScriptProperties().getProperty('FUNIL_RESET_NUMERO') || '').replace(/\D/g, '');
     if (!number) throw new Error('Defina FUNIL_RESET_NUMERO nas Propriedades do script (com DDI).');
-    const s = funilLoad_(number);
+    const s = funilPhoneVariants_(number).map(funilLoad_).filter(Boolean)[0];
     if (!s) { Logger.log('Nenhuma conversa com ' + number + '.'); return; }
     funilSheet_().deleteRow(s.row);
     Logger.log('Conversa de ' + number + ' apagada da aba "' + FUNIL.SHEET + '". O lead na aba de contatos continua lá.');
